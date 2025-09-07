@@ -6,10 +6,10 @@ export function GuinnessChallenge() {
   return (
     <section id="guinness-challenge" className="py-16 md:py-24 bg-background">
       <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-primary">Reto Guinness</h2>
+                <h2 className="text-3xl sm:text-4xl font-bold text-primary">Reto Guinness</h2>
                 <p className="mt-4 text-muted-foreground">
                 Este año nos propusimos demostrar que la circularidad funciona. Activamos barrios, reciclamos desde la base y generamos comunidad, contenido y retorno real. Todo esto es solo el comienzo.
                 </p>
@@ -22,8 +22,8 @@ export function GuinnessChallenge() {
             <cite className="mt-2 block not-italic font-semibold text-foreground">Team Beland</cite>
             </blockquote>
           </div>
-          <div className="space-y-8 rounded-lg bg-secondary p-8">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          <div className="space-y-8 rounded-lg bg-secondary p-6 md:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div>
                     <p className="text-4xl font-bold text-primary">1</p>
                     <p className="mt-2 text-muted-foreground">Record Guinness</p>
@@ -38,9 +38,9 @@ export function GuinnessChallenge() {
                 </div>
             </div>
             <Button asChild size="lg" className="w-full">
-                <Link href="#"> 
-                    Agenda tu Consultoría Circular y participa en nuestro reto
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                <Link href="#" className="flex items-center justify-center text-center">
+                    <span className="text-sm sm:text-base">Agenda tu Consultoría Circular y participa en nuestro reto</span>
+                    <ArrowRight className="w-5 h-5 ml-2 flex-shrink-0" />
                 </Link>
             </Button>
           </div>

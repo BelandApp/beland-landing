@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/data";
 import { Calendar, User } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 
 type BlogPostPageProps = {
   params: {
@@ -26,9 +24,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <article className="py-12 md:py-20">
       <div className="container max-w-4xl">
-        <header className="mb-8 md:mb-12">
+        <header className="mb-8 md:mb-12 text-center">
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">{post.title}</h1>
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+          <div className="flex items-center justify-center space-x-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               <time dateTime={post.date}>{post.date}</time>
@@ -39,16 +37,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </div>
         </header>
-
-        <Image
-          src={post.imageUrl}
-          alt={post.title}
-          width={1200}
-          height={600}
-          className="w-full rounded-lg shadow-lg mb-8 md:mb-12"
-          data-ai-hint="blog post header"
-          priority
-        />
         
         <div 
           className="prose prose-lg dark:prose-invert max-w-none"

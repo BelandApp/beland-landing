@@ -8,20 +8,17 @@ const territories = [
   {
     name: "Territorio del Sol",
     description: "Una comunidad costera que ha reducido su plástico de un solo uso en un 40% gracias a nuestras iniciativas.",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "coastal community"
+    imageUrl: "https://res.cloudinary.com/dbfboc8cm/image/upload/v1757203115/ruta_del_sol_zkdwcj.jpg",
   },
   {
     name: "Distrito Verde",
     description: "Un centro urbano denso que ahora cuenta con compostaje comunitario y un mercado de agricultores próspero.",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "urban center"
+    imageUrl: "https://res.cloudinary.com/dbfboc8cm/image/upload/v1757203118/Distrito_Verde_ivff54.jpg",
   },
   {
     name: "Valle Esmeralda",
     description: "Una zona rural que ha revitalizado su economía local a través de la venta de productos sostenibles en nuestra plataforma.",
-    imageUrl: "https://placehold.co/600x400.png",
-    aiHint: "rural valley"
+    imageUrl: "https://res.cloudinary.com/dbfboc8cm/image/upload/v1757203125/Valle_Esmeralda_hocwgi.jpg",
   },
 ];
 
@@ -82,7 +79,6 @@ export default function TerritoriesPage() {
                   width={600}
                   height={400}
                   className="w-full h-48 object-cover"
-                  data-ai-hint={territory.aiHint}
                 />
                 <CardHeader>
                   <CardTitle>{territory.name}</CardTitle>

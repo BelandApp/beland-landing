@@ -18,12 +18,11 @@ export default function CircularityPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="https://placehold.co/600x450.png"
+                src="https://res.cloudinary.com/dbfboc8cm/image/upload/v1757202868/beland_bj15kh.png"
                 alt="Diagrama del servicio de circularidad"
                 width={600}
                 height={450}
                 className="rounded-lg shadow-lg"
-                data-ai-hint="circular economy diagram"
               />
             </div>
             <div className="space-y-6">
