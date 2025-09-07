@@ -7,7 +7,7 @@ import {
 import { RefreshCw, Gift, ShoppingCart, Users } from "lucide-react";
 import Link from "next/link";
 
-const authUrl = "https://beland-project.netlify.app";
+const authUrl = "https://beland.app";
 
 const features = [
   {
@@ -55,7 +55,7 @@ export function Features() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Link key={index} href={feature.href} className="flex">
+            <Link key={index} href={feature.href} className="flex" target="_blank">
               <Card className="text-center p-6 transform hover:-translate-y-2 transition-transform duration-300 w-full flex flex-col">
                 <CardHeader className="items-center flex-grow">
                   <div className="p-4 bg-primary/10 rounded-full mb-4">

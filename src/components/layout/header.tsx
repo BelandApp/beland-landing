@@ -2,129 +2,85 @@
 
 import Link from "next/link";
 import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Logo } from "@/components/ui/logo";
-import { useState } from "react";
-import { Separator } from "@/components/ui/separator";
-import { usePathname } from "next/navigation";
-import { useScrollSpy } from "@/hooks/use-scroll-spy";
-// Se elimina la importación de Auth0
-// import { useAuth0 } from "@auth0/auth0-react";
 
-// Navegación principal
-const navLinks = [
-  {
-    href: "/#media-gallery",
-    label: "Experiencia Beland",
-    sectionId: "media-gallery",
-  },
-  { href: "/circularity", label: "Circularity as a Service" },
-  { href: "/territories", label: "Territorios" },
-  { href: "/blog", label: "Blog" },
+import { cn } from "@/lib/utils";
+import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "../theme-toggle";
+
+const routes = [
+  { href: "#features", label: "Features" },
+  { href: "#guinness-challenge", label: "Guinness Challenge" },
+  { href: "#media-gallery", label: "Media" },
+  { href: "#about", label: "About" },
+  { href: "#blog", label: "Blog" },
+  { href: "/circularity", label: "Circularity" },
+  { href: "/territories", label: "Territories" },
 ];
 
-// URL de la aplicación desplegada en Netlify
-const netlifyUrl = "https://beland-project.netlify.app";
-
 export function Header() {
-  const [isSheetOpen, setSheetOpen] = useState(false);
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
-
-  // Se elimina la desestructuración de Auth0
-  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-
   const activeSection = useScrollSpy(
-    navLinks.filter(l => isHomePage && l.sectionId).map(l => l.sectionId!),
-    { rootMargin: "0% 0px -40% 0px" }
+    routes.map((route) => route.href.substring(1)),
+    { rootMargin: "-100px 0px 0px 0px" }
   );
 
-  const getLinkClass = (link: (typeof navLinks)[0]) => {
-    if (isHomePage && link.sectionId && link.sectionId === activeSection) {
-      return "text-primary font-semibold";
-    }
-    return "";
-  };
-
   return (
-    <header className="fixed top-0 z-50 w-full bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <Logo />
-          {/* Menú para móviles */}
-          <div className="md:hidden">
-            <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left">
-                <SheetHeader>
-                  <SheetTitle>Menú</SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col space-y-4 pt-8">
-                  <ul className="flex flex-col space-y-2">
-                    {navLinks.map(link => (
-                      <li key={link.href}>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start"
-                          asChild
-                          onClick={() => setSheetOpen(false)}>
-                          <Link href={link.href}>{link.label}</Link>
-                        </Button>
-                      </li>
-                    ))}
-                  </ul>
-                  <Separator />
-                  <div className="flex flex-col space-y-2">
-                    {/* Se reemplaza la lógica de Auth0 con enlaces directos */}
-                    <Button variant="outline" asChild>
-                      <Link href={netlifyUrl}>Iniciar Sesión</Link>
-                    </Button>
-                    <Button asChild>
-                      <Link href={netlifyUrl}>Registrarse</Link>
-                    </Button>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </div>
-        {/* Navegación para escritorio */}
-        <nav className="hidden flex-1 items-center justify-center md:flex">
-          <ul className="flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map(link => (
-              <li key={link.href}>
-                <Button variant="link" asChild className={getLinkClass(link)}>
-                  <Link href={link.href}>{link.label}</Link>
-                </Button>
-              </li>
+    <header className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 items-center">
+        <div className="mr-4 hidden md:flex">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <span className="hidden font-bold sm:inline-block">Beland</span>
+          </Link>
+
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            {routes.map((route) => (
+              <Link
+                key={route.href}
+                href={route.href}
+                className={cn(
+                  "transition-colors hover:text-foreground/80",
+                  route.href.substring(1) === activeSection ? "text-foreground" : "text-foreground/60"
+                )}
+              >
+                {route.label}
+              </Link>
             ))}
-          </ul>
-        </nav>
-        {/* Botones de autenticación para escritorio */}
-        <div className="hidden items-center justify-end space-x-2 md:flex">
-          <div className="hidden md:flex items-center space-x-2">
-            {/* Se reemplaza la lógica de Auth0 con enlaces directos */}
-            <Button variant="ghost" asChild>
-              <Link href={netlifyUrl}>Iniciar Sesión</Link>
-            </Button>
-            <Button asChild>
-              <Link href={netlifyUrl}>Registrarse</Link>
-            </Button>
-            <Separator orientation="vertical" className="h-6" />
+          </nav>
+        </div>
+
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Toggle Menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="pr-0">
+                  <Link href="/" className="mr-6 flex items-center space-x-2">
+                    <span className="font-bold">Beland</span>
+                  </Link>
+                  <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+                    <div className="flex flex-col space-y-3">
+                      {routes.map((route) => (
+                        <Link key={route.href} href={route.href} className="text-foreground/60 transition-colors hover:text-foreground">
+                          {route.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+
+          <nav className="flex items-center gap-2">
             <ThemeToggle />
-          </div>
+            <Button asChild>
+                <Link href="https://beland.app" target="_blank">Conectarse</Link>
+            </Button>
+          </nav>
         </div>
       </div>
     </header>
