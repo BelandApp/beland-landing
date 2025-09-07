@@ -36,21 +36,19 @@ const nextConfig = {
   // =========================================================
   // === CONFIGURACIÓN AGREGADA PARA REACT NATIVE Y EXPO ===
   // =========================================================
-  experimental: {
-    // Esto es CRUCIAL. Le dice a Next.js que compile los paquetes
-    // de Expo y React Native que están escritos para un entorno diferente.
-    transpilePackages: [
-      "react-native",
-      "react-native-web",
-      "expo",
-      "expo-constants",
-      "expo-auth-session",
-      "expo-secure-store",
-      "expo-web-browser", // Añadido para el módulo que usa WebBrowser.maybeCompleteAuthSession
-      // Si tienes más paquetes de Expo o de React Native, agrégalos aquí.
-      // Puedes ver los que estás usando en el archivo AuthContext.tsx
-    ],
-  },
+  // Esto es CRUCIAL. Le dice a Next.js que compile los paquetes
+  // de Expo y React Native que están escritos para un entorno diferente.
+  transpilePackages: [
+    "react-native",
+    "react-native-web",
+    "expo",
+    "expo-constants",
+    "expo-auth-session",
+    "expo-secure-store",
+    "expo-web-browser", // Añadido para el módulo que usa WebBrowser.maybeCompleteAuthSession
+    // Si tienes más paquetes de Expo o de React Native, agrégalos aquí.
+    // Puedes ver los que estás usando en el archivo AuthContext.tsx
+  ],
   // =========================================================
   // === FIN DE LA CONFIGURACIÓN AGREGADA ===
   // =========================================================
