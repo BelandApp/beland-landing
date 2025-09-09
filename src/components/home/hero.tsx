@@ -15,7 +15,7 @@ export function Hero() {
             Beland integra tecnología y comunidad para crear ciudades más sostenibles, responsables y conectadas.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="secondary">
               <Link href="/circularity">Descubre la Circularidad</Link>
             </Button>
             <Button asChild size="lg" variant="outline">

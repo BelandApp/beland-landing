@@ -45,7 +45,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">
-              Nuestra Historia: Pasión por un Planeta Sano
+              Nuestra Historia: <span className='text-primary'>Pasión por un Planeta Sano</span>
             </h2>
             <p className="text-sm text-muted-foreground">
               Beland nació de la convicción de que el cambio hacia un futuro
@@ -70,7 +70,7 @@ export function About() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
-                  <PlayCircle className="h-20 w-20 text-white text-opacity-80 group-hover:text-opacity-100 transform group-hover:scale-110 transition-transform duration-300" />
+                  <PlayCircle className="h-20 w-20 text-primary text-opacity-80 group-hover:text-opacity-100 transform group-hover:scale-110 transition-transform duration-300" />
                 </div>
               </div>
             </VideoModal>
@@ -80,7 +80,7 @@ export function About() {
         {/* Testimonials */}
         <div className="text-center space-y-4 mb-16">
           <h3 className="text-3xl md:text-4xl font-bold">
-            Lo que Nuestra Comunidad Dice
+            Lo que Nuestra <span className='text-primary'>Comunidad Dice</span>
           </h3>
           <p className="max-w-2xl mx-auto text-muted-foreground">
             El impacto real de Beland se ve en las palabras de quienes viven la
@@ -92,13 +92,13 @@ export function About() {
             {shuffledTestimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
-                  <Card>
+                  <Card className="bg-foreground dark:bg-background">
                     <CardContent className="flex flex-col items-center justify-center p-8 text-center">
-                      <p className="text-lg italic mb-4">
+                      <p className="text-lg italic mb-4 text-background dark:text-foreground">
                         “{testimonial.quote}”
                       </p>
-                      <span className="font-semibold">{testimonial.name}</span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="font-semibold text-background dark:text-foreground">{testimonial.name}</span>
+                      <span className="text-sm text-background/80 dark:text-muted-foreground">
                         {testimonial.title}
                       </span>
                     </CardContent>
@@ -115,7 +115,7 @@ export function About() {
         <div className="mt-24">
           <div className="text-center space-y-4 mb-16">
             <h3 className="text-3xl md:text-4xl font-bold">
-              Nuestros Hitos Clave
+              Nuestros <span className='text-primary'>Hitos Clave</span>
             </h3>
             <p className="max-w-2xl mx-auto text-muted-foreground">
               Un recorrido por nuestro viaje hacia un futuro más circular.

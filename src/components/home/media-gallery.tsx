@@ -25,8 +25,10 @@ export function MediaGallery() {
     <section id="media-gallery" className="py-16 md:py-24 bg-secondary">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">La Experiencia Beland</h2>
-          <p className="max-w-2xl mx-auto text-muted-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">
+            La Experiencia Beland
+          </h2>
+          <p className="max-w-2xl mx-auto text-center text-secondary-foreground/80">
             Un vistazo a nuestras iniciativas, nuestra comunidad y el impacto que
             estamos creando juntos.
           </p>

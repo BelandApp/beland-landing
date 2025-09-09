@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { cn } from '@/lib/utils'; // Assuming you have a utility for conditional classes
+import { cn } from '@/lib/utils';
 
 interface VideoModalProps {
   children: React.ReactNode;
@@ -30,10 +30,11 @@ export function VideoModal({ children, videoUrl, title, orientation = 'horizonta
             ' [&>button]:top-2 [&>button]:right-2 [&>button]:bg-black/30 [&>button]:rounded-full',
             {
               'max-w-4xl': orientation === 'horizontal',
-              'max-w-md sm:max-w-sm': orientation === 'vertical', // Restrict width for vertical videos
+              'max-w-md sm:max-w-sm': orientation === 'vertical',
             }
           )}
         >
+          <DialogTitle className="sr-only">{title}</DialogTitle>
           <div
             className={cn('relative w-full rounded-lg overflow-hidden', {
               'aspect-video': orientation === 'horizontal',
@@ -48,9 +49,10 @@ export function VideoModal({ children, videoUrl, title, orientation = 'horizonta
               allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
               allowFullScreen
             ></iframe>
-            <DialogTitle className="absolute bottom-4 left-4 text-white bg-black/40 px-3 py-1 rounded-lg text-sm md:text-base pointer-events-none">
+            {/* The old DialogTitle is now a p tag to avoid accessibility conflicts */}
+            <p className="absolute bottom-4 left-4 text-white bg-black/40 px-3 py-1 rounded-lg text-sm md:text-base pointer-events-none">
               {title}
-            </DialogTitle>
+            </p>
           </div>
         </DialogContent>
       )}

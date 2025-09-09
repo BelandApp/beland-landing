@@ -9,8 +9,8 @@ export function CTA() {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold">Explora Nuestras Soluciones</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">Explora Nuestras Soluciones</h2>
+            <p className="text-secondary-foreground/80">
               Descubre cómo nuestro modelo de 'Circularidad como un Servicio' y nuestra expansión en Territorios están creando un impacto real y medible.
             </p>
           </div>
