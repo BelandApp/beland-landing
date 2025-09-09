@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Metadata } from 'next';
 import { blogPosts } from "@/lib/data";
 import { Calendar, User } from "lucide-react";
 
@@ -7,6 +9,31 @@ type BlogPostPageProps = {
     slug: string;
   };
 };
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const post = blogPosts.find((p) => p.slug === params.slug);
+
+  if (!post) {
+    return {
+      title: 'Post No Encontrado',
+      description: 'Este artículo no existe.',
+    };
+  }
+
+  const imageUrl = post.imageUrl ? [post.imageUrl] : [];
+
+  return {
+    title: `${post.title} | Beland Blog`,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      url: `/blog/${post.slug}`,
+      images: imageUrl,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -38,6 +65,18 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
         
+        {post.imageUrl && (
+          <div className="relative w-full h-64 md:h-96 mb-8 md:mb-12 rounded-lg overflow-hidden">
+            <Image 
+              src={post.imageUrl}
+              alt={post.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
+
         <div 
           className="prose prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}

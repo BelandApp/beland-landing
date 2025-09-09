@@ -32,7 +32,9 @@ export function MediaGallery() {
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {mediaItems.map((item, index) => (
+          {mediaItems
+            .filter(item => item.thumbnailUrl)
+            .map((item, index) => (
             <VideoModal
               key={index}
               videoUrl={item.videoUrl}
