@@ -126,7 +126,7 @@ export function Header() {
             <ThemeToggle />
             <Button asChild>
               <Link href="https://beland.app" target="_blank">
-                Conectarse
+                Prueba nuestra app Beland
               </Link>
             </Button>
           </nav>
