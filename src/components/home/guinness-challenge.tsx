@@ -22,24 +22,24 @@ export function GuinnessChallenge() {
             <cite className="mt-2 block not-italic font-semibold text-foreground">Team Beland</cite>
             </blockquote>
           </div>
-          <div className="space-y-8 rounded-lg bg-secondary p-6 md:p-8">
+          <div className="space-y-8 rounded-lg bg-primary p-6 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div>
-                    <p className="text-4xl font-bold text-foreground">1</p>
-                    <p className="mt-2 text-secondary-foreground">Record Guinness</p>
+                    <p className="text-4xl font-bold text-black">1</p>
+                    <p className="mt-2 text-primary-foreground">Record Guinness</p>
                 </div>
                 <div>
-                    <p className="text-4xl font-bold text-foreground">50k+</p>
-                    <p className="mt-2 text-secondary-foreground">Toneladas de residuos</p>
+                    <p className="text-4xl font-bold text-black">50k+</p>
+                    <p className="mt-2 text-primary-foreground">Toneladas de residuos</p>
                 </div>
                 <div>
-                    <p className="text-4xl font-bold text-foreground">1.8M+</p>
-                    <p className="mt-2 text-secondary-foreground">En ingresos para la comunidad</p>
+                    <p className="text-4xl font-bold text-black">1.8M+</p>
+                    <p className="mt-2 text-primary-foreground">En ingresos para la comunidad</p>
                 </div>
             </div>
-            <Button asChild size="lg" variant="ghost" className="w-full bg-foreground text-background hover:bg-foreground/90">
-                <Link href="#" className="flex items-center justify-center text-center">
-                    <span className="text-sm sm:text-base">Agenda tu Consultoría Circular y participa en nuestro reto</span>
+            <Button asChild size="lg" className="w-full bg-white text-black hover:bg-white/90">
+                <Link href="https://beland.app" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-center">
+                    <span className="text-sm sm:text-base">Conéctate y participa en nuestro reto</span>
                     <ArrowRight className="w-5 h-5 ml-2 flex-shrink-0" />
                 </Link>
             </Button>

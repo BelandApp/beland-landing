@@ -92,13 +92,13 @@ export function About() {
             {shuffledTestimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
-                  <Card className="bg-foreground dark:bg-background">
+                  <Card className="bg-primary dark:bg-secondary">
                     <CardContent className="flex flex-col items-center justify-center p-8 text-center">
-                      <p className="text-lg italic mb-4 text-background dark:text-foreground">
+                      <p className="text-lg italic mb-4 text-primary-foreground dark:text-secondary-foreground">
                         “{testimonial.quote}”
                       </p>
-                      <span className="font-semibold text-background dark:text-foreground">{testimonial.name}</span>
-                      <span className="text-sm text-background/80 dark:text-muted-foreground">
+                      <span className="font-semibold text-primary-foreground dark:text-black">{testimonial.name}</span>
+                      <span className="text-sm text-primary-foreground/80 dark:text-secondary-foreground/80">
                         {testimonial.title}
                       </span>
                     </CardContent>

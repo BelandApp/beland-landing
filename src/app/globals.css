@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --background: 142 20% 95%;
+    /* Beland Blue as background */
+    --background: 197 58% 90%; 
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -19,7 +20,7 @@
     --secondary: 28 91% 54%;
     --secondary-foreground: 28 90% 98%;
     
-    --muted: 142 15% 90%;
+    --muted: 197 30% 95%;
     --muted-foreground: 240 3.8% 46.1%;
     
     /* Beland Light Blue */
@@ -28,8 +29,8 @@
     
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 142 15% 85%;
-    --input: 142 15% 85%;
+    --border: 197 30% 80%;
+    --input: 197 30% 80%;
     
     /* Beland Green */
     --ring: 95 39% 40%;
@@ -50,12 +51,13 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 142 10% 10%;
-    --foreground: 142 10% 95%;
-    --card: 142 10% 12%;
-    --card-foreground: 142 10% 95%;
-    --popover: 142 10% 10%;
-    --popover-foreground: 142 10% 95%;
+    /* Deep Beland Blue as background */
+    --background: 200 40% 5%;
+    --foreground: 200 10% 95%;
+    --card: 200 40% 8%;
+    --card-foreground: 200 10% 95%;
+    --popover: 200 40% 5%;
+    --popover-foreground: 200 10% 95%;
     
     /* Beland Green */
     --primary: 95 39% 50%;
@@ -63,10 +65,10 @@
     
     /* Beland Orange */
     --secondary: 28 91% 60%;
-    --secondary-foreground: 28 90% 10%;
+    --secondary-foreground: 28 90% 98%; 
     
-    --muted: 142 10% 20%;
-    --muted-foreground: 142 10% 60%;
+    --muted: 200 20% 15%;
+    --muted-foreground: 200 10% 60%;
     
     /* Beland Light Blue */
     --accent: 197 58% 70%;
@@ -74,8 +76,8 @@
     
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 142 10% 25%;
-    --input: 142 10% 25%;
+    --border: 200 30% 20%;
+    --input: 200 30% 20%;
     
     /* Beland Green */
     --ring: 95 39% 50%;
