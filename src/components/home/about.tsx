@@ -45,7 +45,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">
-              Nuestra Historia: <span className='text-primary'>Pasión por un Planeta Sano</span>
+              Nuestra Historia: <span className='text-secondary'>Pasión por un Planeta</span> <span className='text-primary'>Sano</span>
             </h2>
             <p className="text-sm text-muted-foreground">
               Beland nació de la convicción de que el cambio hacia un futuro
@@ -80,7 +80,7 @@ export function About() {
         {/* Testimonials */}
         <div className="text-center space-y-4 mb-16">
           <h3 className="text-3xl md:text-4xl font-bold">
-            Lo que Nuestra <span className='text-primary'>Comunidad Dice</span>
+            Lo que Nuestra <span className='text-secondary'>Comunidad</span> <span className='text-primary'>Dice</span>
           </h3>
           <p className="max-w-2xl mx-auto text-muted-foreground">
             El impacto real de Beland se ve en las palabras de quienes viven la
@@ -92,13 +92,13 @@ export function About() {
             {shuffledTestimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
                 <div className="p-1">
-                  <Card className="bg-primary dark:bg-secondary">
+                  <Card className="bg-muted dark:bg-card">
                     <CardContent className="flex flex-col items-center justify-center p-8 text-center">
-                      <p className="text-lg italic mb-4 text-primary-foreground dark:text-secondary-foreground">
+                      <p className="text-lg italic mb-4 text-foreground">
                         “{testimonial.quote}”
                       </p>
-                      <span className="font-semibold text-primary-foreground dark:text-black">{testimonial.name}</span>
-                      <span className="text-sm text-primary-foreground/80 dark:text-secondary-foreground/80">
+                      <span className="font-semibold text-foreground">{testimonial.name}</span>
+                      <span className="text-sm text-muted-foreground">
                         {testimonial.title}
                       </span>
                     </CardContent>
@@ -115,7 +115,7 @@ export function About() {
         <div className="mt-24">
           <div className="text-center space-y-4 mb-16">
             <h3 className="text-3xl md:text-4xl font-bold">
-              Nuestros <span className='text-primary'>Hitos Clave</span>
+              Nuestros <span className='text-secondary'>Hitos</span> <span className='text-primary'>Clave</span>
             </h3>
             <p className="max-w-2xl mx-auto text-muted-foreground">
               Un recorrido por nuestro viaje hacia un futuro más circular.

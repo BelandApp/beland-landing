@@ -5,20 +5,20 @@ import { ArrowRight } from "lucide-react";
 
 export function CTA() {
   return (
-    <section className="py-16 md:py-24 bg-secondary">
+    <section className="py-16 md:py-24 bg-background">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">Explora Nuestras Soluciones</h2>
-            <p className="text-secondary-foreground/80">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Explora Nuestras <span className="text-primary">Soluciones</span></h2>
+            <p className="text-foreground/80">
               Descubre cómo nuestro modelo de 'Circularidad como un Servicio' y nuestra expansión en Territorios están creando un impacto real y medible.
             </p>
           </div>
           <div className="space-y-6">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle>Circularidad como un Servicio</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-primary">Circularidad como un Servicio</CardTitle>
+                <CardDescription className="text-card-foreground/80">
                   Una plataforma integral para que empresas y municipios adopten la economía circular.
                 </CardDescription>
               </CardHeader>
@@ -32,8 +32,8 @@ export function CTA() {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle>Territorios Beland</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-secondary">Territorios Beland</CardTitle>
+                <CardDescription className="text-card-foreground/80">
                   Soluciones personalizadas que transforman comunidades y fomentan el desarrollo local sostenible.
                 </CardDescription>
               </CardHeader>

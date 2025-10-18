@@ -20,7 +20,17 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const imageUrl = post.imageUrl ? [post.imageUrl] : [];
+  const imageUrls = post.imageUrl ? [post.imageUrl] : [];
+  const preloadLinks = [];
+
+  // If there is a video poster, it's the LCP. Preload it.
+  if (post.videoPosterUrl) {
+    preloadLinks.push({
+      rel: 'preload',
+      href: post.videoPosterUrl,
+      as: 'image',
+    });
+  }
 
   return {
     title: `${post.title} | Beland Blog`,
@@ -30,8 +40,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.description,
       type: 'article',
       url: `/blog/${post.slug}`,
-      images: imageUrl,
+      images: imageUrls,
     },
+    links: preloadLinks, // Add the preload link to the head
   };
 }
 
@@ -47,6 +58,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  // Determine if the main image should be prioritized (only if no video exists)
+  const isImagePriority = !post.videoUrl && !!post.imageUrl;
 
   return (
     <article className="py-12 md:py-20">
@@ -65,18 +79,30 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
         
-        {post.imageUrl && (
+        {/* If it's a post with a video, render the video player */}
+        {post.videoUrl && (
+          <div className="mb-8 md:mb-12">
+            <video controls style={{width: '100%', borderRadius: '15px'}} poster={post.videoPosterUrl}>
+              <source src={post.videoUrl} type='video/mp4' />
+              Tu navegador no soporta el tag de video.
+            </video>
+          </div>
+        )}
+
+        {/* If it's a post with only an image, render the Image with priority */}
+        {!post.videoUrl && post.imageUrl && (
           <div className="relative w-full h-64 md:h-96 mb-8 md:mb-12 rounded-lg overflow-hidden">
             <Image 
               src={post.imageUrl}
               alt={post.title}
               fill
               className="object-cover"
-              priority
+              priority={isImagePriority}
             />
           </div>
         )}
 
+        {/* Render the rest of the content */}
         <div 
           className="prose prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}

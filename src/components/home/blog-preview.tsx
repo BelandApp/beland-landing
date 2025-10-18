@@ -12,7 +12,7 @@ export function BlogPreview() {
       <div className="container">
         <div className="flex justify-between items-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl md:text-4xl font-bold">Desde Nuestro Blog</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Desde Nuestro <span className="text-primary">Blog</span></h2>
             <p className="text-muted-foreground">
               Ideas, historias y noticias del frente de la revolución circular.
             </p>

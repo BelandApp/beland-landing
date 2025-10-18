@@ -8,14 +8,14 @@ export function Hero() {
         <div className="absolute inset-0 bg-grid-slate-100/[0.04] bg-[10px_10px] dark:bg-grid-slate-700/[0.05]"></div>
         <div className="relative z-10">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-            Construyendo el Ecosistema <br/>
+            <span className="text-secondary">Construyendo</span> el Ecosistema <br/>
             <span className="text-primary">Circular del Mañana</span>
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
             Beland integra tecnología y comunidad para crear ciudades más sostenibles, responsables y conectadas.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-            <Button asChild size="lg" variant="secondary">
+            <Button asChild size="lg">
               <Link href="/circularity">Descubre la Circularidad</Link>
             </Button>
             <Button asChild size="lg" variant="outline">

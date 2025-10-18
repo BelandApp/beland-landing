@@ -124,7 +124,7 @@ export function Header() {
 
           <nav className="flex items-center gap-2">
             <ThemeToggle />
-            <Button asChild className="bg-[hsl(200_40%_5%)] text-primary-foreground hover:bg-[hsl(200_40%_8%)] dark:bg-accent dark:text-[hsl(200_40%_5%)] dark:hover:bg-accent/90">
+            <Button asChild>
               <Link href="https://beland.app" target="_blank">
                 Prueba nuestra app Beland
               </Link>

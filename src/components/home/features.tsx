@@ -7,8 +7,6 @@ import {
 import { RefreshCw, Gift, ShoppingCart, Users, LucideIcon } from "lucide-react";
 import Link from "next/link";
 
-const authUrl = "https://beland.app";
-
 type Feature = {
   icon: LucideIcon;
   title: string;
@@ -16,6 +14,8 @@ type Feature = {
   href: string;
   color: "primary" | "secondary";
 };
+
+const authUrl = "https://beland.app";
 
 const features: Feature[] = [
   {
@@ -54,13 +54,13 @@ const features: Feature[] = [
 
 export function Features() {
   return (
-    <section id="features" className="py-16 md:py-24 bg-secondary">
+    <section id="features" className="py-16 md:py-24 bg-muted dark:bg-card">
       <div className="container">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Un Ecosistema para Vivir Mejor
           </h2>
-          <p className="max-w-2xl mx-auto text-secondary-foreground/80">
+          <p className="max-w-2xl mx-auto text-muted-foreground">
             Ofrecemos herramientas y espacios para que cada acción cuente en la
             construcción de un futuro sostenible.
           </p>
