@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -13,16 +13,20 @@ import {
 import { CheckCircle, PlayCircle } from "lucide-react";
 import { testimonials as allTestimonials, timelineEvents } from "@/lib/data";
 import { VideoModal } from "@/components/ui/video-modal";
+import { useInView } from "@/hooks/use-in-view";
 
 // Función para barajar un array (algoritmo de Fisher-Yates)
 const shuffleArray = (array: any[]) => {
-  let currentIndex = array.length,  randomIndex;
+  let currentIndex = array.length,
+    randomIndex;
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
     [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
+      array[randomIndex],
+      array[currentIndex],
+    ];
   }
 
   return array;
@@ -33,19 +37,28 @@ export function About() {
     "https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4";
 
   const [shuffledTestimonials, setShuffledTestimonials] = useState<any[]>([]);
+  const { ref, isInView } = useInView({ threshold: 0.2 });
 
   useEffect(() => {
     setShuffledTestimonials(shuffleArray([...allTestimonials]));
   }, []);
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-background">
+    <section
+      ref={ref}
+      id="about"
+      className={`py-16 md:py-24 bg-gradient-to-b from-white via-secondary/5 to-white dark:from-background dark:via-secondary/10 dark:to-background transition-all duration-1000 ${
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      }`}
+    >
       <div className="container">
         {/* History and Vision */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">
-              Nuestra Historia: <span className='text-secondary'>Pasión por un Planeta</span> <span className='text-primary'>Sano</span>
+              Nuestra Historia:{" "}
+              <span className="text-secondary">Pasión por un Planeta</span>{" "}
+              <span className="text-primary">Sano</span>
             </h2>
             <p className="text-sm text-muted-foreground">
               Beland nació de la convicción de que el cambio hacia un futuro
@@ -55,8 +68,9 @@ export function About() {
               circularidad, responsabilidad y conexión.
             </p>
             <p className="text-sm text-muted-foreground">
-              Hoy, somos un movimiento en crecimiento, impulsado por la tecnología
-              y la pasión de miles de personas comprometidas con un mundo mejor.
+              Hoy, somos un movimiento en crecimiento, impulsado por la
+              tecnología y la pasión de miles de personas comprometidas con un
+              mundo mejor.
             </p>
           </div>
           <div>
@@ -80,7 +94,8 @@ export function About() {
         {/* Testimonials */}
         <div className="text-center space-y-4 mb-16">
           <h3 className="text-3xl md:text-4xl font-bold">
-            Lo que Nuestra <span className='text-secondary'>Comunidad</span> <span className='text-primary'>Dice</span>
+            Lo que Nuestra <span className="text-secondary">Comunidad</span>{" "}
+            <span className="text-primary">Dice</span>
           </h3>
           <p className="max-w-2xl mx-auto text-muted-foreground">
             El impacto real de Beland se ve en las palabras de quienes viven la
@@ -97,7 +112,9 @@ export function About() {
                       <p className="text-lg italic mb-4 text-foreground">
                         “{testimonial.quote}”
                       </p>
-                      <span className="font-semibold text-foreground">{testimonial.name}</span>
+                      <span className="font-semibold text-foreground">
+                        {testimonial.name}
+                      </span>
                       <span className="text-sm text-muted-foreground">
                         {testimonial.title}
                       </span>
@@ -115,7 +132,8 @@ export function About() {
         <div className="mt-24">
           <div className="text-center space-y-4 mb-16">
             <h3 className="text-3xl md:text-4xl font-bold">
-              Nuestros <span className='text-secondary'>Hitos</span> <span className='text-primary'>Clave</span>
+              Nuestros <span className="text-secondary">Hitos</span>{" "}
+              <span className="text-primary">Clave</span>
             </h3>
             <p className="max-w-2xl mx-auto text-muted-foreground">
               Un recorrido por nuestro viaje hacia un futuro más circular.

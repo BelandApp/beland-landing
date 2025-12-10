@@ -1,18 +1,29 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { blogPosts } from "@/lib/data";
 import { PostCard } from "@/components/blog/post-card";
 import { ArrowRight } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
 
 export function BlogPreview() {
   const recentPosts = blogPosts.slice(0, 3);
+  const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section
+      ref={ref}
+      className={`py-16 md:py-24 bg-background transition-all duration-1000 ${
+        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      }`}
+    >
       <div className="container">
         <div className="flex justify-between items-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl md:text-4xl font-bold">Desde Nuestro <span className="text-primary">Blog</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Desde Nuestro <span className="text-primary">Blog</span>
+            </h2>
             <p className="text-muted-foreground">
               Ideas, historias y noticias del frente de la revolución circular.
             </p>

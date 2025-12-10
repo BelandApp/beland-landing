@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useRouter } from "next/navigation";
-import { Platform } from "react-native";
 
 const BACKEND_API_URL = process.env.NEXT_PUBLIC_API_URL as string;
 const DEBUG_REDIRECT_URI = process.env

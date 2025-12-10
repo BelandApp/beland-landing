@@ -13,10 +13,9 @@ import { ThemeToggle } from "../theme-toggle";
 import { Logo } from "@/components/ui/logo";
 
 const routes = [
-  { href: "/#features", label: "Características" },
-  { href: "/#about", label: "Nosotros" },
-  { href: "/#media-gallery", label: "Galería" },
-  { href: "/#guinness-challenge", label: "Reto Guinness" },
+  { href: "/#caas", label: "CaaS" },
+  { href: "/#media-gallery", label: "Experiencia" },
+  { href: "/#conexion-circular", label: "Conexión Circular" },
   { href: "/circularity", label: "Circularidad" },
   { href: "/territories", label: "Territorios" },
   { href: "/blog", label: "Blog" },
@@ -107,8 +106,10 @@ export function Header() {
                         onClick={(e) => handleScroll(e, route.href)} // Also apply to mobile menu
                         className={cn(
                           "transition-colors hover:text-primary",
-                          (pathname === "/" && `/#${activeSection}` === route.href) ||
-                            (route.href.length > 1 && pathname.startsWith(route.href))
+                          (pathname === "/" &&
+                            `/#${activeSection}` === route.href) ||
+                            (route.href.length > 1 &&
+                              pathname.startsWith(route.href))
                             ? "text-primary"
                             : "text-foreground/60"
                         )}
