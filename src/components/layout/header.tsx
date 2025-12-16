@@ -13,9 +13,9 @@ import { ThemeToggle } from "../theme-toggle";
 import { Logo } from "@/components/ui/logo";
 
 const routes = [
-  { href: "/#caas", label: "CaaS" },
-  { href: "/#media-gallery", label: "Experiencia" },
-  { href: "/#conexion-circular", label: "Conexión Circular" },
+  { href: "/circular-services", label: "Servicios Circulares" },
+  { href: "/conexion-circular", label: "Conexión Circular" },
+  { href: "/about", label: "Sobre Nosotros" },
   { href: "/circularity", label: "Circularidad" },
   { href: "/territories", label: "Territorios" },
   { href: "/blog", label: "Blog" },
