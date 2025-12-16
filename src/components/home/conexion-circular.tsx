@@ -208,9 +208,11 @@ export function ConexionCircular() {
                             {icon}
                           </div>
                           <div className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                            {event.recycling[
-                              key as keyof typeof event.recycling
-                            ]}
+                            {
+                              event.recycling[
+                                key as keyof typeof event.recycling
+                              ]
+                            }
                             <span className="text-xs ml-1">kg</span>
                           </div>
                           <div className="text-xs font-semibold text-muted-foreground uppercase">
@@ -242,9 +244,7 @@ export function ConexionCircular() {
                             <div className="text-xl md:text-2xl font-black text-primary">
                               {event.impact[
                                 key as keyof typeof event.impact
-                              ].toLocaleString("es-ES", {
-                                maximumFractionDigits: 1,
-                              })}
+                              ].toLocaleString("es-ES")}
                             </div>
                             <div className="text-xs text-muted-foreground truncate">
                               {label}
