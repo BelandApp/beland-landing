@@ -29,37 +29,6 @@ export default function RecursosPage() {
         </p>
       </div>
 
-      <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div className="flex-1 max-w-lg">
-          <label className="relative block">
-            <span className="sr-only">Buscar recursos</span>
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-muted-foreground">
-              <Search className="w-4 h-4" />
-            </span>
-            <input
-              placeholder="Buscar artículos, guías, proyectos..."
-              className="w-full pl-10 py-3 rounded-lg border-2 border-muted bg-transparent focus:outline-none focus:ring-2 focus:ring-primary/30"
-            />
-          </label>
-        </div>
-
-        <div className="flex gap-2">
-          {categories.map((c) => {
-            const Icon = c.icon;
-            return (
-              <Link
-                key={c.id}
-                href={c.href}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border hover:shadow-sm bg-white dark:bg-card"
-              >
-                <Icon className="w-4 h-4" />
-                {c.label}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
       <div className="grid gap-6 md:grid-cols-3 mb-12">
         {categories.map((c) => {
           const Icon = c.icon;

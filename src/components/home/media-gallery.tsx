@@ -53,8 +53,7 @@ export function MediaGallery({ compact = true }: { compact?: boolean }) {
                 <span className="text-primary">Beland</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mt-1">
-                Un vistazo rápido a iniciativas y eventos; mira algunos videos
-                destacados o explora más en Recursos.
+                Un vistazo rápido a iniciativas y eventos
               </p>
             </div>
 
