@@ -15,7 +15,7 @@ export default function Home() {
       <CaaSPackages />
       <Features />
       <MediaGallery />
-      <CTA />
+      {/* <CTA /> */}
     </main>
   );
 }
