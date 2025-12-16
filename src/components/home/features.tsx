@@ -55,8 +55,42 @@ const features: Feature[] = [
   },
 ];
 
-export function Features() {
+type Props = { compact?: boolean };
+
+export function Features({ compact }: Props) {
   const { ref, isInView } = useInView({ threshold: 0.2 });
+
+  if (compact) {
+    return (
+      <section ref={ref} id="features" className="py-12">
+        <div className="container">
+          <div className="bg-white dark:bg-card p-6 rounded-2xl border-2 border-primary/10 flex items-center justify-between">
+            <div>
+              <h3 className="text-xl font-bold">Qué hacemos</h3>
+              <p className="text-sm text-muted-foreground">
+                Principales servicios y acciones
+              </p>
+              <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
+                {features.slice(0, 4).map((f, i) => (
+                  <div key={i} className="font-medium text-foreground/90">
+                    {f.title}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <a
+                href="/recursos"
+                className="px-4 py-2 rounded-lg bg-primary text-white"
+              >
+                Ver recursos
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section

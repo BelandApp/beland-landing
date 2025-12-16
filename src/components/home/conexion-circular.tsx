@@ -120,12 +120,57 @@ const impactMetrics = [
   },
 ];
 
-export function ConexionCircular() {
+type Props = { compact?: boolean };
+
+export function ConexionCircular({ compact }: Props) {
   const [selectedTab, setSelectedTab] = useState("wonderground");
+
+  if (compact) {
+    const summary = events.find((e) => e.id === "wonderground") || events[0];
+    const totalRecycled = Object.values(summary.recycling).reduce(
+      (a, b) => a + b,
+      0
+    );
+
+    return (
+      <section id="conexion-circular" className="py-12">
+        <div className="container">
+          <div className="flex items-center justify-between gap-4 bg-white dark:bg-card p-6 rounded-2xl border-2 border-primary/10">
+            <div>
+              <h3 className="text-xl font-bold">Conexión Circular</h3>
+              <p className="text-sm text-muted-foreground">
+                Impacto real y medible
+              </p>
+              <div className="mt-3 text-2xl font-extrabold text-primary">
+                {totalRecycled.toFixed(0)} kg
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Total reciclado (muestra)
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="/conexion-circular"
+                className="btn-primary hidden md:inline-flex px-4 py-2 rounded-lg bg-primary text-white"
+              >
+                Ver detalles
+              </a>
+              <a
+                href="/recursos"
+                className="text-sm text-muted-foreground underline"
+              >
+                Ir a Recursos
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
-      id="conexion-circular"
+      id="conexion"
       className="py-16 md:py-20 relative overflow-hidden bg-gradient-to-b from-white via-primary/5 to-white dark:from-background dark:via-primary/10 dark:to-background"
     >
       <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -155,22 +200,45 @@ export function ConexionCircular() {
           className="max-w-5xl mx-auto"
           onValueChange={setSelectedTab}
         >
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 bg-muted/50 dark:bg-muted/30 p-1 rounded-xl shadow-md">
-            {events.map((event) => (
-              <TabsTrigger
-                key={event.id}
-                value={event.id}
-                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-white text-xs md:text-sm font-semibold rounded-lg transition-all duration-300"
-              >
-                {event.id === "wonderground"
-                  ? "Wonderground Total"
-                  : event.id === "deborah"
-                  ? "Deborah De Luca"
-                  : event.id === "nicole"
-                  ? "Nicole Moudaber"
-                  : "Conexión #4"}
-              </TabsTrigger>
-            ))}
+          <TabsList className="mb-8 bg-muted/50 dark:bg-muted/30 rounded-xl shadow-md w-full px-4 py-4 md:py-3 min-h-[100px] md:min-h-[56px]">
+            {/* Mobile: two columns using flex-wrap; Desktop: grid via media query */}
+            <div className="flex flex-wrap gap-2 justify-center items-center px-2 py-2 md:hidden">
+              {events.map((event) => (
+                <div key={event.id} className="w-[48%]">
+                  <TabsTrigger
+                    value={event.id}
+                    className="w-full text-center px-3 py-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-white text-sm font-semibold rounded-lg transition-all duration-200 whitespace-nowrap"
+                  >
+                    {event.id === "wonderground"
+                      ? "Wonderground Total"
+                      : event.id === "deborah"
+                      ? "Deborah De Luca"
+                      : event.id === "nicole"
+                      ? "Nicole Moudaber"
+                      : "Conexión #4"}
+                  </TabsTrigger>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop / md+: grid of 4 */}
+            <div className="hidden md:grid md:grid-cols-4 gap-2 px-1 py-1">
+              {events.map((event) => (
+                <TabsTrigger
+                  key={event.id}
+                  value={event.id}
+                  className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-primary/80 data-[state=active]:text-white text-xs md:text-sm font-semibold rounded-lg transition-all duration-300"
+                >
+                  {event.id === "wonderground"
+                    ? "Wonderground Total"
+                    : event.id === "deborah"
+                    ? "Deborah De Luca"
+                    : event.id === "nicole"
+                    ? "Nicole Moudaber"
+                    : "Conexión #4"}
+                </TabsTrigger>
+              ))}
+            </div>
           </TabsList>
 
           {events.map((event) => (

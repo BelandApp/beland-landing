@@ -36,6 +36,7 @@ export function ImpactStats() {
 
   return (
     <section
+      id="impacto"
       ref={ref}
       className={`py-16 md:py-24 bg-gradient-to-b from-white via-primary/5 to-white dark:from-background dark:via-primary/10 dark:to-background transition-all duration-1000 ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"

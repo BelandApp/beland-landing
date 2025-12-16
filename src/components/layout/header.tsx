@@ -13,12 +13,11 @@ import { ThemeToggle } from "../theme-toggle";
 import { Logo } from "@/components/ui/logo";
 
 const routes = [
-  { href: "/circular-services", label: "Servicios Circulares" },
-  { href: "/conexion-circular", label: "Conexión Circular" },
-  { href: "/about", label: "Sobre Nosotros" },
-  { href: "/circularity", label: "Circularidad" },
-  { href: "/territories", label: "Territorios" },
-  { href: "/blog", label: "Blog" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#impacto", label: "Impacto" },
+  { href: "/#conexion", label: "Conexión" },
+  { href: "/recursos", label: "Recursos" },
+  { href: "/about", label: "Nosotros" },
 ];
 
 export function Header() {

@@ -67,13 +67,44 @@ const packages = [
   },
 ];
 
-export function CaaSPackages() {
+type Props = { compact?: boolean };
+
+export function CaaSPackages({ compact }: Props) {
   const { ref, isInView } = useInView({ threshold: 0.2 });
+
+  if (compact) {
+    const popular = packages.find((p) => p.popular) || packages[0];
+    return (
+      <section ref={ref} id="caas" className="py-12">
+        <div className="container">
+          <div className="bg-white dark:bg-card p-6 rounded-2xl border-2 border-primary/10 flex items-center justify-between">
+            <div>
+              <h3 className="text-xl font-bold">Servicios Circulares</h3>
+              <p className="text-sm text-muted-foreground">
+                Resumen rápido de nuestros modelos
+              </p>
+              <div className="mt-2 text-lg font-bold">
+                {popular.name} — {popular.price}
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="/circular-services"
+                className="px-4 py-2 rounded-lg bg-primary text-white"
+              >
+                Ver planes
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
       ref={ref}
-      id="caas"
+      id="servicios"
       className={`py-24 md:py-32 relative overflow-hidden transition-all duration-1000 ${
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
       }`}
@@ -226,7 +257,7 @@ export function CaaSPackages() {
             asChild
             variant="outline"
             size="lg"
-            className="text-base font-bold group border-2 border-primary hover:bg-primary hover:text-white"
+            className="text-base font-bold group border-2 border-primary hover:bg-primary hover:text-white w-full sm:w-auto py-3"
           >
             <Link href="https://forms.gle/RrjEtSDH2FTryM7C9" target="_blank">
               Contacta con nuestro equipo
