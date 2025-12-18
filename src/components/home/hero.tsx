@@ -42,7 +42,7 @@ export function Hero() {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 gap-8 pt-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8 max-w-3xl mx-auto">
             <div className="space-y-2 animate-scale-in animation-delay-300 hover:scale-110 transition-transform duration-300">
               <div className="text-4xl md:text-5xl font-bold text-primary">
                 4+
@@ -57,6 +57,14 @@ export function Hero() {
               </div>
               <div className="text-sm text-muted-foreground">
                 Toneladas Valorizadas
+              </div>
+            </div>
+            <div className="space-y-2 col-span-2 md:col-span-1 animate-scale-in animation-delay-500 hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl md:text-5xl font-bold text-primary">
+                100K+
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Experiencias con Clientes
               </div>
             </div>
           </div>
