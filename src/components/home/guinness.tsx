@@ -20,9 +20,9 @@ export function GuinnessChallenge() {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-secondary/5 dark:from-primary/10 dark:via-background dark:to-secondary/10"></div>
 
-      {/* Animated circles */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
+      {/* Animated circles (hidden on small screens) */}
+      <div className="hidden sm:block absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="hidden sm:block absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/5 rounded-full blur-3xl"></div>
 
       <div className="container relative z-10">
         <div className="max-w-6xl mx-auto">

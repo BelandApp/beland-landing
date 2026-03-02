@@ -15,24 +15,24 @@ export default function CircularityPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <div className="hidden sm:block absolute top-20 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="hidden sm:block absolute bottom-20 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-        <div className="container relative z-10 py-20">
+        <div className="container px-4 sm:px-6 lg:px-8 relative z-10 py-12 md:py-20">
           <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
-            <Badge className="text-sm px-5 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border-primary/30">
+            <Badge className="text-sm px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border-primary/30">
               <Recycle className="w-4 h-4 mr-2" />
               Solución Integral
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-extrabold animate-slide-up">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold animate-slide-up">
               <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
                 Circularidad
               </span>
               <br />
               como un Servicio
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up animation-delay-100">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up animation-delay-100">
               Transformamos tu organización en un referente de sostenibilidad
               con tecnología, logística y datos en tiempo real
             </p>
@@ -43,14 +43,15 @@ export default function CircularityPage() {
       {/* Qué es CaaS */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white via-primary/5 to-white dark:from-background dark:via-primary/10 dark:to-background">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
             <div className="order-2 md:order-1 animate-slide-in-left">
               <Image
                 src="https://res.cloudinary.com/dbfboc8cm/image/upload/v1757202868/beland_bj15kh.png"
                 alt="Diagrama del servicio de circularidad"
-                width={600}
-                height={450}
-                className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500"
+                width={900}
+                height={675}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                className="w-full h-auto rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500 object-cover"
               />
             </div>
             <div className="order-1 md:order-2 space-y-6 animate-slide-in-right">
@@ -98,7 +99,7 @@ export default function CircularityPage() {
               circularidad
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               {
                 icon: Recycle,
@@ -158,7 +159,7 @@ export default function CircularityPage() {
               Resultados medibles que impactan tu organización
             </p>
           </div>
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
                 icon: TrendingUp,

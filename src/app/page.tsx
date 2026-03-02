@@ -10,11 +10,11 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <Hero />
+      <MediaGallery />
       <ImpactStats />
       <ConexionCircular />
-      <CaaSPackages />
       <Features />
-      <MediaGallery />
+      <CaaSPackages />
       {/* <CTA /> */}
     </main>
   );

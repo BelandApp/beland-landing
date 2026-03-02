@@ -7,6 +7,12 @@ import { useInView } from "@/hooks/use-in-view";
 const stats = [
   {
     icon: Award,
+    value: "4+",
+    label: "Reconocimientos Internacionales",
+    color: "text-yellow-500",
+  },
+  {
+    icon: Award,
     value: "1",
     label: "Record Guinness",
     color: "text-yellow-500",
@@ -53,7 +59,7 @@ export function ImpactStats() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
@@ -71,7 +77,7 @@ export function ImpactStats() {
                       </div>
                     </div>
                     <div>
-                      <div className="text-4xl md:text-5xl font-black mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+                      <div className="inline-block pr-2 text-4xl md:text-5xl font-black mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300 whitespace-nowrap">
                         {stat.value}
                       </div>
                       <div className="text-sm font-semibold text-foreground/70">
