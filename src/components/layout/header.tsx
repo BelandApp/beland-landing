@@ -124,11 +124,7 @@ export function Header() {
 
           <nav className="flex items-center gap-2">
             <ThemeToggle />
-            <Button asChild>
-              <Link href="https://beland.app" target="_blank">
-                Prueba nuestra app Beland
-              </Link>
-            </Button>
+            
           </nav>
         </div>
       </div>

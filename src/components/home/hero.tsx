@@ -1,13 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const screenshots = [
     {
       src: "/screenshots/registrate.jpeg",
@@ -40,7 +40,6 @@ export function Hero() {
       text: "Únete a grupos o crea el tuyo para organizar tu propio evento circular.",
     },
   ];
-  
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,7 +60,6 @@ export function Hero() {
     setCurrentSlide(index);
   };
 
-  // Touch handlers for mobile swipe
   const touchStartX = useRef<number | null>(null);
   const touchCurrentX = useRef<number | null>(null);
 
@@ -74,13 +72,9 @@ export function Hero() {
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current == null || touchCurrentX.current == null) {
-      touchStartX.current = null;
-      touchCurrentX.current = null;
-      return;
-    }
+    if (touchStartX.current == null || touchCurrentX.current == null) return;
     const delta = touchStartX.current - touchCurrentX.current;
-    const threshold = 50; // px
+    const threshold = 50;
     if (delta > threshold) goToNext();
     else if (delta < -threshold) goToPrevious();
     touchStartX.current = null;
@@ -88,128 +82,127 @@ export function Hero() {
   };
 
   return (
-    <>
-      <section
-        id="hero"
-        className="relative min-h-[60vh] md:min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5"
-      >
-      {/* Animated background elements (hidden on small screens) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="hidden sm:block absolute top-20 left-10 w-56 sm:w-72 h-56 sm:h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="hidden sm:block absolute bottom-20 right-10 w-72 sm:w-96 h-72 sm:h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+    <section
+      id="hero"
+      className="relative min-h-screen flex flex-col overflow-hidden pt-16 bg-gradient-to-br from-background via-background to-primary/5"
+    >
+      <div className="relative z-10 flex flex-col flex-1 justify-between">
+        
+        {/* Badge */}
+        <div className="container flex justify-center pt-8 md:pt-12 pb-4">
+          <div className="flex justify-center items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 backdrop-blur-sm w-fit">
+            <Sparkles className="w-4 h-4" />
+            <span className="text-xs sm:text-sm font-medium text-center">
+              La primera plataforma circular de Latinoamérica
+            </span>
+          </div>
+        </div>
 
-      <div className="container relative z-10">
-        <div className="grid grid-cols-[1fr_2fr] gap-8 md:gap-12 items-center py-12 md:py-20">
-          {/* Left side - Main content */}
-          <div className="order-1 md:order-1 space-y-6">
-            {/* Badge */}
-            <div className="flex justify-center items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 backdrop-blur-sm animate-fade-in hover:scale-105 transition-transform duration-300 w-full">
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              <span className="text-sm font-medium">La primera plataforma circular de Latinoamérica</span>
-            </div>
+        {/* Main Grid */}
+        <div className="container relative flex-1 flex items-center py-8 md:py-10">
+          <div className="w-full grid grid-cols-[1fr_2fr] gap-8 md:gap-12 items-center">
+            
+            {/* Left Content */}
+            <div className="space-y-6 text-center md:text-left">
+              <h1
+                className="font-extrabold tracking-tight leading-tight"
+                style={{ fontSize: "clamp(2rem, 8vw, 4rem)" }}
+              >
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Circularity
+                </span>
+                <br />
+                <span className="text-foreground">as a Service</span>
+              </h1>
 
-            {/* Main heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Circularity</span>
-              <br />
-              <span className="text-foreground">as a Service</span>
-            </h1>
-
-            {/* Description */}
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Integramos nuestro modelo circular a tus actividades, generando <span className="text-primary font-semibold">impacto</span>, <span className="text-secondary font-semibold">comunidad</span> y <span className="text-primary font-semibold">retorno medible</span>.
-            </p>
-
-            {/* Description + Carousel Label */}
-            <div className="pt-6 space-y-4">
-              <h3 className="text-lg font-semibold text-primary animate-fade-in">
-                {screenshots[currentSlide].title}
-              </h3>
-              <p className="text-sm md:text-base text-muted-foreground">
-                {screenshots[currentSlide].text}
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg">
+                Integramos nuestro modelo circular a tus actividades, generando{" "}
+                <span className="text-primary font-semibold">impacto</span>,{" "}
+                <span className="text-secondary font-semibold">comunidad</span> y{" "}
+                <span className="text-primary font-semibold">retorno medible</span>.
               </p>
-            </div>
-          </div>
 
-          {/* Right side - Carousel (placed on the right) */}
-          <div className="flex items-center justify-center order-2 md:order-2">
-            <div
-              className="relative w-full max-w-xs"
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {/* Carousel background glow */}
-              <div className="absolute -inset-4 blur-2xl pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/25 to-secondary/25 rounded-3xl"></div>
-              </div>
-
-              {/* Carousel container */}
-              <div className="relative aspect-[9/19] w-full overflow-hidden rounded-3xl border-2 border-primary/30 bg-white shadow-2xl">
-                {screenshots.map((screenshot, index) => (
-                  <div
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                      index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
-                    }`}
-                  >
-                    <Image
-                      src={screenshot.src}
-                      alt={screenshot.alt}
-                      width={720}
-                      height={1560}
-                      className="w-full h-full object-contain"
-                      loading={index === 0 ? "eager" : "lazy"}
-                      priority={index === 0}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* Navigation buttons */}
-              <button
-                onClick={goToPrevious}
-                className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-primary/80 hover:bg-primary transition-all duration-300 text-white hover:scale-110 shadow-lg z-40"
-                aria-label="Previous slide"
+              {/* Slide Text (FIX anti-glitch) */}
+              <div
+                key={currentSlide}
+                className="pt-4 md:pt-6 space-y-3 transition-all duration-500 ease-in-out"
               >
-                <ChevronLeft className="w-5 md:w-6 h-5 md:h-6" />
-              </button>
-
-              <button
-                onClick={goToNext}
-                className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-secondary/80 hover:bg-secondary transition-all duration-300 text-white hover:scale-110 shadow-lg z-40"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="w-5 md:w-6 h-5 md:h-6" />
-              </button>
-
-              {/* Carousel indicators */}
-              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-                {screenshots.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentSlide
-                        ? "w-8 bg-gradient-to-r from-primary to-secondary"
-                        : "w-2 bg-primary/40 hover:bg-primary/70"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+                <h3 className="text-base md:text-lg font-semibold text-primary">
+                  {screenshots[currentSlide].title}
+                </h3>
+                <p className="text-xs md:text-sm text-muted-foreground">
+                  {screenshots[currentSlide].text}
+                </p>
               </div>
             </div>
-          </div>
 
+            {/* Right Carousel */}
+            <div className="flex items-center justify-center w-full">
+              <div
+                className="relative w-full max-w-xs"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <div className="relative aspect-[9/19] w-full overflow-hidden rounded-3xl border-2 border-primary/30 bg-white shadow-2xl">
+                  {screenshots.map((screenshot, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-opacity duration-700 ${
+                        index === currentSlide
+                          ? "opacity-100"
+                          : "opacity-0 pointer-events-none"
+                      }`}
+                    >
+                      <a
+                        href="https://beland.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full h-full cursor-pointer"
+                      >
+                        <Image
+                          src={screenshot.src}
+                          alt={screenshot.alt}
+                          width={720}
+                          height={1560}
+                          className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          priority={index === 0}
+                        />
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Nav Buttons */}
+                <button
+                  onClick={goToPrevious}
+                  className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-primary/80 hover:bg-primary text-white"
+                >
+                  <ChevronLeft className="w-5 md:w-6 h-5 md:h-6" />
+                </button>
+
+                <button
+                  onClick={goToNext}
+                  className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 p-2 md:p-3 rounded-full bg-secondary/80 hover:bg-secondary text-white"
+                >
+                  <ChevronRight className="w-5 md:w-6 h-5 md:h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Button (sin tocar) */}
+        <div className="container flex justify-center md:justify-start pb-12 md:pb-16 pt-4">
+          <a href="https://beland.app" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="gap-2">
+              Prueba nuestra app Beland
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </a>
         </div>
       </div>
-
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
     </section>
-
-
-    </>
   );
 }
