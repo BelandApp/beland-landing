@@ -39,7 +39,7 @@ export function Header() {
       const sectionId = href.substring(2);
       const section = document.getElementById(sectionId);
       if (section) {
-        const headerHeight = 70; // Header height in pixels
+        const headerHeight = 60; // MODIFICADO: Ajustado a la nueva altura
         const sectionTop =
           section.getBoundingClientRect().top + window.scrollY - headerHeight;
 
@@ -52,8 +52,10 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+    // MODIFICADO: border-b-[0.5px] para que la línea sea más delgada
+    <header className="fixed top-0 z-50 w-full border-b-[0.5px] border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      {/* MODIFICADO: h-12 en móvil y h-16 en desktop para una barra más delgada */}
+      <div className="container flex h-12 md:h-16 items-center">
         <div className="hidden items-center md:flex">
           <Logo />
 
@@ -85,12 +87,18 @@ export function Header() {
           </nav>
         </div>
 
+        {/* Logo visible en móvil también (opcional, para que no quede vacío el centro) */}
+        <div className="flex md:hidden mr-2">
+           <Logo />
+        </div>
+
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
+                {/* MODIFICADO: Reduje el tamaño del botón de menú para mobile */}
+                <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
+                  <Menu className="h-4 w-4" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
@@ -102,7 +110,7 @@ export function Header() {
                       <Link
                         key={route.href}
                         href={route.href}
-                        onClick={(e) => handleScroll(e, route.href)} // Also apply to mobile menu
+                        onClick={(e) => handleScroll(e, route.href)}
                         className={cn(
                           "transition-colors hover:text-primary",
                           (pathname === "/" &&
@@ -124,7 +132,6 @@ export function Header() {
 
           <nav className="flex items-center gap-2">
             <ThemeToggle />
-            
           </nav>
         </div>
       </div>

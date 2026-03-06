@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
   SelectTrigger,
@@ -19,6 +18,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+
 const events = [
   {
     id: "deborah",
@@ -364,7 +364,13 @@ export function ConexionCircular({ compact }: Props) {
           {/* Contenido del tab seleccionado */}
           <div className="flex-1">
             {events.map((event) => {
-              if (event.id !== selectedTab) return null;
+  if (event.id !== selectedTab) return null;
+
+  const totalRecycled = Object.values(event.recycling).reduce(
+    (a, b) => a + b,
+    0
+  );
+
               return (
                 <div key={event.id} className="space-y-6 animate-fade-in">
                   {/* Header con nombre del evento */}
@@ -380,37 +386,53 @@ export function ConexionCircular({ compact }: Props) {
                   {/* Grid de 2 columnas: Reciclaje + Impacto Ambiental */}
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Columna Izquierda: Reciclaje */}
-                    <Card className="border-2 border-primary/20 dark:border-primary/30 bg-white dark:bg-card hover:shadow-xl transition-all duration-300">
-                      <CardContent className="p-6">
-                        <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-primary">
-                          <span className="text-2xl">♻️</span>
-                          Resultados del reciclaje
-                        </h4>
-                        <div className="grid grid-cols-2 gap-4">
-                          {recyclingIcons.map(({ key, label, icon, color }) => (
-                            <div
-                              key={key}
-                              className="text-center p-3 rounded-xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-all duration-300 group cursor-pointer"
-                            >
-                              <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
-                                {icon}
-                              </div>
-                              <div className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                                {
-                                  event.recycling[
-                                    key as keyof typeof event.recycling
-                                  ]
-                                }
-                                <span className="text-xs ml-1">kg</span>
-                              </div>
-                              <div className="text-xs font-semibold text-muted-foreground uppercase">
-                                {label}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
+                    
+<Card className="border-2 border-primary/20 dark:border-primary/30 bg-white dark:bg-card hover:shadow-xl transition-all duration-300">
+  <CardContent className="p-6">
+    <h4 className="text-lg font-bold mb-4 flex items-center gap-2 text-primary">
+      <span className="text-2xl">♻️</span>
+      Resultados del reciclaje
+    </h4>
+
+    <div className="grid grid-cols-2 gap-4">
+      {recyclingIcons.map(({ key, label, icon, color }) => (
+        <div
+          key={key}
+          className="text-center p-3 rounded-xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-all duration-300 group cursor-pointer"
+        >
+          <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
+            {icon}
+          </div>
+          <div className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            {
+              event.recycling[
+                key as keyof typeof event.recycling
+              ]
+            }
+            <span className="text-xs ml-1">kg</span>
+          </div>
+          <div className="text-xs font-semibold text-muted-foreground uppercase">
+            {label}
+          </div>
+        </div>
+      ))}
+
+      {/* TOTAL */}
+      <div className="col-span-2 text-center p-3 rounded-xl bg-gradient-to-br from-primary/5 to-transparent hover:from-primary/10 transition-all duration-300 group cursor-pointer">
+        <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
+          ♻️
+        </div>
+        <div className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          {totalRecycled.toFixed(1)}
+          <span className="text-xs ml-1">kg</span>
+        </div>
+        <div className="text-xs font-semibold text-muted-foreground uppercase">
+          Total reciclado en este evento
+        </div>
+      </div>
+    </div>
+  </CardContent>
+</Card>
 
                     {/* Columna Derecha: Impacto Ambiental */}
                     <Card className="border-2 border-secondary/20 dark:border-secondary/30 bg-white dark:bg-card hover:shadow-xl transition-all duration-300">

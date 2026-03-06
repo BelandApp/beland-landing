@@ -7,27 +7,27 @@ import { useInView } from "@/hooks/use-in-view";
 const stats = [
   {
     icon: Award,
+    value: "1",
+    label: "Reconocimiento mejor emprendimiento Sostenibilidad Ekos 2025",
+    color: "text-yellow-500",
+  },
+  {
+    icon: Award,
     value: "4+",
     label: "Reconocimientos Internacionales",
     color: "text-yellow-500",
   },
   {
-    icon: Award,
-    value: "1",
-    label: "Record Guinness",
+    icon: Users,
+    value: "31+",
+    label: "Familias ayudadas",
     color: "text-yellow-500",
   },
   {
     icon: Recycle,
-    value: "50K+",
-    label: "Toneladas de residuos",
+    value: "10+",
+    label: "Toneladas de residuos al año",
     color: "text-primary",
-  },
-  {
-    icon: TrendingUp,
-    value: "$1.8M+",
-    label: "En ingresos para la comunidad",
-    color: "text-secondary",
   },
   {
     icon: Users,
