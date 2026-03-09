@@ -1,5 +1,7 @@
-import { MediaGallery } from "@/components/home/media-gallery";
+// app/media-gallery/page.tsx
+import { GaleriaVideos } from "@/components/home/galeria-videos";
 
 export default function MediaGalleryPage() {
-  return <MediaGallery compact={false} />;
+  // Ahora llamamos al nombre correcto de la función
+  return <GaleriaVideos />;
 }

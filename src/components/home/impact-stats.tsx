@@ -7,32 +7,26 @@ import { useInView } from "@/hooks/use-in-view";
 const stats = [
   {
     icon: Award,
-    value: "1",
-    label: "Reconocimiento mejor emprendimiento Sostenibilidad Ekos 2025",
-    color: "text-yellow-500",
-  },
-  {
-    icon: Award,
-    value: "4+",
+    value: "4",
     label: "Reconocimientos Internacionales",
     color: "text-yellow-500",
   },
   {
     icon: Users,
-    value: "31+",
-    label: "Familias ayudadas",
+    value: "100+",
+    label: "Familias de recicladores beneficiadas",
     color: "text-yellow-500",
   },
   {
     icon: Recycle,
     value: "10+",
-    label: "Toneladas de residuos al año",
+    label: "Toneladas recicladas",
     color: "text-primary",
   },
   {
     icon: Users,
     value: "100K+",
-    label: "Experiencias con clientes",
+    label: "Interacciones con usuarios reales",
     color: "text-primary",
   },
 ];
@@ -48,46 +42,48 @@ export function ImpactStats() {
         isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
       }`}
     >
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground animate-slide-up">
-              Nuestro Impacto Real
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-foreground">
+              Nuestro Impacto <span className="text-primary">Real</span>
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground animate-slide-up animation-delay-100">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Transformando residuos en riqueza para la comunidad
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
+          {/* Grid corregido para centrar 4 elementos */}
+          <div className="flex flex-wrap justify-center gap-6 lg:grid lg:grid-cols-4 lg:gap-8">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Card
                   key={index}
-                  className="relative overflow-hidden group hover:shadow-xl transition-all duration-500 bg-white dark:bg-card border-2 border-primary/20 dark:border-primary/30 hover:scale-105 animate-scale-in"
+                  className="relative overflow-hidden group hover:shadow-2xl transition-all duration-500 bg-white dark:bg-card border-2 border-primary/20 dark:border-primary/30 hover:scale-105 w-full max-w-[280px] lg:max-w-none"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="p-6 text-center space-y-4">
+                  <div className="p-8 text-center space-y-5">
                     <div className="flex justify-center">
                       <div
-                        className={`w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}
+                        className={`w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 border border-primary/5`}
                       >
-                        <Icon className={`w-8 h-8 ${stat.color}`} />
+                        <Icon className={`w-10 h-10 ${stat.color}`} />
                       </div>
                     </div>
-                    <div>
-                      <div className="inline-block pr-2 text-4xl md:text-5xl font-black mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300 whitespace-nowrap">
+                    
+                    <div className="space-y-2">
+                      <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent inline-block">
                         {stat.value}
                       </div>
-                      <div className="text-sm font-semibold text-foreground/70">
+                      <p className="text-sm font-bold text-foreground/80 leading-snug px-2">
                         {stat.label}
-                      </div>
+                      </p>
                     </div>
                   </div>
-                  <div
-                    className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-300 bg-gradient-to-br from-primary to-secondary`}
-                  ></div>
+                  
+                  {/* Efecto de brillo al pasar el mouse */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br from-primary via-white to-secondary pointer-events-none"></div>
                 </Card>
               );
             })}

@@ -3,7 +3,7 @@ import { ImpactStats } from "@/components/home/impact-stats";
 import { CTA } from "@/components/home/cta";
 import { ConexionCircular } from "@/components/home/conexion-circular";
 import { CaaSPackages } from "@/components/home/caas-packages";
-import { MediaGallery } from "@/components/home/media-gallery";
+import { EcosistemaBeland } from "@/components/home/ecosistema-beland"; // Nombre corregido
 import { Features } from "@/components/home/features";
 import { VideoCarousel } from "@/components/home/video-carousel";
 
@@ -11,13 +11,16 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <Hero />
-      <MediaGallery />
+      
+      {/* Esta es la sección de las tarjetas con emoticones que acabamos de arreglar */}
+      <EcosistemaBeland /> 
+      
       <ImpactStats />
       <ConexionCircular />
       <Features />
       <CaaSPackages />
       
-      {/* Colocamos el carrusel de videos al final de la landing */}
+      {/* El carrusel de videos que lleva a la Galería Completa */}
       <VideoCarousel />
 
       {/* <CTA /> */}

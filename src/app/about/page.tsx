@@ -1,15 +1,10 @@
-import { About } from "@/components/home/about";
-import { Features } from "@/components/home/features";
-import { GuinnessChallenge } from "@/components/home/guinness";
-import { MediaGallery } from "@/components/home/media-gallery";
+import About from "@/components/home/about";
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <main className="flex flex-col">
+      {/* Todo el contenido pro: Conexión Circular + Roadmap 2025 */}
       <About />
-      <Features />
-      <GuinnessChallenge />
-      <MediaGallery />
-    </div>
+    </main>
   );
 }

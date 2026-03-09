@@ -13,11 +13,11 @@ import { ThemeToggle } from "../theme-toggle";
 import { Logo } from "@/components/ui/logo";
 
 const routes = [
-  { href: "/#servicios", label: "Servicios" },
-  { href: "/#impacto", label: "Impacto" },
+  { href: "/", label: "Home" },
+  { href: "/#caas", label: "CaaS" },
   { href: "/#conexion", label: "Conexión" },
-  { href: "/recursos", label: "Recursos" },
   { href: "/about", label: "Nosotros" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function Header() {
@@ -30,43 +30,33 @@ export function Header() {
     { rootMargin: "-100px 0px 0px 0px" }
   );
 
-  const handleScroll = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/#") && pathname === "/") {
       e.preventDefault();
       const sectionId = href.substring(2);
       const section = document.getElementById(sectionId);
       if (section) {
-        const headerHeight = 60; // MODIFICADO: Ajustado a la nueva altura
-        const sectionTop =
-          section.getBoundingClientRect().top + window.scrollY - headerHeight;
-
-        window.scrollTo({
-          top: sectionTop,
-          behavior: "smooth",
-        });
+        const headerHeight = 60; 
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: sectionTop, behavior: "smooth" });
       }
     }
   };
 
   return (
-    // MODIFICADO: border-b-[0.5px] para que la línea sea más delgada
     <header className="fixed top-0 z-50 w-full border-b-[0.5px] border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      {/* MODIFICADO: h-12 en móvil y h-16 en desktop para una barra más delgada */}
-      <div className="container flex h-12 md:h-16 items-center">
-        <div className="hidden items-center md:flex">
+      <div className="container flex h-14 md:h-16 items-center justify-between">
+        
+        {/* LOGO: Desktop y Mobile */}
+        <div className="flex items-center">
           <Logo />
-
-          <nav className="ml-10 flex items-center space-x-8 text-sm font-medium">
+          
+          {/* NAVEGACIÓN DESKTOP */}
+          <nav className="ml-10 hidden md:flex items-center space-x-8 text-sm font-medium">
             {routes.map((route) => {
-              const isHomePageSectionActive =
-                pathname === "/" && `/#${activeSection}` === route.href;
-              const isOtherPageActive =
-                route.href.length > 1 && pathname.startsWith(route.href);
-              const isActive = isHomePageSectionActive || isOtherPageActive;
-
+              const isActive = (route.href === "/" && pathname === "/") || 
+                               (pathname === "/" && `/#${activeSection}` === route.href) ||
+                               (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
               return (
                 <Link
                   key={route.href}
@@ -78,45 +68,38 @@ export function Header() {
                   )}
                 >
                   {route.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-primary"></span>
-                  )}
+                  {isActive && <span className="absolute bottom-0 left-0 h-[3px] w-full rounded-full bg-primary" />}
                 </Link>
               );
             })}
           </nav>
         </div>
 
-        {/* Logo visible en móvil también (opcional, para que no quede vacío el centro) */}
-        <div className="flex md:hidden mr-2">
-           <Logo />
-        </div>
-
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        {/* ACCIONES DERECHA (Theme + Menú Mobile) */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          
+          {/* MENÚ MOBILE */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                {/* MODIFICADO: Reduje el tamaño del botón de menú para mobile */}
-                <Button variant="ghost" size="sm" className="h-8 w-8 px-0">
-                  <Menu className="h-4 w-4" />
+                <Button variant="ghost" size="sm" className="h-9 w-9 px-0">
+                  <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="pr-0">
-                <Logo />
-                <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-                  <div className="flex flex-col space-y-3">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col gap-8 mt-10">
+                  <Logo />
+                  <nav className="flex flex-col space-y-4">
                     {routes.map((route) => (
                       <Link
                         key={route.href}
                         href={route.href}
                         onClick={(e) => handleScroll(e, route.href)}
                         className={cn(
-                          "transition-colors hover:text-primary",
-                          (pathname === "/" &&
-                            `/#${activeSection}` === route.href) ||
-                            (route.href.length > 1 &&
-                              pathname.startsWith(route.href))
+                          "text-lg font-semibold transition-colors hover:text-primary",
+                          (pathname === route.href || (pathname === "/" && `/#${activeSection}` === route.href))
                             ? "text-primary"
                             : "text-foreground/60"
                         )}
@@ -124,16 +107,13 @@ export function Header() {
                         {route.label}
                       </Link>
                     ))}
-                  </div>
+                  </nav>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
-
-          <nav className="flex items-center gap-2">
-            <ThemeToggle />
-          </nav>
         </div>
+
       </div>
     </header>
   );

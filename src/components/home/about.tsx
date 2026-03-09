@@ -1,168 +1,195 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { CheckCircle, PlayCircle } from "lucide-react";
-import { testimonials as allTestimonials, timelineEvents } from "@/lib/data";
-import { VideoModal } from "@/components/ui/video-modal";
-import { useInView } from "@/hooks/use-in-view";
+import { useRef, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Sparkles, Trophy, Target, ArrowRight, Quote, Play } from "lucide-react";
 
-// Función para barajar un array (algoritmo de Fisher-Yates)
-const shuffleArray = (array: any[]) => {
-  let currentIndex = array.length,
-    randomIndex;
+const timelineEvents = [
+  { year: "2016", title: "Nace la idea", description: "Reconocidos dentro de los 500 mejores proyectos socio-ambientales de América Latina por Premios Verdes (Puesto 35 en el global / 11 en gestión de residuos)." },
+  { year: "2020", title: "Nace la empresa", description: "Arrancamos el desarrollo de la primera versión de la app y de nuestras estaciones autónomas de reciclaje." },
+  { year: "2021", title: "Primer prueba de mercado", description: "Probamos nuestro modelo en la ciudad de Buenos Aires y aprendimos mucho de los resultados." },
+  { year: "2023", title: "Validación del modelo", description: "Instalamos nuestras estaciones en 3 de los puntos más concurridos de Buenos Aires. Reconocimiento como la primera plataforma de la Argentina que paga a sus usuarios por reciclar (Forbes). Reconocimiento dentro de los mejores 20 startups del planeta (Founders Live)." },
+  { year: "2025", title: "Validación del producto mínimo rentable", description: "Desarrollo y testeo de nuestra app definitiva. Nace Circularity as a Service. Reconocimiento entre los mejores emprendimientos sostenibles del Ecuador (Cumbre de sostenibilidad EKOS). Reconocimiento Quito Sostenible como héroes locales en gestión de residuos (Distrito Metropolitano de Quito)." },
+];
 
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
+export default function AboutSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
 
-  return array;
-};
-
-export function About() {
-  const historyVideoUrl =
-    "https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4";
-
-  const [shuffledTestimonials, setShuffledTestimonials] = useState<any[]>([]);
-  const { ref, isInView } = useInView({ threshold: 0.2 });
-
-  useEffect(() => {
-    setShuffledTestimonials(shuffleArray([...allTestimonials]));
-  }, []);
+  const handlePlayVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      setIsMuted(false);
+      videoRef.current.play();
+      // Opcional: Solicitar pantalla completa si deseas
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      }
+    }
+  };
 
   return (
-    <section
-      ref={ref}
-      id="about"
-      className={`py-16 md:py-24 bg-gradient-to-b from-white via-secondary/5 to-white dark:from-background dark:via-secondary/10 dark:to-background transition-all duration-1000 ${
-        isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-      }`}
-    >
-      <div className="container">
-        {/* History and Vision */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Nuestra Historia:{" "}
-              <span className="text-secondary">Pasión por un Planeta</span>{" "}
-              <span className="text-primary">Sano</span>
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Beland nació de la convicción de que el cambio hacia un futuro
-              sostenible es posible y necesario. Comenzamos como un pequeño
-              proyecto con una gran visión: transformar la manera en que las
-              comunidades interactúan con su entorno, fomentando una cultura de
-              circularidad, responsabilidad y conexión.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Hoy, somos un movimiento en crecimiento, impulsado por la
-              tecnología y la pasión de miles de personas comprometidas con un
-              mundo mejor.
-            </p>
-          </div>
-          <div>
-            <VideoModal videoUrl={historyVideoUrl} title="Nuestra Historia">
-              <div className="relative group cursor-pointer rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="https://res.cloudinary.com/dbfboc8cm/image/upload/v1757202868/beland_bj15kh.png"
-                  alt="Miniatura del video de Nuestra Historia"
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
-                  <PlayCircle className="h-20 w-20 text-primary text-opacity-80 group-hover:text-opacity-100 transform group-hover:scale-110 transition-transform duration-300" />
-                </div>
-              </div>
-            </VideoModal>
-          </div>
-        </div>
-
-        {/* Testimonials */}
-        <div className="text-center space-y-4 mb-16">
-          <h3 className="text-3xl md:text-4xl font-bold">
-            Lo que Nuestra <span className="text-secondary">Comunidad</span>{" "}
-            <span className="text-primary">Dice</span>
-          </h3>
-          <p className="max-w-2xl mx-auto text-muted-foreground">
-            El impacto real de Beland se ve en las palabras de quienes viven la
-            experiencia.
-          </p>
-        </div>
-        <Carousel className="w-full max-w-4xl mx-auto">
-          <CarouselContent>
-            {shuffledTestimonials.map((testimonial, index) => (
-              <CarouselItem key={index}>
-                <div className="p-1">
-                  <Card className="bg-muted dark:bg-card">
-                    <CardContent className="flex flex-col items-center justify-center p-8 text-center">
-                      <p className="text-lg italic mb-4 text-foreground">
-                        “{testimonial.quote}”
-                      </p>
-                      <span className="font-semibold text-foreground">
-                        {testimonial.name}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        {testimonial.title}
-                      </span>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-
-        {/* Timeline */}
-        <div className="mt-24">
-          <div className="text-center space-y-4 mb-16">
-            <h3 className="text-3xl md:text-4xl font-bold">
-              Nuestros <span className="text-secondary">Hitos</span>{" "}
-              <span className="text-primary">Clave</span>
-            </h3>
-            <p className="max-w-2xl mx-auto text-muted-foreground">
-              Un recorrido por nuestro viaje hacia un futuro más circular.
-            </p>
-          </div>
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2 hidden md:block"></div>
-            {timelineEvents.map((event, index) => (
-              <div
-                key={index}
-                className="relative flex items-center mb-12 flex-col md:flex-row md:justify-start even:md:self-end even:md:justify-end"
-              >
-                <div className="w-full md:w-5/12 md:odd:text-right md:odd:pr-8 md:even:text-left md:even:pl-8 text-center">
-                  <h4 className="font-bold text-lg text-primary">
-                    {event.year}
-                  </h4>
-                  <h5 className="font-semibold mt-1">{event.title}</h5>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {event.description}
-                  </p>
-                </div>
-                <div className="absolute left-1/2 top-0 md:top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-1 rounded-full hidden md:block">
-                  <CheckCircle className="h-6 w-6 text-primary" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <div className="flex flex-col bg-background overflow-x-hidden">
+      
+      {/* 1. TÍTULO SECCIÓN */}
+      <div className="container px-6 mx-auto pt-24 md:pt-32 pb-8">
+         <h1 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter">
+            <span className="text-orange-500">Noso</span><span className="text-[#769C48]">tros</span>
+         </h1>
       </div>
-    </section>
+
+      {/* 2. BLOQUE HISTORIA */}
+      <section className="pb-24">
+        <div className="container px-6 mx-auto">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
+            
+            {/* TEXTO IZQUIERDA */}
+            <div className="space-y-8 order-2 md:order-1">
+              <h2 className="text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight text-slate-900">
+                Nuestra Historia: 
+              </h2>
+              
+              <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-light">
+                <p>
+                  Beland nacio con el objetivo de plantear una solucion real a la crisis ambiental,trabajando en nuestro modelo de consumo.
+                  Nuestra propuesta es simple: Los residuos no son basura.
+                </p>
+                <p>
+                  El retail tradicional solo gana en la venta, y una vez que el cliente dispone sus desechos,el esfuerzo comercial que fue necesri
+                  para concretar la venta,el costo logistico y el material de sus residuos se pierden.
+                </p>
+                <p>
+                  En Beland entendemos a los residuos como la evidencia fisica de una transaccion exitosa, y es esta idea la que nos
+                  permite recuperar el valor de los residuos,muy por sobre el valor  del que estan hechos.
+                </p>
+                <p>
+                  Nada de esto seria posible sin los recicladores de base,quienes recuperan mas del 90% de todo lo que se recicla
+                  en LATAM, lastimosamente viven en estado de vulnerabilidad.Por eso donamos el 100% de todo lo que recuperamos a familias de recicladores,
+                  y trabajamos en equipo para mejorar su calidad de vida.
+                </p>
+              </div>
+            </div>
+
+            {/* VIDEO DERECHA (CON SONIDO AL CLIC) */}
+            <div className="w-full order-1 md:order-2">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/5] md:aspect-square lg:aspect-[4/5] bg-black group cursor-pointer" onClick={handlePlayVideo}>
+                <video 
+                  ref={videoRef}
+                  autoPlay 
+                  loop 
+                  muted={isMuted}
+                  playsInline
+                  className="object-cover w-full h-full brightness-90 transition-all group-hover:brightness-100"
+                >
+                  <source src="https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4" type="video/mp4" />
+                </video>
+                
+                {/* BOTÓN PLAY (Verde, circular, se oculta si no está silenciado) */}
+                {isMuted && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-[#769C48] flex items-center justify-center bg-black/20 backdrop-blur-[2px] transition-transform group-hover:scale-110">
+                      <Play className="w-10 h-10 text-[#769C48] fill-[#769C48]/20 ml-1.5" />
+                    </div>
+                  </div>
+                )}
+
+                {/* LOGO BELAND BLANCO */}
+                <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
+                   <h3 className="text-white/80 text-[8rem] md:text-[10rem] font-black italic tracking-tighter leading-none select-none">
+                    beland
+                   </h3>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 3. TRAYECTORIA */}
+      <section className="py-24 bg-slate-50/50 border-y border-slate-100">
+         <div className="container px-6 mx-auto">
+            <h2 className="text-center text-3xl md:text-5xl font-black uppercase italic mb-16 tracking-widest text-slate-800">Trayectoria</h2>
+            <div className="relative max-w-4xl mx-auto space-y-12">
+              <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#769C48]/30 md:-translate-x-1/2" />
+              {timelineEvents.map((event, i) => (
+                <div key={i} className={`relative flex items-center gap-8 ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                  <div className="absolute left-6 md:left-1/2 w-4 h-4 bg-[#769C48] rounded-full -translate-x-1/2 z-10 border-4 border-white shadow-sm" />
+                  <div className="w-full md:w-1/2 pl-12 md:pl-0">
+                    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
+                      <span className="text-[#769C48] font-black text-2xl block mb-2">{event.year}</span>
+                      <h3 className="font-bold text-xl mb-2 uppercase italic leading-tight">{event.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base">{event.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+         </div>
+      </section>
+
+      {/* 4. FESTIVAL CIRCULAR 2026 */}
+      <section className="py-24 bg-white">
+        <div className="container px-6 mx-auto">
+          <div className="text-center mb-20">
+            <Badge variant="outline" className="mb-4 border-slate-200 px-4 py-1">🏆 Record Guinness 2026</Badge>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+              <span className="text-[#769C48]">Festival</span> <span className="text-orange-500">Circular</span> <br />
+              <span className="text-slate-900">Quito 2026</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-16 max-w-6xl mx-auto items-start">
+            <div className="flex-1 space-y-12">
+              <div className="flex gap-6">
+                <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center shrink-0 border border-green-100">
+                  <Target className="w-7 h-7 text-[#769C48]" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black uppercase italic mb-2">El Reto</h4>
+                  <p className="text-slate-600 text-lg leading-relaxed">Este año nos propusimos demostrar que la circularidad funciona. Activamos barrios, reciclamos desde la base y generamos comunidad, contenido y retorno real. Todo esto es solo el comienzo.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0 border border-orange-100">
+                  <Sparkles className="w-7 h-7 text-orange-500" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black uppercase italic mb-2">Festival Circular 2026</h4>
+                  <p className="text-slate-600 text-lg leading-relaxed">Lanzamos el primer Festival Circular del mundo en Quito, con toda la ciudad en simultáneo, durante una semana de música, cultura y producción circular.</p>
+                </div>
+              </div>
+
+              <div className="bg-[#FAF9F6] p-10 rounded-[2.5rem] border border-slate-100 relative mt-16">
+                <Quote className="absolute -top-5 -left-2 w-10 h-10 text-orange-200" />
+                <p className="italic text-xl text-slate-700 leading-relaxed font-medium">
+                  "No se trata solo de romper un récord. Se trata de transformar lo que el mundo desecha en riqueza 
+                  para la comunidad, valor para el mercado e impacto real para el planeta. La circularidad no es el futuro, 
+                  es el nuevo estándar."
+                </p>
+                <p className="mt-6 font-black text-[#769C48] uppercase tracking-widest text-sm">— Team Beland</p>
+              </div>
+            </div>
+
+            <div className="flex-1 w-full lg:sticky lg:top-32">
+              <div className="bg-white rounded-[3.5rem] p-10 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-50 text-center space-y-10">
+                <h3 className="text-3xl font-black text-slate-900">Nuestro Impacto</h3>
+                <div>
+                  <span className="text-8xl font-black text-orange-500 leading-none">1</span>
+                  <p className="uppercase font-black text-slate-400 tracking-tighter">Record Guinness</p>
+                </div>
+                <div className="bg-orange-50/50 p-8 rounded-[2rem]">
+                  <span className="text-6xl font-black text-orange-500 block">$1.8M+</span>
+                  <p className="uppercase font-bold text-slate-500 text-xs mt-2 tracking-widest">Ingresos para la comunidad</p>
+                </div>
+                <button className="w-full bg-[#769C48] text-white font-black py-6 rounded-2xl flex items-center justify-center gap-4 hover:bg-[#65853d] transition-all text-xl uppercase italic shadow-lg shadow-green-900/10">
+                  ¿Te sumas al reto? <ArrowRight className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

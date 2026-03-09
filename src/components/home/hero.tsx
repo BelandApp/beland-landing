@@ -63,7 +63,7 @@ export function Hero() {
               </h1>
               <div className="text-[9px] sm:text-xs md:text-base text-muted-foreground leading-snug space-y-2">
                 <p>Es un ecosistema circular que transforma acciones sostenibles en valor para la comunidad.</p>
-                <p>Conectamos tecnología, comercio local y comunidad para crear una economía donde participar, reciclar y cuidar el planeta genera valor real.</p>
+               
                 <p className="font-medium text-foreground/90">Beland integra pagos, delivery y recompensas dentro de un mismo sistema, impulsando una red donde cada acción positiva fortalece a toda la comunidad.</p>
               </div>
             </div>
