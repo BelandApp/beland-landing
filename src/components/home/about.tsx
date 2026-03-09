@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, Trophy, Target, ArrowRight, Quote, Play } from "lucide-react";
+import { Sparkles, Trophy, Target, ArrowRight, Quote, Play, Users } from "lucide-react";
 
 const timelineEvents = [
   { year: "2016", title: "Nace la idea", description: "Reconocidos dentro de los 500 mejores proyectos socio-ambientales de América Latina por Premios Verdes (Puesto 35 en el global / 11 en gestión de residuos)." },
@@ -10,6 +10,62 @@ const timelineEvents = [
   { year: "2021", title: "Primer prueba de mercado", description: "Probamos nuestro modelo en la ciudad de Buenos Aires y aprendimos mucho de los resultados." },
   { year: "2023", title: "Validación del modelo", description: "Instalamos nuestras estaciones en 3 de los puntos más concurridos de Buenos Aires. Reconocimiento como la primera plataforma de la Argentina que paga a sus usuarios por reciclar (Forbes). Reconocimiento dentro de los mejores 20 startups del planeta (Founders Live)." },
   { year: "2025", title: "Validación del producto mínimo rentable", description: "Desarrollo y testeo de nuestra app definitiva. Nace Circularity as a Service. Reconocimiento entre los mejores emprendimientos sostenibles del Ecuador (Cumbre de sostenibilidad EKOS). Reconocimiento Quito Sostenible como héroes locales en gestión de residuos (Distrito Metropolitano de Quito)." },
+];
+
+const testimonials = [
+  {
+    quote: "Together we make a difference. A big thanks to Beland and Melodic Movement for making this event circular.",
+    author: "Cristoph",
+    role: "Dj & producer - Inglaterra",
+    color: "border-orange-500"
+  },
+  {
+    quote: "Si no hubieran recicladores en el mundo, el relleno sanitario colapsaría",
+    author: "Rocio Toaquiza",
+    role: "Reciladora del CEGAM Tumbaco",
+    color: "border-[#769C48]"
+  },
+  {
+    quote: "Son fundamentales estas propuestas ciudadanas de poder anclar la cultura con la gestión ambiental",
+    author: "Santiago Sandoval",
+    role: "Secretario de Ambiente del Distrito Metropolitano de Quito",
+    color: "border-slate-800"
+  },
+  {
+    quote: "Beland es una plataforma que transforma acciones en valor para la comunidad y los usuarios.. La iniciativa se distingue por entregar los residuos recolectados a recicladores de base.",
+    author: "Secretaría de Ambiente DMQ",
+    role: "Premios Quito Sostenible 2025",
+    color: "border-[#769C48]"
+  },
+  {
+    quote: "Estos regalos (los residuos) son muy valiosos para nosotros, para nuestros ingresos..",
+    author: "Manuel C.",
+    role: "Reciclador del CEGAM Calderón",
+    color: "border-orange-500"
+  }
+];
+
+const dreamTeam = [
+  {
+    name: "Diego Vargas",
+    role: "Founder & CEO",
+    specialty: "Especialista en Innovación - Creador del modelo Beland"
+  },
+  {
+    name: "Ezequiel Alonso",
+    role: "Founding Backend Architect",
+    specialty: "Especialista en desarrollo Backend"
+  },
+  {
+    name: "Victor De Menezes",
+    role: "Founding Product Engineer",
+    specialty: "Especialista en desarrollo Frontend & Mobile"
+  },
+  {
+    name: "Yanina Soto",
+    role: "Founding Data Scientist",
+    specialty: "Especialista en Data Science y desarrollo mobile"
+  }
 ];
 
 export default function AboutSection() {
@@ -21,7 +77,6 @@ export default function AboutSection() {
       videoRef.current.muted = false;
       setIsMuted(false);
       videoRef.current.play();
-      // Opcional: Solicitar pantalla completa si deseas
       if (videoRef.current.requestFullscreen) {
         videoRef.current.requestFullscreen();
       }
@@ -43,7 +98,6 @@ export default function AboutSection() {
         <div className="container px-6 mx-auto">
           <div className="flex flex-col md:grid md:grid-cols-2 gap-10 lg:gap-20 items-center">
             
-            {/* TEXTO IZQUIERDA */}
             <div className="space-y-8 order-2 md:order-1">
               <h2 className="text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight text-slate-900">
                 Nuestra Historia: 
@@ -70,7 +124,6 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* VIDEO DERECHA (CON SONIDO AL CLIC) */}
             <div className="w-full order-1 md:order-2">
               <div className="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/5] md:aspect-square lg:aspect-[4/5] bg-black group cursor-pointer" onClick={handlePlayVideo}>
                 <video 
@@ -84,7 +137,6 @@ export default function AboutSection() {
                   <source src="https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4" type="video/mp4" />
                 </video>
                 
-                {/* BOTÓN PLAY (Verde, circular, se oculta si no está silenciado) */}
                 {isMuted && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-[#769C48] flex items-center justify-center bg-black/20 backdrop-blur-[2px] transition-transform group-hover:scale-110">
@@ -93,7 +145,6 @@ export default function AboutSection() {
                   </div>
                 )}
 
-                {/* LOGO BELAND BLANCO */}
                 <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none">
                    <h3 className="text-white/80 text-[8rem] md:text-[10rem] font-black italic tracking-tighter leading-none select-none">
                     beland
@@ -173,7 +224,7 @@ export default function AboutSection() {
 
             <div className="flex-1 w-full lg:sticky lg:top-32">
               <div className="bg-white rounded-[3.5rem] p-10 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-50 text-center space-y-10">
-                <h3 className="text-3xl font-black text-slate-900">Nuestro Impacto</h3>
+                <h3 className="text-3xl font-black text-slate-900">El impacto que buscamos</h3>
                 <div>
                   <span className="text-8xl font-black text-orange-500 leading-none">1</span>
                   <p className="uppercase font-black text-slate-400 tracking-tighter">Record Guinness</p>
@@ -190,6 +241,69 @@ export default function AboutSection() {
           </div>
         </div>
       </section>
+
+      {/* 5. LO QUE NUESTRA COMUNIDAD DICE */}
+      <section className="py-24 bg-[#F8F9FA]">
+        <div className="container px-6 mx-auto">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mb-6">
+              Lo que nuestra <br />
+              <span className="text-[#769C48]">comunidad</span> <span className="text-orange-500">dice</span>
+            </h2>
+            <div className="h-2 w-24 bg-[#769C48] rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <div 
+                key={i} 
+                className={`bg-white p-8 rounded-[2.5rem] shadow-sm border-t-8 ${t.color} flex flex-col justify-between hover:shadow-xl transition-shadow duration-300`}
+              >
+                <div>
+                  <Quote className="w-8 h-8 text-slate-200 mb-4" />
+                  <p className="text-lg text-slate-700 leading-relaxed italic mb-8">
+                    "{t.quote}"
+                  </p>
+                </div>
+                <div>
+                  <p className="font-black uppercase italic text-[#769C48] tracking-tight">
+                    {t.author}
+                  </p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-1">
+                    {t.role}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. EL DREAM TEAM */}
+      <section className="py-24 bg-white">
+        <div className="container px-6 mx-auto">
+          <div className="flex items-center gap-4 mb-16">
+            <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none">
+              El <span className="text-orange-500">Dream</span> <span className="text-[#769C48]">Team</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {dreamTeam.map((member, i) => (
+              <div key={i} className="group p-8 rounded-[2.5rem] bg-[#FAF9F6] border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#769C48] transition-colors duration-300">
+                  <Users className="w-6 h-6 text-[#769C48] group-hover:text-white" />
+                </div>
+                <h3 className="text-2xl font-black uppercase italic text-slate-900 mb-1 leading-none">{member.name}</h3>
+                <p className="text-[#769C48] font-bold text-sm uppercase tracking-widest mb-4">{member.role}</p>
+                <div className="h-px w-8 bg-orange-500 mb-4 group-hover:w-full transition-all duration-500"></div>
+                <p className="text-slate-500 text-sm leading-relaxed">{member.specialty}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
