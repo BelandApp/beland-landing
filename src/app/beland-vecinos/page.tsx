@@ -44,7 +44,7 @@ export default function HamoniCircularPage() {
     },
     {
       title: "Gana BeCoins",
-      desc: "Cada compra genera: 2% de cashback para ti y 2% para Hamoni. Cada vez que reciclas desde tu casa recibes monedas digitales para futuras compras dentro y fuera de la app.",
+      desc: "Cada compra genera: 2% de cashback para ti y 2% para Hamoni.",
       icon: <span className="text-4xl">💰</span>,
       button: false
     }
@@ -95,6 +95,14 @@ export default function HamoniCircularPage() {
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
+
+       {/* IMAGEN SUPERIOR */}
+    <div className="w-full">
+      <img 
+        src="/screenshots/nosotros.jpeg" 
+        alt="Banner" 
+        className="w-full h-auto block object-cover"  />
+    </div>
 
       {/* TITULO ARRIBA */}
       <div className="text-center pt-10">
@@ -205,22 +213,41 @@ export default function HamoniCircularPage() {
             </p>
           </div>
           
-          {/* CARRUSEL DE TEXTO  */}
-          <div className="flex justify-center px-4">
-            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100 max-w-2xl w-full min-h-[300px] flex flex-col items-center justify-center text-center space-y-6 overflow-hidden">
-              <div key={textIndex} className="animate-in fade-in slide-in-from-right-8 duration-700">
-                <div className="mb-4">{texts[textIndex].icon}</div>
-                <h4 className="text-2xl md:text-4xl font-black uppercase italic">{texts[textIndex].title}</h4>
-                <p className="text-slate-600 text-lg md:text-xl mt-4 leading-relaxed">{texts[textIndex].desc}</p>
-                
-              </div>
-              <div className="flex gap-2 pt-4">
-                {texts.map((_, i) => (
-                  <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === textIndex ? 'w-8 bg-[#769C48]' : 'w-2 bg-slate-200'}`} />
-                ))}
-              </div>
-            </div>
-          </div>
+   {/* CONTENEDOR CON CENTRADO TOTAL INFALIBLE */}
+<div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 max-w-2xl w-full h-[400px] md:h-[350px] flex flex-col relative mx-auto overflow-hidden">
+  
+  {/* Capa de contenido centrada */}
+  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+    
+    <div key={textIndex} className="animate-in fade-in slide-in-from-bottom-2 duration-700 w-full flex flex-col items-center">
+      {/* Icono */}
+      <div className="mb-4">
+        {texts[textIndex].icon}
+      </div>
+      
+      {/* Título */}
+      <h4 className="text-2xl md:text-4xl font-black uppercase italic text-slate-900 leading-tight">
+        {texts[textIndex].title}
+      </h4>
+      
+      {/* Descripción */}
+      <p className="text-slate-600 text-lg md:text-xl mt-4 leading-relaxed max-w-[80%]">
+        {texts[textIndex].desc}
+      </p>
+    </div>
+
+  </div>
+
+  {/* Capa de puntitos fija abajo */}
+  <div className="absolute bottom-6 w-full flex justify-center gap-2">
+    {texts.map((_, i) => (
+      <div 
+        key={i} 
+        className={`h-1.5 rounded-full transition-all duration-300 ${i === textIndex ? 'w-8 bg-[#769C48]' : 'w-2 bg-slate-200'}`} 
+      />
+    ))}
+  </div>
+</div>
 
           {/* BOTÓN BELAND.APP CENTRADO */}
           <div className="flex justify-center w-full pt-4">
