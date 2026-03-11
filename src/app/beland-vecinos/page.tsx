@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 
 export default function HamoniCircularPage() {
-
   const schedule = [
     { day: "Lunes", time: "07:00 AM", activity: "Ritual TGIM (Yoga y bienestar) 🧘‍♂️✨" },
     { day: "Martes", time: "08:00 AM", activity: "Recolección de reciclables ♻️🚛" },
@@ -29,8 +28,30 @@ export default function HamoniCircularPage() {
     "/screenshots/billetera.jpeg",
     "/screenshots/tuimpacto.jpeg"
   ];
+
+  const texts = [
+    {
+      title: "Pide por la app",
+      desc: "Compra tus viveres y snacks favoritos.",
+      icon: <ShoppingBag className="mx-auto text-orange-500" size={36} />,
+      button: true
+    },
+    {
+      title: "Delivery circular",
+      desc: "Beland entrega tu pedido en la puerta de tu casa y, en ese mismo momento, se llevara tus reciclables limpios.",
+      icon: <Truck className="mx-auto text-[#769C48]" size={36} />,
+      button: false
+    },
+    {
+      title: "Gana BeCoins",
+      desc: "Cada compra genera: 2% de cashback para ti y 2% para Hamoni. Cada vez que reciclas desde tu casa recibes monedas digitales para futuras compras dentro y fuera de la app.",
+      icon: <span className="text-4xl">💰</span>,
+      button: false
+    }
+  ];
   
   const [current, setCurrent] = useState(0);
+  const [textIndex, setTextIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,6 +59,13 @@ export default function HamoniCircularPage() {
     }, 4000);
     return () => clearInterval(interval);
   }, [images.length]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTextIndex((prev) => (prev + 1) % texts.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [texts.length]);
 
   useEffect(() => {
     const hideElements = () => {
@@ -75,203 +103,133 @@ export default function HamoniCircularPage() {
         </h2>
       </div>
 
-      {/* HERO */}
-      <section className="pt-8 md:pt-16 pb-20 px-4 md:px-6 bg-gradient-to-b from-orange-50 to-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-12 items-center">
+      {/* SECCIÓN PRINCIPAL: TEXTO DE INTRODUCCIÓN */}
+      <section className="pt-8 pb-16 px-6 text-center">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <p className="text-xl md:text-2xl text-slate-700 leading-relaxed font-medium">
+            Sabemos que la gestión actual de basura en <strong>Hamoni</strong> presenta desafíos:
+            tachos que se saturan rápido, recorridos largos y la mezcla de residuos
+            que impide un reciclaje real.
+          </p>
 
-          <div className="space-y-4 md:space-y-6 order-1 text-left">
-            <h2 className="text-orange-500 font-black uppercase italic tracking-widest text-xs md:text-xl">
-              Hamoni Circular
-            </h2>
+          <div className="py-4">
+            <p className="text-3xl md:text-5xl font-black text-[#769C48] uppercase italic leading-tight tracking-tighter">
+              Beland llega para transformar este proceso,
+              <span className="text-slate-900 block md:inline"> sin costos extras para la administración.</span>
+            </p>
+          </div>
 
-            <h1 className="text-lg md:text-6xl font-normal leading-tight tracking-tighter">
-              Bienvenid@ a <span className="text-[#769C48] font-black">Beland</span>. 
-              un ecosistema circular que transforma acciones sostenibles 
-              en valor para tu comunidad.
-            </h1>
+          <div className="space-y-6 max-w-3xl mx-auto">
+            <div className="w-20 h-1 bg-[#769C48] mx-auto mb-8 opacity-30"></div>
+            <p className="text-xl md:text-2xl font-bold text-slate-800 tracking-tight">
+              Adiós al problema de la basura: infraestructura y orden.
+            </p>
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+              Para mejorar la convivencia implementaremos una
+              <strong> clasificación binaria simplificada</strong>.
+              Dos tachos claramente diferenciados que facilitan el reciclaje.
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <div className="pt-2 md:pt-4 space-y-3 md:space-y-4">
-              <h3 className="font-black uppercase italic text-sm md:text-lg">
-                Delivery con propósito
-              </h3>
-
-              <p className="text-slate-600 text-xs md:text-xl leading-snug">
-                Cada entrega impulsa una red de impacto circular
-                recibí tu pedido y entrega tus reciclables.
+      {/* SECCIÓN DE TACHOS E IMPACTO */}
+      <section className="pb-20 px-6 text-center">
+        <div className="max-w-5xl mx-auto space-y-16">
+          <div className="grid md:grid-cols-2 gap-12 items-start justify-items-center">
+            {/* TACHO VERDE */}
+            <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center justify-between space-y-4 max-w-xs h-full border">
+              <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">
+                Verde → Reciclables / Inorgánicos
+              </span>
+              <img src="/screenshots/tacho-verde.png" alt="Tacho verde" className="w-36 h-36 object-contain" />
+              <p className="text-slate-700 text-lg leading-relaxed">
+                <strong>Tacho verde:</strong> para botellas, latas, cartón, vidrio y otros residuos inorgánicos <strong>(limpios y secos)</strong>.
               </p>
+            </div>
 
-              <Button
-                onClick={() => window.open("https://beland.app", "_blank")}
-                className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-10 md:h-16 px-4 md:px-8 text-xs md:text-xl font-bold shadow-lg w-full md:w-auto mt-2 flex items-center justify-center gap-2"
-              >
-                Prueba nuestra app Beland
-                <ArrowRight className="w-4 h-4 md:w-6 md:h-6" />
-              </Button>
+            {/* TACHO NEGRO */}
+            <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center justify-between space-y-4 max-w-xs h-full border">
+              <span className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-semibold">
+                Negro → Orgánicos
+              </span>
+              <img src="/screenshots/tacho-negro.png" alt="Tacho negro" className="w-36 h-36 object-contain" />
+              <p className="text-slate-700 text-lg leading-relaxed">
+                <strong>Tacho negro :</strong> para restos de comida, servilletas y residuos de jardín.
+              </p>
             </div>
           </div>
 
+          {/* IMPACTO SOCIAL */}
+          <div className="flex justify-center pt-10 px-4">
+            <div className="bg-white border-l-8 border-[#769C48] p-8 md:p-10 rounded-r-[2rem] rounded-l-lg shadow-md max-w-3xl text-left">
+              <p className="text-xl md:text-2xl text-slate-800 leading-relaxed">
+                <span className="text-[#769C48] font-black uppercase italic block mb-2">Impacto social real:</span>
+                tus residuos separados irán directamente a <strong>Belén Simbaña</strong>, nuestra recicladora local, mejorando sus ingresos y evitando que el material termine en el relleno sanitario.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CASHBACK Y CELULAR */}
+      <section className="py-24 px-6 bg-slate-50">
+        <div className="max-w-5xl mx-auto space-y-16 text-center">
+          <div className="space-y-4">
+            <h2 className="text-4xl md:text-6xl font-black uppercase italic">
+              Tu Basura Paga la Cuenta
+            </h2>
+            <p className="text-xl text-slate-600 italic">Recicla sin salir de casa</p>
+            <p className="text-xl text-slate-600 italic leading-relaxed">
+              Ahora, el reciclaje no solo es más fácil, sino que te premia.🎁<br/>
+              A través del <strong>Delivery circular de Beland</strong>, ya no tienes que cargar bolsas hasta los tachos:
+            </p>
+          </div>
+
           {/* TELEFONO */}
-          <div className="order-2 flex justify-center relative">
+          <div className="flex justify-center relative">
             <div className="relative mx-auto border-gray-800 bg-gray-800 border-[6px] md:border-[14px] rounded-[1.5rem] md:rounded-[2.5rem] h-[260px] md:h-[600px] w-[130px] md:w-[300px] shadow-2xl">
-              
               <div className="rounded-[1.2rem] md:rounded-[2rem] overflow-hidden w-full h-full bg-white relative">
-                <img 
-                  key={current}
-                  src={images[current]} 
-                  className="w-full h-full object-cover" 
-                  alt="Beland App View" 
-                />
-
-                <button onClick={prevSlide} className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full">
-                  <ChevronLeft size={16} />
-                </button>
-
-                <button onClick={nextSlide} className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full">
-                  <ChevronRight size={16} />
-                </button>
+                <img key={current} src={images[current]} className="w-full h-full object-cover" alt="Beland App" />
+                <button onClick={prevSlide} className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full hover:bg-black/60"><ChevronLeft size={16} /></button>
+                <button onClick={nextSlide} className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full hover:bg-black/60"><ChevronRight size={16} /></button>
               </div>
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* TACHOS */}
-      <section className="py-20 px-6 text-center">
-        <div className="max-w-5xl mx-auto space-y-10">
-          <div className="bg-white p-10 rounded-[2.5rem] shadow-lg max-w-4xl mx-auto space-y-6">
-
-            <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
-              Sabemos que la gestión actual de basura en <strong>Hamoni</strong> presenta desafíos:
-              tachos que se saturan rápido, recorridos largos y la mezcla de residuos
-              que impide un reciclaje real.
+          {/* TEXTO DEBAJO DEL CELULAR */}
+          <div className="pt-4 space-y-4 max-w-2xl mx-auto">
+            <h3 className="font-black uppercase italic text-lg md:text-2xl">Delivery con propósito</h3>
+            <p className="text-slate-600 text-base md:text-xl leading-relaxed">
+              Cada entrega impulsa una red de impacto circular recibí tu pedido y entrega tus reciclables.
             </p>
-
-            <p className="text-xl md:text-2xl font-black text-[#769C48] uppercase italic">
-              Beland llega para transformar este proceso,
-              <span className="text-slate-900"> sin costos extras para la administración.</span>
-            </p>
-
-            <div className="border-t pt-6 space-y-4">
-
-              <p className="text-lg font-bold text-slate-800">
-                Adiós al problema de la basura: infraestructura y orden.
-              </p>
-
-              <p className="text-slate-600">
-                Para mejorar la convivencia implementaremos una
-                <strong> clasificación binaria simplificada</strong>.
-                Dos tachos claramente diferenciados que facilitan el reciclaje.
-              </p>
+          </div>
+          
+          {/* CARRUSEL DE TEXTO  */}
+          <div className="flex justify-center px-4">
+            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-sm border border-slate-100 max-w-2xl w-full min-h-[300px] flex flex-col items-center justify-center text-center space-y-6 overflow-hidden">
+              <div key={textIndex} className="animate-in fade-in slide-in-from-right-8 duration-700">
+                <div className="mb-4">{texts[textIndex].icon}</div>
+                <h4 className="text-2xl md:text-4xl font-black uppercase italic">{texts[textIndex].title}</h4>
+                <p className="text-slate-600 text-lg md:text-xl mt-4 leading-relaxed">{texts[textIndex].desc}</p>
+                
+              </div>
+              <div className="flex gap-2 pt-4">
+                {texts.map((_, i) => (
+                  <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === textIndex ? 'w-8 bg-[#769C48]' : 'w-2 bg-slate-200'}`} />
+                ))}
+              </div>
             </div>
-
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-start justify-items-center">
-
-            {/* TACHO VERDE */}
-            <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center justify-between space-y-4 max-w-xs h-full">
-              <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full">
-                Verde → Reciclables / Inorgánicos
-              </span>
-              <img
-                src="/screenshots/tacho-verde.png"
-                alt="Tacho verde reciclables"
-                className="w-36 h-36 object-contain"
-              />
-
-              <p className="text-slate-700 text-lg leading-relaxed">
-                <strong>Tacho verde:</strong> para botellas, latas, cartón, vidrio
-                y otros residuos inorgánicos <strong>(limpios y secos)</strong>.
-              </p>
-
-            </div>
-
-            {/* TACHO NEGRO */}
-            <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center justify-between space-y-4 max-w-xs h-full">
-              <span className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full">
-                Negro → Orgánicos
-              </span>
-              <img
-                src="/screenshots/tacho-negro.png"
-                alt="Tacho negro residuos"
-                className="w-36 h-36 object-contain"
-              />
-
-              <p className="text-slate-700 text-lg leading-relaxed">
-                <strong>Tacho negro :</strong> para restos de comida,
-                servilletas y residuos de jardín.
-              </p>
-
-            </div>
-
-          </div>
-
-          {/* IMPACTO SOCIAL */}
-          <div className="flex justify-center pt-6">
-
-            <p className="bg-[#769C48] text-white p-6 md:p-8 rounded-[2rem] font-bold italic text-xl md:text-2xl inline-block shadow-lg max-w-3xl">
-              Impacto social real: tus residuos separados irán directamente
-              a <strong>Belén Simbaña </strong>, nuestra recicladora local, mejorando sus ingresos y evitando que el material termine en el relleno sanitario.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* CASHBACK */}
-      <section className="py-24 px-6 bg-slate-50">
-        <div className="max-w-5xl mx-auto space-y-16 text-center">
-
-          <div>
-            <h2 className="text-4xl md:text-6xl font-black uppercase italic">
-              Tu Basura Paga la Cuenta
-            </h2>
-            <p className="text-xl text-slate-600 italic">
-              Recicla sin salir de casa
-            </p>
-            <p className="text-xl text-slate-600 italic">
-              Ahora , el reciclaje no solo es mas fácil , sino que te premia.🎁
-              A traves del <strong> Delivery circular de Beland </strong> , ya no tienes que cargar bolsas hasta los tachos:            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-            <div className="bg-white p-10 rounded-[2.5rem] shadow-sm space-y-6">
-              <ShoppingBag className="mx-auto text-orange-500" size={36} />
-              <h4 className="text-2xl font-black uppercase italic">Pide por la app</h4>
-              <p className="text-slate-600">
-                Compra tus viveres y snacks.
-              </p>
-              <Button onClick={() => window.open("https://beland.app", "_blank")} className="bg-[#769C48] text-white rounded-xl">
-                beland.app <ExternalLink size={16}/>
-              </Button>
-            </div>
-
-            <div className="bg-white p-10 rounded-[2.5rem] shadow-sm space-y-6">
-              <Truck className="mx-auto text-[#769C48]" size={36} />
-              <h4 className="text-2xl font-black uppercase italic">Delivery circular</h4>
-              <p>Beland entrega tu pedido en la puerta de tu casa y , en ese mismo momento , se llevara tus reciclables limpios.</p>
-            </div>
-
-            
-            <div className="bg-white p-10 rounded-[2.5rem] shadow-sm space-y-6">
-              <span className="text-4xl">💰</span>
-
-              <h4 className="text-2xl font-black uppercase italic">
-                Gana BeCoins
-              </h4>
-
-              <p className="text-slate-600">
-                Cada compra genera :
-                 <strong> 2% de cashback para ti</strong> y 
-                <strong> 2% para Hamoni</strong>,
-              Cada vez que reciclas desde tu casa recibes monedas digitales para futuras compras dentro y fuera de la app.</p>
-              
-            </div>
-
+          {/* BOTÓN BELAND.APP CENTRADO */}
+          <div className="flex justify-center w-full pt-4">
+            <Button
+              onClick={() => window.open("https://beland.app", "_blank")}
+              className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-12 md:h-16 px-8 md:px-12 text-sm md:text-xl font-bold shadow-xl w-full md:w-auto flex items-center justify-center gap-2 transition-transform hover:scale-105"
+            >
+              Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+            </Button>
           </div>
         </div>
       </section>
@@ -279,63 +237,52 @@ export default function HamoniCircularPage() {
       {/* CALENDARIO */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center space-y-10">
-
-          <h2 className="text-4xl md:text-5xl font-black uppercase italic">
-            Calendario y bienestar Comunitario 📅
-          </h2>
-
-          <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden">
-
+          <h2 className="text-4xl md:text-5xl font-black uppercase italic">Calendario y bienestar Comunitario 📅</h2>
+          <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden border">
             {schedule.map((item, i) => (
-              <div key={i} className="grid md:grid-cols-3 p-6 border-b last:border-none">
+              <div key={i} className="grid md:grid-cols-3 p-6 border-b last:border-none hover:bg-slate-50 transition-colors">
                 <span className="font-black text-[#769C48]">{item.day}</span>
-                <span>{item.time}</span>
-                <span>{item.activity}</span>
+                <span className="text-slate-600">{item.time}</span>
+                <span className="font-medium text-slate-800">{item.activity}</span>
               </div>
             ))}
-
           </div>
-
         </div>
       </section>
 
       {/* FORBES */}
-      <section className="py-24 px-6 text-center">
+      <section className="py-24 px-6 text-center bg-white">
         <div className="max-w-4xl mx-auto space-y-12">
-
-          <p className="text-2xl md:text-4xl italic text-slate-600">
-            “Una persona que recicla hace una gran diferencia en el mundo.
-            <span className="text-[#769C48] font-black uppercase">
-              hacerlo juntos lo cambia todo.
-            </span>”
+          <p className="text-2xl md:text-4xl italic text-slate-600 leading-snug">
+            “Una persona que recicla hace una gran diferencia en el mundo. 
+            <span className="text-[#769C48] font-black uppercase"> hacerlo juntos lo cambia todo.</span>”
           </p>
-
           <div className="space-y-4">
             <p className="text-5xl font-black italic">Forbes</p>
-
-            <button
-              onClick={() =>
-                window.open(
-                  "https://www.forbesargentina.com/negocios/asi-beland-primera-plataforma-argentina-paga-sus-usuarios-reciclar-n39100",
-                  "_blank"
-                )
-              }
-              className="font-black uppercase underline text-xs hover:text-[#769C48]"
-            >
+            <button onClick={() => window.open("https://www.forbesargentina.com/negocios/asi-beland-primera-plataforma-argentina-paga-sus-usuarios-reciclar-n39100", "_blank")} className="font-black uppercase underline text-xs hover:text-[#769C48] transition-colors">
               Leer artículo
             </button>
           </div>
-
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 flex justify-center">
+      {/* BOTÓN FINAL BELAND.APP */}
+      <div className="flex justify-center w-full py-6 px-6">
+        <Button
+          onClick={() => window.open("https://beland.app", "_blank")}
+          className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-12 md:h-16 px-8 md:px-12 text-sm md:text-xl font-bold shadow-xl w-full md:w-auto flex items-center justify-center gap-2 transition-transform hover:scale-105"
+        >
+          Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+        </Button>
+      </div>
+
+      {/* CONTACTO FINAL */}
+      <section className="py-12 flex flex-col items-center gap-6">
         <Button
           onClick={() => window.open("https://wa.me/593995269974", "_blank")}
-          className="bg-[#25D366] text-white rounded-full h-20 px-10 text-xl font-black flex items-center gap-4"
+          className="bg-[#25D366] hover:bg-[#1eb956] text-white rounded-full h-12 px-8 text-sm font-semibold flex items-center gap-2 shadow-md hover:shadow-lg transition-all"
         >
-          <MessageCircle size={28} />
+          <MessageCircle size={20} />
           Contactate con nosotros
         </Button>
       </section>
