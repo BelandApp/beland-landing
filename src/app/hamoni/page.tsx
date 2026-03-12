@@ -97,7 +97,7 @@ export default function HamoniCircularPage() {
                 <img
                     src="/screenshots/nosotros.jpeg"
                     alt="Banner"
-                    className="w-full h-auto block object-cover" 
+                    className="w-full h-auto block object-cover"
                 />
             </div>
 
@@ -111,181 +111,199 @@ export default function HamoniCircularPage() {
             {/* 3. SECCIÓN PRINCIPAL: APP Y CARRUSEL */}
             <section className="pt-8 pb-16 px-6 text-center">
                 <div className="max-w-4xl mx-auto space-y-12">
-                    
+
                     {/* texto */}
-                    <div className="w-full max-w-3xl mx-auto px-4">
-    <div className="bg-slate-50 border-2 border-dashed border-[#769C48]/30 p-8 rounded-[2.5rem] shadow-sm relative overflow-hidden">
-       
-        <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#769C48]/10 rounded-full blur-2xl" />
-        
-        <div className="text-xl md:text-2xl text-slate-700 leading-relaxed font-medium text-center relative z-10">
-            A partir de hoy <strong> Tu basura paga la cuenta </strong>. 
-            Compra desde <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="text-[#769C48] underline font-bold hover:text-orange-500 transition-colors">beland.app</a>, 
-            y entréganos tus residuos inorgánicos limpios y secos, y recibe el 
-            <span className="text-[#769C48] font-bold"> 2% de cashback para ti </span> 
-            y 
-            <span className="text-[#769C48] font-bold"> 2% para tu comunidad</span>.
-            <br className="hidden md:block" />
-            <span className="block mt-4 text-slate-900 font-black italic uppercase tracking-tight">
-                Ahora el reciclaje no solo es más fácil, sino que te premia. ♻️🎁
-            </span>
-        </div>
-    </div>
-</div>
+                    <div className="w-full max-w-3xl mx-auto px-2 sm:px-4">
+<div className="p-4 sm:p-6 md:p-8 relative">
+                            <div className="absolute -top-4 -right-4 w-20 sm:w-24 h-20 sm:h-24 bg-[#769C48]/10 rounded-full blur-2xl" />
 
-                    <div className="space-y-16">
-                        {/* MOCKUP CELULAR */}
-                        <div className="flex justify-center relative">
-                            <div className="relative mx-auto border-gray-800 bg-gray-800 border-[6px] md:border-[14px] rounded-[1.5rem] md:rounded-[2.5rem] h-[260px] md:h-[600px] w-[130px] md:w-[300px] shadow-2xl">
-                                <div className="rounded-[1.2rem] md:rounded-[2rem] overflow-hidden w-full h-full bg-white relative">
-                                    <img key={current} src={images[current]} className="w-full h-full object-cover animate-in fade-in duration-500" alt="Beland App" />
-                                    <button onClick={prevSlide} className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full hover:bg-black/60"><ChevronLeft size={16} /></button>
-                                    <button onClick={nextSlide} className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full hover:bg-black/60"><ChevronRight size={16} /></button>
-                                </div>
+                            <div className="text-center relative z-10 space-y-6">
+
+                                <p className="text-lg sm:text-xl md:text-3xl font-black text-slate-900 italic">
+                                    Tu basura paga la cuenta.
+                                </p>
+
+                                <p className="text-sm sm:text-base md:text-xl text-slate-700 leading-relaxed max-w-xl mx-auto">
+                                    Compra desde
+                                    <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="text-[#769C48] underline font-bold hover:text-orange-500 transition-colors">
+                                        beland.app
+                                    </a>
+                                    , entréganos tus residuos inorgánicos limpios y secos y recibe
+                                    <span className="text-[#769C48] font-bold"> 2% de cashback </span>
+                                    para ti y
+                                    <span className="text-[#769C48] font-bold"> 2% para tu comunidad</span>.
+                                </p>
+
+                                <p className="text-xs sm:text-sm md:text-lg font-black uppercase italic text-slate-900">
+                                    Ahora el reciclaje no solo es más fácil, sino que te premia ♻️🎁
+                                </p>
+
                             </div>
                         </div>
+                    </div>
 
-                        {/* CARRUSEL DE TEXTOS ANIMADO */}
-                        <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 max-w-2xl w-full h-[380px] md:h-[320px] flex flex-col relative mx-auto overflow-hidden">
-                            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                <div key={textIndex} className="animate-in fade-in slide-in-from-bottom-4 duration-700 w-full flex flex-col items-center">
-                                    <div className="mb-4">{texts[textIndex].icon}</div>
-                                    <h4 className="text-2xl md:text-3xl font-black uppercase italic text-slate-900 leading-tight">
-                                        {texts[textIndex].title}
-                                    </h4>
-                                    <p className="text-slate-600 text-lg md:text-xl mt-4 leading-relaxed max-w-[85%]">
-                                        {texts[textIndex].desc}
-                                    </p>
-                                </div>
-                            </div>
-                            {/* Puntos de navegación */}
-                            <div className="absolute bottom-6 w-full flex justify-center gap-2">
-                                {texts.map((_, i) => (
-                                    <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === textIndex ? 'w-8 bg-[#769C48]' : 'w-2 bg-slate-200'}`} />
-                                ))}
-                            </div>
-                        </div>
+                </div>
+            </section>
 
-                        {/* BOTÓN beland.app */}
-                        <div className="flex justify-center w-full">
-                            <Button
-                                onClick={() => window.open("https://beland.app", "_blank")}
-                                className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-14 md:h-16 px-8 md:px-12 text-lg md:text-xl font-bold shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
-                            >
-                                Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
-                            </Button>
+            <div className="space-y-16">
+                {/* MOCKUP CELULAR */}
+                <div className="flex justify-center relative">
+                    <div className="relative mx-auto border-gray-800 bg-gray-800 border-[6px] md:border-[14px] rounded-[1.5rem] md:rounded-[2.5rem] h-[260px] md:h-[600px] w-[130px] md:w-[300px] shadow-2xl">
+                        <div className="rounded-[1.2rem] md:rounded-[2rem] overflow-hidden w-full h-full bg-white relative">
+                            <img key={current} src={images[current]} className="w-full h-full object-cover animate-in fade-in duration-500" alt="Beland App" />
+                            <button onClick={prevSlide} className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full hover:bg-black/60"><ChevronLeft size={16} /></button>
+                            <button onClick={nextSlide} className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/40 text-white p-1 rounded-full hover:bg-black/60"><ChevronRight size={16} /></button>
                         </div>
                     </div>
                 </div>
-            </section>
-{/* --- Adios al problema de la basura*/}
-<div className="w-full flex flex-col items-center justify-center text-center space-y-4 mb-12 px-4">
+
+                {/* CARRUSEL DE TEXTOS ANIMADO */}
+                <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 max-w-2xl w-full h-[380px] md:h-[320px] flex flex-col relative mx-auto overflow-hidden">
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                        <div key={textIndex} className="animate-in fade-in slide-in-from-bottom-4 duration-700 w-full flex flex-col items-center">
+                            <div className="mb-4">{texts[textIndex].icon}</div>
+                            <h4 className="text-2xl md:text-3xl font-black uppercase italic text-slate-900 leading-tight">
+                                {texts[textIndex].title}
+                            </h4>
+                            <p className="text-slate-600 text-lg md:text-xl mt-4 leading-relaxed max-w-[85%]">
+                                {texts[textIndex].desc}
+                            </p>
+                        </div>
+                    </div>
+                    {/* Puntos de navegación */}
+                    <div className="absolute bottom-6 w-full flex justify-center gap-2">
+                        {texts.map((_, i) => (
+                            <div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === textIndex ? 'w-8 bg-[#769C48]' : 'w-2 bg-slate-200'}`} />
+                        ))}
+                    </div>
+                </div>
+
+                {/* BOTÓN beland.app */}
+                <div className="flex justify-center w-full">
+                    <Button
+                        onClick={() => window.open("https://beland.app", "_blank")}
+                        className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-14 md:h-16 px-8 md:px-12 text-lg md:text-xl font-bold shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
+                    >
+                        Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+                    </Button>
+                </div>
+            </div>
+        
+          
+
+        {/* --- Adios al problema de la basura*/ }
+        < div className = "w-full flex flex-col items-center justify-center text-center space-y-4 mb-12 px-4" >
     <h2 className="text-3xl md:text-5xl font-black uppercase italic leading-tight md:leading-none w-full">
         Adios al problema de la basura: <br className="hidden md:block" />
         <span className="text-[#769C48]"> infraestructura y orden.</span>
     </h2>
+
     <p className="text-lg md:text-xl text-slate-600 font-medium max-w-2xl">
+        Para mejorar la convivencia implementaremos una clasificación binaria simplificada. 
+        Dos tachos claramente diferenciados que facilitan el reciclaje.
     </p>
-        Para mejorar la convivencia implementaremos una clasificación binaria simplificada. Dos tachos claramente diferenciados que facilitan el reciclaje.
-</div>
+</div >
 
-            {/* 4. SECCIÓN DE TACHOS */}
-            <section className="pb-20 px-6 text-center bg-slate-50/50 pt-16">
-                <div className="max-w-5xl mx-auto space-y-12">
-                    
-                    <div className="grid md:grid-cols-2 gap-8 items-stretch justify-items-center">
-                        <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center space-y-4 max-w-xs border">
-                            <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-bold border border-green-200 shadow-sm">
-    Verde → Reciclables / Inorgánicos
-</span>
-                            <img src="/screenshots/tacho-verde.png" alt="Tacho verde" className="w-32 h-32 object-contain" />
-                            <p className="text-slate-700">Para botellas, latas, cartón y vidrio <strong>(limpios y secos)</strong>.</p>
-                        </div>
-                        <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center space-y-4 max-w-xs border">
-<span className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-bold border border-gray-300 shadow-sm">
-    Negro → Orgánicos
-</span>                            <img src="/screenshots/tacho-negro.png" alt="Tacho negro" className="w-32 h-32 object-contain" />
-                            <p className="text-slate-700">Para restos de comida, servilletas y residuos de jardín.</p>
-                        </div>
+        {/* 4. SECCIÓN DE TACHOS */ }
+        < section className = "pb-20 px-6 text-center bg-slate-50/50 pt-16" >
+            <div className="max-w-5xl mx-auto space-y-12">
+
+                <div className="grid md:grid-cols-2 gap-8 items-stretch justify-items-center">
+                    <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center space-y-4 max-w-xs border">
+                        <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-bold border border-green-200 shadow-sm">
+                            Verde → Reciclables / Inorgánicos
+                        </span>
+                        <img src="/screenshots/tacho-verde.png" alt="Tacho verde" className="w-32 h-32 object-contain" />
+                        <p className="text-slate-700">Para botellas, latas, cartón y vidrio <strong>(limpios y secos)</strong>.</p>
                     </div>
-
-                    <div className="bg-white border-l-8 border-[#769C48] p-8 rounded-r-[2rem] shadow-md max-w-3xl mx-auto text-left mt-10">
-                        <p className="text-lg md:text-xl text-slate-800 leading-relaxed">
-                            <span className="text-[#769C48] font-black uppercase italic block mb-2">Impacto social real:</span>
-                            Tus residuos separados iran directamente a <strong>Belén Simbaña</strong>, nuestra recicladora local, mejorando sus ingresos y evitando que el material termine en el relleno sanitario.
-                        </p>
+                    <div className="bg-white p-8 rounded-[2rem] shadow-md flex flex-col items-center space-y-4 max-w-xs border">
+                        <span className="bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-sm font-bold border border-gray-300 shadow-sm">
+                            Negro → Orgánicos
+                        </span>                            <img src="/screenshots/tacho-negro.png" alt="Tacho negro" className="w-32 h-32 object-contain" />
+                        <p className="text-slate-700">Para restos de comida, servilletas y residuos de jardín.</p>
                     </div>
                 </div>
-            </section>
 
-            {/* 5. CALENDARIO */}
-            <section className="py-20 px-6">
-                <div className="max-w-4xl mx-auto text-center space-y-10">
-                    <h2 className="text-4xl md:text-5xl font-black uppercase italic">Calendario Comunitario 📅</h2>
-                    <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden border">
-                        {schedule.map((item, i) => (
-                            <div key={i} className="grid grid-cols-1 md:grid-cols-3 p-6 border-b last:border-none hover:bg-slate-50 transition-colors">
-                                <span className="font-black text-[#769C48]">{item.day}</span>
-                                <span className="text-slate-600">{item.time}</span>
-                                <span className="font-medium text-slate-800">{item.activity}</span>
-                            </div>
-                        ))}
-                    </div>
+                <div className="bg-white border-l-8 border-[#769C48] p-8 rounded-r-[2rem] shadow-md max-w-3xl mx-auto text-left mt-10">
+                    <p className="text-lg md:text-xl text-slate-800 leading-relaxed">
+                        <span className="text-[#769C48] font-black uppercase italic block mb-2">Impacto social real:</span>
+                        Tus residuos separados iran directamente a <strong>Belén Simbaña</strong>, nuestra recicladora local, mejorando sus ingresos y evitando que el material termine en el relleno sanitario.
+                    </p>
                 </div>
-            </section>
+            </div>
+            </section >
 
-     {/* 6. FORBES CON STICKERS */}
+        {/* 5. CALENDARIO */ }
+        < section className = "py-20 px-6" >
+            <div className="max-w-4xl mx-auto text-center space-y-10">
+                <h2 className="text-4xl md:text-5xl font-black uppercase italic">Calendario Comunitario 📅</h2>
+                <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden border">
+                    {schedule.map((item, i) => (
+                        <div key={i} className="grid grid-cols-1 md:grid-cols-3 p-6 border-b last:border-none hover:bg-slate-50 transition-colors">
+                            <span className="font-black text-[#769C48]">{item.day}</span>
+                            <span className="text-slate-600">{item.time}</span>
+                            <span className="font-medium text-slate-800">{item.activity}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+         </section >
+
+        {/* 6. FORBES CON STICKERS */}
 <section className="py-24 px-6 text-center relative overflow-hidden">
     <div className="max-w-4xl mx-auto space-y-8 relative">
-        
-        {/* Sticker IZQUIERDA: No es basura */}
-        <img 
-            src="/screenshots/no.es.basura.png" 
-            alt="no.es.basura." 
-className="absolute left-0 md:left-6 top-1/2 -translate-y-1/2 w-28 md:w-40 z-10 drop-shadow-xl -rotate-12 hidden sm:block"        />
 
+        {/* Sticker IZQUIERDA */}
+        <img
+            src="/screenshots/no.es.basura.png"
+            alt="no.es.basura."
+className="absolute left-6 md:left-20 top-[55%] -translate-y-1/2 w-16 sm:w-24 md:w-40 z-10 drop-shadow-xl -rotate-12"/>
+        {/* Sticker DERECHA */}
+        <img
+            src="/screenshots/mundo.beland.png"
+            alt="Mundo Beland"
+className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-40 z-10 drop-shadow-xl rotate-12"
+/>
         <p className="text-2xl md:text-4xl italic text-slate-600 leading-snug relative z-20">
             “Así es Beland, la primera plataforma de la Argentina que
-            <span className="text-[#769C48] font-black uppercase"> te paga por reciclar.</span>”
+            <span className="text-[#769C48] font-black uppercase">
+                {" "}te paga por reciclar.
+            </span>”
         </p>
 
-        <div>
-            <p className="text-5xl font-black italic mb-4">Forbes</p>
-            <button onClick={() => window.open("https://www.forbesargentina.com/...", "_blank")} className="font-black uppercase underline text-xs hover:text-[#769C48] transition-colors">
-                Leer artículo
-            </button>
-        </div>
+        <p className="text-5xl font-black italic">Forbes</p>
 
-        {/* Sticker DERECHA: Mundo Beland */}
-        <img 
-            src="/screenshots/mundo.beland.png" 
-            alt="Mundo Beland" 
-className="absolute right-0 md:right-6 top-1/2 -translate-y-1/2 w-28 md:w-40 z-10 drop-shadow-xl rotate-12 hidden sm:block"        />
+        <button
+            onClick={() => window.open("https://www.forbesargentina.com/", "_blank")}
+            className="font-black uppercase underline text-xs hover:text-[#769C48] transition-colors"
+        >
+            Leer artículo
+        </button>
 
     </div>
 </section>
 
 
-            {/* BOTÓN FINAL BELAND.APP - AJUSTADO PARA MOBILE */}
-<div className="flex justify-center w-full py-6 px-4 md:px-6">
+       <div className="flex justify-center py-16">
     <Button
         onClick={() => window.open("https://beland.app", "_blank")}
-        className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-16 px-8 text-lg md:text-xl font-bold shadow-xl w-full md:w-auto flex items-center justify-center gap-2 transition-transform hover:scale-105"
+        className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-16 px-10 text-lg md:text-xl font-bold shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
     >
         Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
     </Button>
 </div>
 
-            {/* 7. CONTACTO */}
-            <section className="py-12 pb-24 flex flex-col items-center gap-6">
-                <Button
-                    onClick={() => window.open("https://wa.me/593995269974", "_blank")}
-                    className="bg-[#25D366] hover:bg-[#1eb956] text-white rounded-full h-14 px-10 text-lg font-semibold flex items-center gap-2 shadow-lg transition-transform hover:scale-105"
-                >
-                    <MessageCircle size={24} />
-                    Contactanos
-                </Button>
-            </section>
-        </div>
-    );
+    {/* 7. CONTACTO */ }
+    < section className="py-12 pb-24 flex flex-col items-center gap-6" >
+        <Button
+            onClick={() => window.open("https://wa.me/593995269974", "_blank")}
+            className="bg-[#25D366] hover:bg-[#1eb956] text-white rounded-full h-14 px-10 text-lg font-semibold flex items-center gap-2 shadow-lg transition-transform hover:scale-105"
+        >
+            <MessageCircle size={24} />
+            Contactanos
+        </Button>
+   </section>
+   
+</div>
+);
 }
