@@ -65,7 +65,7 @@ export default function HamoniCircularPage() {
         return () => clearInterval(timer);
     }, [texts.length]);
 
-    // Lógica para ocultar header/footer generales si es necesario
+    //  ocultar header/footer generales 
     useEffect(() => {
         const hideElements = () => {
             const elements = ["header", "footer", "nav"];
@@ -124,7 +124,7 @@ export default function HamoniCircularPage() {
                                 </p>
 
                                 <p className="text-sm sm:text-base md:text-xl text-slate-700 leading-relaxed max-w-xl mx-auto">
-                                    Compra desde
+                                    Compra desde {" "}
                                     <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="text-[#769C48] underline font-bold hover:text-orange-500 transition-colors">
                                         beland.app
                                     </a>
@@ -179,21 +179,20 @@ export default function HamoniCircularPage() {
                 </div>
 
                 {/* BOTÓN beland.app */}
-                <div className="flex justify-center w-full">
+                <div className="flex justify-center w-full -mt-6 mb-20 md:mb-28">
                     <Button
-                        onClick={() => window.open("https://beland.app", "_blank")}
-                        className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-14 md:h-16 px-8 md:px-12 text-lg md:text-xl font-bold shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
-                    >
-                        Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
-                    </Button>
+    onClick={() => window.open("https://beland.app", "_blank")}
+    className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-12 md:h-14 px-8 md:px-12 text-lg md:text-xl font-bold shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
+>
+    Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+</Button>
                 </div>
             </div>
-        
-          
 
         {/* --- Adios al problema de la basura*/ }
-        < div className = "w-full flex flex-col items-center justify-center text-center space-y-4 mb-12 px-4" >
-    <h2 className="text-3xl md:text-5xl font-black uppercase italic leading-tight md:leading-none w-full">
+<div className="w-full flex flex-col items-center justify-center text-center space-y-4 mb-12 px-4 mt-16 md:mt-24">
+        <h2 className="text-3xl md:text-5xl font-black uppercase italic leading-tight md:leading-none w-full">
+
         Adios al problema de la basura: <br className="hidden md:block" />
         <span className="text-[#769C48]"> infraestructura y orden.</span>
     </h2>
@@ -234,9 +233,9 @@ export default function HamoniCircularPage() {
             </section >
 
         {/* 5. CALENDARIO */ }
-        < section className = "py-20 px-6" >
+        <section className="py-12 md:py-16 px-6">
             <div className="max-w-4xl mx-auto text-center space-y-10">
-                <h2 className="text-4xl md:text-5xl font-black uppercase italic">Calendario Comunitario 📅</h2>
+                <h2 className="text-4xl md:text-5xl font-black uppercase italic">Calendario y Bienestar Comunitario 📅</h2>
                 <div className="bg-white rounded-[2rem] shadow-xl overflow-hidden border">
                     {schedule.map((item, i) => (
                         <div key={i} className="grid grid-cols-1 md:grid-cols-3 p-6 border-b last:border-none hover:bg-slate-50 transition-colors">
@@ -257,12 +256,13 @@ export default function HamoniCircularPage() {
         <img
             src="/screenshots/no.es.basura.png"
             alt="no.es.basura."
-className="absolute left-6 md:left-20 top-[55%] -translate-y-1/2 w-16 sm:w-24 md:w-40 z-10 drop-shadow-xl -rotate-12"/>
+    className="absolute left-6 md:left-20 top-[55%] -translate-y-1/2 w-20 sm:w-28 md:w-48 z-10 drop-shadow-xl -rotate-12"
+/>
         {/* Sticker DERECHA */}
         <img
             src="/screenshots/mundo.beland.png"
             alt="Mundo Beland"
-className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 w-16 sm:w-24 md:w-40 z-10 drop-shadow-xl rotate-12"
+className="absolute right-2 md:right-16 top-1/2 -translate-y-1/2 w-20 sm:w-28 md:w-48 z-10 drop-shadow-xl rotate-12"
 />
         <p className="text-2xl md:text-4xl italic text-slate-600 leading-snug relative z-20">
             “Así es Beland, la primera plataforma de la Argentina que
@@ -284,10 +284,10 @@ className="absolute right-6 md:right-20 top-1/2 -translate-y-1/2 w-16 sm:w-24 md
 </section>
 
 
-       <div className="flex justify-center py-16">
+     <div className="flex justify-center py-16 w-full">
     <Button
         onClick={() => window.open("https://beland.app", "_blank")}
-        className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-16 px-10 text-lg md:text-xl font-bold shadow-xl flex items-center gap-2 transition-transform hover:scale-105"
+        className="bg-[#769C48] hover:bg-[#63843d] text-white rounded-2xl h-16 w-full md:w-auto px-10 text-lg md:text-xl font-bold shadow-xl flex items-center justify-center gap-2 transition-transform hover:scale-105"
     >
         Beland.app <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
     </Button>
