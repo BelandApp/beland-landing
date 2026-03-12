@@ -274,7 +274,7 @@ className="absolute right-2 md:right-16 top-1/2 -translate-y-1/2 w-20 sm:w-28 md
         <p className="text-5xl font-black italic">Forbes</p>
 
         <button
-            onClick={() => window.open("https://www.forbesargentina.com/", "_blank")}
+            onClick={() => window.open("https://www.forbes.com.ec/tags/beland-t23852", "_blank")}
             className="font-black uppercase underline text-xs hover:text-[#769C48] transition-colors"
         >
             Leer artículo
