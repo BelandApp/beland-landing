@@ -49,22 +49,26 @@ const dreamTeam = [
   {
     name: "Diego Vargas",
     role: "Founder & CEO",
-    specialty: "Especialista en Innovación - Creador del modelo Beland"
+    specialty: "Especialista en Innovación - Creador del modelo Beland",
+    image: "/screenshots/diego.JPEG"
   },
   {
     name: "Ezequiel Alonso",
     role: "Founding Backend Architect",
-    specialty: "Especialista en desarrollo Backend"
+    specialty: "Especialista en desarrollo Backend",
+    
   },
   {
     name: "Victor De Menezes",
     role: "Founding Product Engineer",
-    specialty: "Especialista en desarrollo Frontend & Mobile"
+    specialty: "Especialista en desarrollo Frontend & Mobile",
+    image: "/screenshots/victor.PNG"
   },
   {
     name: "Yanina Soto",
     role: "Founding Data Scientist",
-    specialty: "Especialista en Data Science y desarrollo mobile"
+    specialty: "Especialista en Data Science y desarrollo mobile",
+    image: "/screenshots/yanina.JPEG"
   }
 ];
 
@@ -291,9 +295,11 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {dreamTeam.map((member, i) => (
               <div key={i} className="group p-8 rounded-[2.5rem] bg-[#FAF9F6] border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300">
-                <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:bg-[#769C48] transition-colors duration-300">
-                  <Users className="w-6 h-6 text-[#769C48] group-hover:text-white" />
-                </div>
+<div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden shadow-sm mb-6 group-hover:bg-[#769C48] transition-colors duration-300">
+  <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+</div>
+  
+                
                 <h3 className="text-2xl font-black uppercase italic text-slate-900 mb-1 leading-none">{member.name}</h3>
                 <p className="text-[#769C48] font-bold text-sm uppercase tracking-widest mb-4">{member.role}</p>
                 <div className="h-px w-8 bg-orange-500 mb-4 group-hover:w-full transition-all duration-500"></div>
