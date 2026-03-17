@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, PlayCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export function VideoCarousel() {
+export default function VideoCarousel() {
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
 

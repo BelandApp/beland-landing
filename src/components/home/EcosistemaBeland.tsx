@@ -9,7 +9,7 @@ const experiencias = [
     title: "Gana monedas por reciclar",
     description: "Las puedes utilizar dentro del ecosistema Beland o transferirlas a tu cuenta de banco 🤑",
     icon: Coins,
-    color: "bg-green-50 text-green-600", // Colores suaves como en la imagen
+    color: "bg-green-50 text-green-600",
   },
   {
     title: "Delivery Circular",
@@ -31,12 +31,10 @@ const experiencias = [
   },
 ];
 
-export function EcosistemaBeland() {
+export default function EcosistemaBeland() {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        
-        {/* Encabezado Estilo Imagen 1 */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
             La experiencia <span className="text-primary">Beland</span>
@@ -46,7 +44,6 @@ export function EcosistemaBeland() {
           </p>
         </div>
 
-        {/* Grid de 4 Cards Verticales (Idéntico a la imagen de referencia) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {experiencias.map((item, index) => {
             const Icon = item.icon;
@@ -55,17 +52,12 @@ export function EcosistemaBeland() {
                 key={index}
                 className="flex flex-col items-center text-center p-10 rounded-[2rem] border border-slate-100 bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full"
               >
-                {/* Icono Centrado con fondo redondeado */}
                 <div className={`w-20 h-20 rounded-2xl ${item.color} flex items-center justify-center mb-8`}>
                   <Icon className="w-10 h-10" />
                 </div>
-
-                {/* Título en el medio */}
                 <h3 className="text-2xl font-bold tracking-tight text-slate-900 mb-4 min-h-[64px] flex items-center justify-center">
                   {item.title}
                 </h3>
-
-                {/* Descripción abajo */}
                 <p className="text-slate-500 leading-relaxed text-base">
                   {item.description}
                 </p>

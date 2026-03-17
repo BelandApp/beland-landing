@@ -1,26 +1,30 @@
-import { Hero } from "@/components/home/hero";
-import { ImpactStats } from "@/components/home/impact-stats";
-import { CTA } from "@/components/home/cta";
-import { ConexionCircular } from "@/components/home/conexion-circular";
-import { CaaSPackages } from "@/components/home/caas-packages";
-import { EcosistemaBeland } from "@/components/home/ecosistema-beland"; // Nombre corregido
-import { Features } from "@/components/home/features";
-import { VideoCarousel } from "@/components/home/video-carousel";
+import Hero from "../components/home/Hero";
+import ImpactStats from "../components/home/ImpactStats";
+import CaaSPackages from "../components/home/CaaSPackages";
+import Features from "../components/home/Features";
+import EcosistemaBeland from "../components/home/EcosistemaBeland";
+import VideoCarousel from "../components/home/VideoCarousel";
 
-export default function Home() {
+
+  export default function Home() {
   return (
     <main className="flex flex-col">
+      {/* 1. Inicio */}
       <Hero />
       
-      {/* Esta es la sección de las tarjetas con emoticones que acabamos de arreglar */}
+      {/* 2. Impacto */}
+      <ImpactStats />
+      
+      {/* 3. La experiencia Beland (Ahora aquí, después de impacto) */}
       <EcosistemaBeland /> 
       
-      <ImpactStats />
-      <ConexionCircular />
-      <Features />
-      <CaaSPackages />
+      {/* 4. Modelos y Planes */}
+      <CaaSPackages /> 
       
-      {/* El carrusel de videos que lleva a la Galería Completa */}
+      {/* 5. Características adicionales */}
+      <Features /> 
+      
+      {/* 6. Carrusel de Videos */}
       <VideoCarousel />
 
       {/* <CTA /> */}

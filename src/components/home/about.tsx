@@ -56,13 +56,13 @@ const dreamTeam = [
     name: "Ezequiel Alonso",
     role: "Founding Backend Architect",
     specialty: "Especialista en desarrollo Backend",
-    
+    image: "/screenshots/eze.jpeg"
   },
   {
     name: "Victor De Menezes",
     role: "Founding Product Engineer",
     specialty: "Especialista en desarrollo Frontend & Mobile",
-    image: "/screenshots/victor.PNG"
+    image: "/screenshots/victor.jpeg"
   },
   {
     name: "Yanina Soto",

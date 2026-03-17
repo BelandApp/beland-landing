@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
-import React from "react";
+
+import React, { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
@@ -15,13 +16,16 @@ import { Logo } from "@/components/ui/logo";
 const routes = [
   { href: "/", label: "Home" },
   { href: "/#caas", label: "CaaS" },
-  { href: "/#conexion", label: "Conexión" },
+  { href: "/conexion", label: "Conexión" },
   { href: "/about", label: "Nosotros" },
   { href: "/blog", label: "Blog" },
 ];
 
 export function Header() {
+  
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
   const activeSection = useScrollSpy(
     routes
       .map((route) => route.href)
@@ -52,11 +56,14 @@ export function Header() {
           <Logo />
           
           {/* NAVEGACIÓN DESKTOP */}
-          <nav className="ml-10 hidden md:flex items-center space-x-8 text-sm font-medium">
-            {routes.map((route) => {
-              const isActive = (route.href === "/" && pathname === "/") || 
-                               (pathname === "/" && `/#${activeSection}` === route.href) ||
-                               (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
+<nav className="ml-10 hidden md:flex items-center space-x-8 text-sm font-medium">
+  {routes.map((route) => {
+    const isActive = 
+      (route.href === "/" && pathname === "/") || 
+      (pathname === "/" && `/#${activeSection}` === route.href) ||
+      (pathname === route.href) || // <--- AGREGA ESTA LÍNEA
+      (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
+
               return (
                 <Link
                   key={route.href}

@@ -57,12 +57,12 @@ const features: Feature[] = [
 
 type Props = { compact?: boolean };
 
-export function Features({ compact }: Props) {
+export default function Features({ compact }: Props) {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   if (compact) {
     return (
-      <section ref={ref} id="features" className="py-12">
+      <section ref={ref} id="Features" className="py-12">
         <div className="container">
           <div className="bg-white dark:bg-card p-6 rounded-2xl border-2 border-primary/10 flex items-center justify-between">
             <div>

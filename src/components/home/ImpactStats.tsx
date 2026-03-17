@@ -31,7 +31,7 @@ const stats = [
   },
 ];
 
-export function ImpactStats() {
+export default function ImpactStats() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
 
   return (
