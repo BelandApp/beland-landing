@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode Palette - FINAL */
+    --background: 0 0% 100%; /* White */
+    --foreground: 240 10% 3.9%; /* Near Black */
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 240 10% 3.9%; /* Near Black */
+
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 240 10% 3.9%; /* Near Black */
+
+    /* Beland Green */
+    --primary: 95 39% 40%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Beland Orange */
+    --secondary: 24 95% 53%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 85%; /* Darker, more noticeable Gray */
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 95 39% 40%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark Mode Palette - Corporate colors with dark backgrounds */
+    --background: 240 10% 10%; /* Dark background */
+    --foreground: 0 0% 98%; /* Almost white text */
+
+    --card: 240 10% 13%; /* Dark card background */
+    --card-foreground: 0 0% 98%; /* Light text on dark cards */
+
+    --popover: 240 10% 13%; /* Dark popover */
+    --popover-foreground: 0 0% 98%; /* Light text */
+
+    /* Beland Green - Brighter for dark mode */
+    --primary: 95 45% 55%;
+    --primary-foreground: 0 0% 10%;
+
+    /* Beland Orange - Brighter for dark mode */
+    --secondary: 24 95% 60%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 240 10% 20%; /* Muted dark gray */
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 10% 20%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 95 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-subtle {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-1000 {
+    animation-delay: 1s;
+  }
+}
