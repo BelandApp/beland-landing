@@ -106,9 +106,7 @@ export default function HamoniCircularPage() {
                 <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-orange-500">
                     ¡Hola, vecin@!
                 </h2>
-               <p className="mt-8 text-lg sm:text-xl md:text-2xl font-bold uppercase italic text-red-600">
-  A partir del día Lunes 16 de Marzo ⌛
-</p>
+               
             </div>
 
             {/* 3. SECCIÓN PRINCIPAL: APP Y CARRUSEL */}

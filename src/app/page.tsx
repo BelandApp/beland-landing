@@ -97,7 +97,7 @@ export const CommunityHorizontal = () => {
           ))}
         </div>
 
-        {/* Mismas flechitas que el video */}
+        {/* flechitas */}
         <div className="flex justify-end gap-2 mt-4 mr-4">
           <button 
             onClick={() => scroll("left")}
