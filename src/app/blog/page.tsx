@@ -24,13 +24,13 @@ export default function BlogPage() {
   };
 
   return (
-    <>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <section className="relative min-h-[40vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="absolute top-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
-        <div className="container relative z-10 py-20">
+        <div className="container relative z-10 pt-24 pb-8"> {/* Ajuste de padding inferior */}
           <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
             <Badge className="text-sm px-5 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border-primary/30">
               <BookOpen className="w-4 h-4 mr-2" />
@@ -50,6 +50,34 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+      
+      {/* CTA Section  */}
+      <section className="py-12 bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/20">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center space-y-4 animate-fade-in">
+            <Sparkles className="w-12 h-12 mx-auto text-primary animate-pulse" />
+            <h2 className="text-2xl md:text-3xl font-extrabold">
+              ¿Quieres estar al día con la{" "}
+              <span className="text-primary">economía circular</span>?
+            </h2>
+            <p className="text-muted-foreground">
+              Suscríbete para recibir las últimas novedades, casos de éxito e
+              insights del mundo sostenible
+            </p>
+            <div className="flex justify-center pt-8">
+              <a 
+                href="https://diegoe-vargasavila.medium.com/circularidad-la-respuesta-ante-el-colapso-integral-de-nuestro-modelo-de-desarrollo-fe2d9a664273" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-[#769C48] text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform shadow-lg flex items-center gap-2"
+              >
+                <span>Leer en Medium</span>
+                <Sparkles className="w-4 h-4 text-yellow-300" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Blog Grid */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-white via-primary/5 to-white dark:from-background dark:via-primary/10 dark:to-background">
@@ -65,6 +93,7 @@ export default function BlogPage() {
               </div>
             ))}
           </div>
+          
           {totalPages > 1 && (
             <div className="mt-16 animate-fade-in">
               <Pagination
@@ -76,34 +105,6 @@ export default function BlogPage() {
           )}
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 dark:from-primary/20 dark:via-secondary/10 dark:to-primary/20">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center space-y-4 animate-fade-in">
-            <Sparkles className="w-12 h-12 mx-auto text-primary animate-pulse" />
-            <h2 className="text-2xl md:text-3xl font-extrabold">
-              ¿Quieres estar al día con la{" "}
-              <span className="text-primary">economía circular</span>?
-            </h2>
-            <p className="text-muted-foreground">
-              Suscríbete para recibir las últimas novedades, casos de éxito e
-              insights del mundo sostenible
-            </p>
-            {/* BOTÓN SOLO PARA AGREGAR EL LINK A MEDIUM */}
-            <div className="flex justify-center pt-8">
-              <a 
-                href="https://diegoe-vargasavila.medium.com/circularidad-la-respuesta-ante-el-colapso-integral-de-nuestro-modelo-de-desarrollo-fe2d9a664273" 
-                target="_blank" 
-                className="bg-[#769C48] text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition-transform shadow-lg flex items-center gap-2"
-              >
-                <span>Leer en Medium</span>
-                <Sparkles className="w-4 h-4 text-yellow-300" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

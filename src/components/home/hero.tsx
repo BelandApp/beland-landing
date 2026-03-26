@@ -13,7 +13,7 @@ export default function Hero() {
     { src: "/screenshots/home1.jpeg", alt: "App home", title: "Home", text: "Menu principal, donde visualizas tu billetera, cuentas y impacto." },
     { src: "/screenshots/registrate.jpeg", alt: "App home", title: "Regístrate en la App ", text: "Regístrate, explora, participa y transforma consumo en acción." },
     { src: "/screenshots/home.jpeg", alt: "App home", title: "Ingresa a la App", text: "Carga saldo, compra tus productos, recibelos en tu hogar y transforma consumo en acción." },
-    { src: "/screenshots/billetera.jpeg", alt: "App billetera", title: "Billetera: recarga y compra", text: "Recarga saldo, compra tus productos y recibelos en tu hogar. Transacciones que generan valor social y ambiental." },
+    { src: "/screenshots/mismonedas.jpeg", alt: "App billetera", title: "Recarga saldo y compra", text: "Recarga saldo, compra tus productos y recibelos en tu hogar. Transacciones que generan valor social y ambiental." },
     { src: "/screenshots/grupos.jpeg", alt: "App grupos", title: "Crea tus grupos o únete a uno", text: "Únete a grupos o crea el tuyo para organizar tu propio evento circular." },
     { src: "/screenshots/carrito2.jpeg", alt: "App carrito", title: "Delivery con propósito", text: "Cada entrega impulsa una red de impacto circular: recibí tu pedido y entregá tus reciclables." },
     { src: "/screenshots/impacto.jpeg", alt: "App impacto", title: "Tu impacto", text: "Descubre tu impacto con Beland, cuantos kg reciclaste, cuantos litros de agua conservaste y tus Becoins obtenidos." },
@@ -92,16 +92,8 @@ export default function Hero() {
       )}
 
       <div className="relative z-10 container mx-auto px-4 mt-8 md:mt-0 max-w-4xl">
-        
-        {/* 1. Badge Superior */}
-        <div className="flex justify-center mb-6 md:mb-4 w-full">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 backdrop-blur-sm w-fit">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="text-[10px] sm:text-xs md:text-sm font-medium text-center">La primera plataforma circular de Latinoamérica</span>
-          </div>
-        </div>
 
-        {/* 2. Logo Protagonista (Con filtro Mix Blend para el fondo) */}
+        {/* 2. Logo  */}
         <div className="flex flex-col items-center text-center mb-2 px-4">
           <div className="relative flex justify-center w-full max-w-[280px] sm:max-w-[380px] md:max-w-[480px] mix-blend-multiply">
             <Image
@@ -115,7 +107,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 3. Carrusel del Celular (Subido para estar cerca del logo) */}
+        {/* 3. Carrusel del Celular  */}
         <div className="flex justify-center items-center mb-10 md:mb-12 mt-0">
           <div 
             className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] cursor-pointer"
@@ -165,7 +157,7 @@ export default function Hero() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10 mt-10 border-t border-[#769C48]/20 items-stretch">
   
-  {/* COLUMNA 1: PROPÓSITO (Fondo Blanco / Borde Verde) */}
+  {/*  PROPÓSITO  */}
   <div className="group relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-500 flex flex-col justify-center">
     {/* Badge de Propósito */}
     <div className="absolute -top-3 left-8 px-4 py-1 bg-[#769C48] text-white rounded-full shadow-md">
@@ -177,9 +169,9 @@ export default function Hero() {
     </p>
   </div>
 
-  {/* COLUMNA 2: INTEGRACIÓN (Fondo Verde Suave / Acento Naranja) */}
+  {/*  INTEGRACIÓN  */}
   <div className="relative p-8 rounded-[2.5rem] bg-[#769C48]/5 border-l-8 border-[#769C48] flex flex-col justify-center overflow-hidden">
-    {/* Icono de Sparkles en Naranja para dar vida */}
+    
     <div className="absolute top-6 right-8 opacity-20">
       <Sparkles className="w-10 h-10 text-orange-500" />
     </div>
@@ -189,7 +181,7 @@ export default function Hero() {
       integra pagos, delivery y recompensas dentro de un mismo sistema, impulsando una red donde cada <span className="text-orange-600 font-bold">acción positiva</span> fortalece a toda la comunidad.
     </p>
 
-    {/* Decoración de puntos o línea sutil */}
+    {/*  puntos o línea  */}
     <div className="flex gap-1.5 mt-4">
       <div className="h-1.5 w-6 bg-[#769C48] rounded-full" />
       <div className="h-1.5 w-1.5 bg-orange-400 rounded-full" />

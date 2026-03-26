@@ -7,13 +7,13 @@ import { Card } from "@/components/ui/card";
 const experiencias = [
   {
     title: "Gana monedas por reciclar",
-    description: "Las puedes utilizar dentro del ecosistema Beland o transferirlas a tu cuenta de banco 🤑",
+    description: "Las puedes usar dentro del ecosistema Beland o enviarlas a tu cuenta de banco 🤑",
     icon: Coins,
     color: "bg-green-50 text-green-600",
   },
   {
     title: "Delivery Circular",
-    description: "Compra desde casa. Llevamos tu pedido y retiramos tus residuos sin costo. ¡Gana hasta 5% cashback! ♻️",
+    description: "Compra desde casa. Llevamos tu pedido y retiramos tus residuos sin costo. ¡Gana hasta 2% cashback! ♻️",
     icon: Truck,
     color: "bg-orange-50 text-orange-600",
   },

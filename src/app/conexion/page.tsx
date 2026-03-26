@@ -1,13 +1,15 @@
 "use client";
 
+
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+
 import Image from "next/image";
-import React, { useState } from "react";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -27,6 +29,8 @@ import {
   Target,
   Quote,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 // --- DATOS ---
@@ -134,52 +138,122 @@ const CAROUSEL_VIDEOS = [
   { id: "conexion-1", src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774112788/conexion.1_u8dpnh.mp4", label: "Conexión 1" },
   { id: "deborah", src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774060031/deborah_ykxfs4.mp4", label: "Deborah" },
   { id: "cristoph", src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774060020/cristoph_f6sbcz.mp4", label: "Cristoph" },
-  { id: "circular-2", src:"https://res.cloudinary.com/djp2qzp9f/video/upload/v1774130571/circular.2_lqrq6j.mp4", label: "Conexion 2 " },
+  { id: "circular-2", src:"https://res.cloudinary.com/djp2qzp9f/video/upload/a_-90,q_auto,f_auto,w_1280/v1774545714/IMG_0127_1_1_y2sjbu.mp4", label: "Conexion 2 " },
  
 ];
 export const VideoCarousel = () => {
+  const swiperRef = useRef<any>(null);
+
   return (
-    <div className="w-full max-w-6xl mx-auto px-4">
+    <div className="w-full max-w-6xl mx-auto px-4 relative group">
       <Swiper
-        modules={[Navigation, Pagination]}
+        onBeforeInit={(swiper) => { swiperRef.current = swiper; }}
+        modules={[Pagination]}
         spaceBetween={20}
         slidesPerView={1} 
-        navigation
-        pagination={{ clickable: true }}
+       
         className="rounded-xl overflow-hidden shadow-lg"
       >
         {CAROUSEL_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-            
             <div className="aspect-video bg-black flex items-center justify-center">
-              <video
-                src={video.src}
-                
-                className="w-full h-full object-contain"
-                controls
-                playsInline
-                muted
-                loop
-              />
+              <video src={video.src} className="w-full h-full object-contain" controls playsInline muted loop />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <div className="flex justify-end gap-2 mt-4 relative z-50">
+        <button onClick={() => swiperRef.current?.slidePrev()} className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-slate-900 border border-slate-100 active:scale-95">
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button onClick={() => swiperRef.current?.slideNext()} className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center hover:bg-[#769C48] hover:text-white transition-all text-slate-900 border border-slate-100 active:scale-95">
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
     </div>
   );
 };
 
-
 export default function ConexionPage() {
-  const [selectedTab, setSelectedTab] = useState("conexion1");
+  const [selectedTab, setSelectedTab] = useState("total");
   
   const globalData = events.find(e => e.id === "total") || events[0];
   const totalRecicladoGlobal = Object.values(globalData.recycling).reduce((a, b) => a + b, 0);
 
   return (
     <main className="min-h-screen bg-background">
+      {/* --- FESTIVAL CIRCULAR 2026 --- */}
+      <section className="py-24 bg-white">
+        <div className="container px-6 mx-auto">
+          <div className="text-center mb-20">
+            <Badge variant="outline" className="mb-4 border-slate-200 px-4 py-1">🏆 Record Guinness 2026</Badge>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
+              <span className="text-[#769C48]">Festival</span> <span className="text-orange-500">Circular</span> <br />
+              <span className="text-slate-900">Quito 2026</span>
+            </h2>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-16 max-w-6xl mx-auto items-start">
+            <div className="flex-1 space-y-12">
+              <div className="flex gap-6">
+                <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center shrink-0 border border-green-100">
+                  <Target className="w-7 h-7 text-[#769C48]" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black uppercase italic mb-2">El Reto</h4>
+                  <p className="text-slate-600 text-lg leading-relaxed">Este año nos propusimos demostrar que la circularidad funciona. Activamos barrios, reciclamos desde la base y generamos comunidad, contenido y retorno real. Todo esto es solo el comienzo.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0 border border-orange-100">
+                  <Sparkles className="w-7 h-7 text-orange-500" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black uppercase italic mb-2">Festival Circular 2026</h4>
+                  <p className="text-slate-600 text-lg leading-relaxed">Lanzamos el primer Festival Circular del mundo en Quito, con toda la ciudad en simultáneo, durante una semana de música, cultura y producción circular.</p>
+                </div>
+              </div>
+
+              <div className="bg-[#FAF9F6] p-10 rounded-[2.5rem] border border-slate-100 relative mt-16">
+                <Quote className="absolute -top-5 -left-2 w-10 h-10 text-orange-200" />
+                <p className="italic text-xl text-slate-700 leading-relaxed font-medium">
+                  "No se trata solo de romper un récord. Se trata de transformar lo que el mundo desecha en riqueza 
+                  para la comunidad, valor para el mercado e impacto real para el planeta. La circularidad no es el futuro, 
+                  es el nuevo estándar."
+                </p>
+                <p className="mt-6 font-black text-[#769C48] uppercase tracking-widest text-sm">— Team Beland</p>
+              </div>
+            </div>
+
+            <div className="flex-1 w-full lg:sticky lg:top-32">
+              <div className="bg-white rounded-[3.5rem] p-10 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-50 text-center space-y-10">
+                <h3 className="text-3xl font-black text-slate-900">El impacto que buscamos</h3>
+                <div>
+                  <span className="text-4xl font-black text-orange-500 leading-none">1</span>
+                  <p className="uppercase font-black text-slate-400 tracking-tighter">Record Guinness</p>
+                </div>
+                <div className="bg-orange-50/50 p-8 rounded-[2rem]">
+                  <span className="text-4xl font-black text-orange-500 block">$1.8M+</span>
+                  <p className="uppercase font-bold text-slate-500 text-xs mt-2 tracking-widest">Ingresos para la comunidad</p>
+                </div>
+                <Link 
+  href="https://wa.me/593995269974?text=Hola%20Diego!%20Me%20quiero%20sumar%20al%20reto%20de%20Festival%20Circular%202026" 
+  target="_blank" 
+  className="w-full"
+>
+  <button className="w-full bg-[#769C48] text-white font-black py-6 rounded-2xl flex items-center justify-center gap-4 hover:bg-[#65853d] transition-all text-xl uppercase italic shadow-lg shadow-green-900/10 cursor-pointer">
+    ¿Te sumas al reto? <ArrowRight className="w-6 h-6" />
+  </button>
+</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div className="pt-24 pb-16">
-        {/* --- SECCIÓN 1: HERO Y EVENTOS --- */}
+        {/* ---  HERO Y EVENTOS --- */}
         <section className="container mx-auto px-4 relative">
           
           <div className="text-center space-y-3 mb-12">
@@ -189,8 +263,7 @@ export default function ConexionPage() {
             <div className="max-w-2xl mx-auto pt-8 space-y-4 text-base md:text-lg text-muted-foreground">
               <p className="text-xl md:text-3xl font-bold text-foreground italic leading-snug">
                "Somos el primer movimiento cultural donde tu basura paga la fiesta."</p>
-              <p className="text-base md:text-xl text-muted-foreground leading-relaxed">
-                  Creamos experiencias que el dinero no puede comprar. Donamos los residuos a los recicladores, los verdaderos héroes del planeta.</p>
+              
             
               <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-4">
                 <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
@@ -201,7 +274,7 @@ export default function ConexionPage() {
             
             <VideoCarousel />
 
-            {/* SECCIÓN DE TOTALES DESTACADOS */}
+            {/* SECCIÓN DE TOTALES  */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-8">
               <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 backdrop-blur-sm">
                 <div className="text-2xl md:text-4xl font-black text-primary">{totalRecicladoGlobal.toFixed(0)}kg</div>
@@ -226,6 +299,8 @@ export default function ConexionPage() {
             <h2 className="text-xl md:text-3xl font-bold text-foreground uppercase tracking-tight">
              Nuestros eventos: 
             </h2>
+            <p className="text-base md:text-xl text-muted-foreground leading-relaxed">
+                  Creamos experiencias que el dinero no puede comprar. Donamos los residuos a los recicladores, los verdaderos héroes del planeta.</p>
           </div>
 
           <div className="flex flex-col md:flex-row gap-8 mt-12">
@@ -321,70 +396,7 @@ export default function ConexionPage() {
         </section> 
       </div>
 
-      {/* --- SECCIÓN 2: FESTIVAL CIRCULAR 2026 --- */}
-      <section className="py-24 bg-white">
-        <div className="container px-6 mx-auto">
-          <div className="text-center mb-20">
-            <Badge variant="outline" className="mb-4 border-slate-200 px-4 py-1">🏆 Record Guinness 2026</Badge>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9]">
-              <span className="text-[#769C48]">Festival</span> <span className="text-orange-500">Circular</span> <br />
-              <span className="text-slate-900">Quito 2026</span>
-            </h2>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-16 max-w-6xl mx-auto items-start">
-            <div className="flex-1 space-y-12">
-              <div className="flex gap-6">
-                <div className="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center shrink-0 border border-green-100">
-                  <Target className="w-7 h-7 text-[#769C48]" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-black uppercase italic mb-2">El Reto</h4>
-                  <p className="text-slate-600 text-lg leading-relaxed">Este año nos propusimos demostrar que la circularidad funciona. Activamos barrios, reciclamos desde la base y generamos comunidad, contenido y retorno real. Todo esto es solo el comienzo.</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="w-14 h-14 rounded-full bg-orange-50 flex items-center justify-center shrink-0 border border-orange-100">
-                  <Sparkles className="w-7 h-7 text-orange-500" />
-                </div>
-                <div>
-                  <h4 className="text-2xl font-black uppercase italic mb-2">Festival Circular 2026</h4>
-                  <p className="text-slate-600 text-lg leading-relaxed">Lanzamos el primer Festival Circular del mundo en Quito, con toda la ciudad en simultáneo, durante una semana de música, cultura y producción circular.</p>
-                </div>
-              </div>
-
-              <div className="bg-[#FAF9F6] p-10 rounded-[2.5rem] border border-slate-100 relative mt-16">
-                <Quote className="absolute -top-5 -left-2 w-10 h-10 text-orange-200" />
-                <p className="italic text-xl text-slate-700 leading-relaxed font-medium">
-                  "No se trata solo de romper un récord. Se trata de transformar lo que el mundo desecha en riqueza 
-                  para la comunidad, valor para el mercado e impacto real para el planeta. La circularidad no es el futuro, 
-                  es el nuevo estándar."
-                </p>
-                <p className="mt-6 font-black text-[#769C48] uppercase tracking-widest text-sm">— Team Beland</p>
-              </div>
-            </div>
-
-            <div className="flex-1 w-full lg:sticky lg:top-32">
-              <div className="bg-white rounded-[3.5rem] p-10 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-slate-50 text-center space-y-10">
-                <h3 className="text-3xl font-black text-slate-900">El impacto que buscamos</h3>
-                <div>
-                  <span className="text-4xl font-black text-orange-500 leading-none">1</span>
-                  <p className="uppercase font-black text-slate-400 tracking-tighter">Record Guinness</p>
-                </div>
-                <div className="bg-orange-50/50 p-8 rounded-[2rem]">
-                  <span className="text-4xl font-black text-orange-500 block">$1.8M+</span>
-                  <p className="uppercase font-bold text-slate-500 text-xs mt-2 tracking-widest">Ingresos para la comunidad</p>
-                </div>
-                <Link href="/caas-packages" className="w-full">
-                  <button className="w-full bg-[#769C48] text-white font-black py-6 rounded-2xl flex items-center justify-center gap-4 hover:bg-[#65853d] transition-all text-xl uppercase italic shadow-lg shadow-green-900/10 cursor-pointer">
-                    ¿Te sumas al reto? <ArrowRight className="w-6 h-6" />
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
      {/* 5. LOGO FINAL */}
       <div className="w-full bg-white pb-10 pt-4 px-4 flex justify-center overflow-hidden">

@@ -1,12 +1,13 @@
 "use client";
 
+import React, { useRef } from "react"; // Añadido useRef
 import Hero from "../components/home/hero";
 import ImpactStats from "../components/home/impactstats";
 import Features from "../components/home/features";
 import EcosistemaBeland from "../components/home/ecosistemabeland";
 import VideoCarousel from "../components/home/videocarousel";
 import Link from "next/link";
-import { ArrowRight, Quote, Users } from "lucide-react";
+import { ArrowRight, Quote, Users, ChevronLeft, ChevronRight } from "lucide-react"; // Añadidas flechas
 
 const testimonials = [
   {
@@ -42,6 +43,19 @@ const testimonials = [
 ];
 
 export const CommunityHorizontal = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollTo = direction === "left" 
+        ? scrollLeft - clientWidth 
+        : scrollLeft + clientWidth;
+      
+      scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="py-24 bg-[#F8F9FA] overflow-hidden">
       <div className="container px-6 mx-auto">
@@ -51,12 +65,15 @@ export const CommunityHorizontal = () => {
             <span className="font-bold uppercase tracking-widest text-sm">Impacto Real</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-black uppercase italic tracking-tighter leading-none">
-           Lo que nuestra <br />
-         <span className="text-[#769C48]">comunidad</span> <span className="text-orange-500">dice</span>
-           </h2>
+            Lo que nuestra <br />
+            <span className="text-[#769C48]">comunidad</span> <span className="text-orange-500">dice</span>
+          </h2>
         </div>
 
-        <div className="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-hide snap-x">
+        <div 
+          ref={scrollRef} 
+          className="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-hide snap-x no-scrollbar"
+        >
           {testimonials.map((t, i) => (
             <div 
               key={i} 
@@ -79,6 +96,22 @@ export const CommunityHorizontal = () => {
             </div>
           ))}
         </div>
+
+        {/* Mismas flechitas que el video */}
+        <div className="flex justify-end gap-2 mt-4 mr-4">
+          <button 
+            onClick={() => scroll("left")}
+            className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-slate-900 border border-slate-100 active:scale-95"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button 
+            onClick={() => scroll("right")}
+            className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center hover:bg-[#769C48] hover:text-white transition-all text-slate-900 border border-slate-100 active:scale-95"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -92,10 +125,8 @@ export default function Home() {
       <EcosistemaBeland /> 
       <Features /> 
       
-      {/* 5. Agregado aquí: La Comunidad en Horizontal */}
       <CommunityHorizontal /> 
 
-      {/* 6. Carrusel de Videos */}
       <VideoCarousel />
 
       <section className="py-20 bg-slate-50 dark:bg-slate-900/50">

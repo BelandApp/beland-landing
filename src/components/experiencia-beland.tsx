@@ -8,7 +8,7 @@ const experiencias = [
   {
     icon: <Coins className="w-5 h-5 md:w-6 md:h-6 text-primary" />,
     title: "Gana monedas por reciclar",
-    description: "Las puedes utilizar dentro del ecosistema Beland o transferirlas a tu cuenta de banco 🤯",
+    description: "Las puedes usar dentro del ecosistema Beland o enviarlas a tu cuenta de banco 🤯",
     color: "bg-primary/10",
   },
   {

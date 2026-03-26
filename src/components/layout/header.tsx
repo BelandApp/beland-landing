@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ThemeToggle } from "../theme-toggle";
+
 import { Logo } from "@/components/ui/logo";
 
 const routes = [
@@ -79,7 +79,7 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          <ThemeToggle />
+          
           
           <div className="md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>

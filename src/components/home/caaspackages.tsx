@@ -1,7 +1,6 @@
 "use client";
 
-
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"; // Ajustado según tu estructura original
 import {
   Card,
   CardContent,
@@ -10,11 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Sparkles, Zap, Rocket, ArrowRight, X, MessageCircle } from "lucide-react";
+import { Check, Sparkles, Zap, Rocket, ArrowRight, X, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useInView } from "@/hooks/use-in-view";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
 
 const packages = [
   {
@@ -60,71 +62,67 @@ const packages = [
     cta: "Comenzar Team",
   },
 ];
-const CaasVideoItem = ({ src, label }: { src: string; label: string }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const { ref, isInView } = useInView({ threshold: 0.5 });
 
- 
+const CAAS_VIDEOS = [
+  { id: 1, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774059798/caas_alhb8h.mp4", label: "Gestión Pro" },
+  { id: 2, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774538319/C7A74127-E32C-474F-BBDA-0553562537B2_1_n0oomr.mp4", label: "Impacto Circular" },
+  { id: 3, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774114482/caas.3_xzljfh.mp4", label: "Operativa Beland" },
+  { id: 4, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774540176/IMG_0126_1_1_vqnwza.mp4", label: "Comunidad" },
+];
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
+const CaasCarousel = () => {
+  const swiperRef = useRef<any>(null);
 
   return (
-    <div ref={ref} className="group relative rounded-[2rem] overflow-hidden bg-black aspect-video shadow-xl border border-slate-200 cursor-pointer" onClick={togglePlay}>
-      <video
-  ref={videoRef}
-  src={src}
-  className="w-full h-full object-contain cursor-pointer"
-  playsInline
-  loop
-  preload="metadata"
-  autoPlay={false}
-  onClick={(e) => {
-    const video = e.currentTarget;
-    if (video.paused) {
-      video.muted = false;
-      video.play();
-    } else {
-      video.pause();
-    }
-  }}
-/>
-      
-      {/* --- BOTÓN DE PLAY CENTRAL --- */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
-        <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 shadow-2xl">
-          {isPlaying ? (
-            <div className="flex gap-1">
-              <div className="w-1.5 h-6 bg-white rounded-full"></div>
-              <div className="w-1.5 h-6 bg-white rounded-full"></div>
+    <div className="w-full relative group">
+      <Swiper
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        modules={[Navigation]}
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          768: { slidesPerView: 2 },
+        }}
+        className="rounded-[2.5rem] overflow-hidden shadow-2xl"
+      >
+        {CAAS_VIDEOS.map((video) => (
+          <SwiperSlide key={video.id}>
+            <div className="aspect-video bg-black relative">
+              <video
+                src={video.src}
+                className="w-full h-full object-contain"
+                controls
+                playsInline
+                
+                loop
+              />
+              
             </div>
-          ) : (
-            <div className="ml-1 w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent"></div>
-          )}
-        </div>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-      
-      <div className="absolute bottom-4 left-5 pointer-events-none">
-        <Badge className="bg-[#769C48] text-white border-none text-[10px] uppercase tracking-widest mb-1 block w-fit">
-          Beland
-        </Badge>
-        <span className="text-white font-bold italic uppercase text-sm tracking-tight">{label}</span>
+      {/* Flechas de navegación unificadas */}
+      <div className="flex justify-end gap-2 mt-6">
+        <button 
+          onClick={() => swiperRef.current?.slidePrev()}
+          className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-slate-900 border border-slate-100 active:scale-95"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          onClick={() => swiperRef.current?.slideNext()}
+          className="w-12 h-12 rounded-2xl bg-white shadow-xl flex items-center justify-center hover:bg-[#769C48] hover:text-white transition-all text-slate-900 border border-slate-100 active:scale-95"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </div>
   );
 };
+
 export default function CaaSPackages() {
   const { ref, isInView } = useInView({ threshold: 0.2 });
   const [isOpen, setIsOpen] = useState(false);
@@ -266,13 +264,23 @@ export default function CaaSPackages() {
               <CardFooter className="px-5 pb-6 pt-4">
                 <Button
                   onClick={() => handleOpenModal(pkg.name)}
-                  className="w-full text-sm font-bold py-5 rounded-lg"
+                  className="w-full text-sm font-bold py-5 rounded-lg bg-[#769C48] text-white hover:bg-[#65853d]"
                 >
                   {pkg.cta} <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </CardFooter>
             </Card>
           ))}
+        </div>
+
+        {/* --- SECCIÓN DE VIDEOS UNIFICADA CON CAROUSEL --- */}
+        <div className="max-w-5xl mx-auto mt-24 space-y-10">
+          <div className="border-l-4 border-[#769C48] pl-6">
+            <h3 className="text-3xl font-black uppercase italic tracking-tighter">Beland en Acción</h3>
+            <p className="text-slate-500 text-lg">Visualiza el impacto real de tu suscripción.</p>
+          </div>
+          
+          <CaasCarousel />
         </div>
       </div>
 
@@ -289,7 +297,7 @@ export default function CaaSPackages() {
             <h3 className="text-xl font-bold mb-4">{selectedPlan}</h3>
 
             <input
-              className="w-full p-3 border rounded-xl mb-2"
+              className="w-full p-3 border rounded-xl mb-2 bg-white text-slate-900"
               placeholder="Tu Nombre"
               value={formData.nombre}
               onChange={(e) =>
@@ -297,17 +305,20 @@ export default function CaaSPackages() {
               }
             />
 
-            <PhoneInput
-              placeholder="WhatsApp"
-              defaultCountry="AR"
-              value={formData.tel}
-              onChange={(value) =>
-                setFormData({ ...formData, tel: value || "" })
-              }
-            />
+            <div className="phone-input-container mb-2">
+                <PhoneInput
+                placeholder="WhatsApp"
+                defaultCountry="EC"
+                value={formData.tel}
+                onChange={(value) =>
+                    setFormData({ ...formData, tel: value || "" })
+                }
+                className="w-full p-3 border rounded-xl bg-white"
+                />
+            </div>
 
             <input
-              className="w-full p-3 border rounded-xl mt-2"
+              className="w-full p-3 border rounded-xl mt-2 bg-white text-slate-900"
               placeholder="Email"
               value={formData.email}
               onChange={(e) =>
@@ -317,30 +328,17 @@ export default function CaaSPackages() {
 
             <Button
               onClick={sendToWhatsApp}
-              className="w-full mt-4 bg-green-500"
+              className="w-full mt-4 bg-green-500 text-white font-bold py-4 hover:bg-green-600 transition-colors"
             >
               <MessageCircle className="mr-2" /> Enviar
             </Button>
 
             {showConfirmation && (
-              <p className="text-center text-green-500 mt-2">¡Enviado!</p>
+              <p className="text-center text-green-500 mt-2 font-bold animate-pulse">¡Enviado!</p>
             )}
           </div>
         </div>
       )}
-      
-          <div className="max-w-5xl mx-auto mt-20 space-y-8">
-            <div className="border-l-4 border-[#769C48] pl-4">
-              <h3 className="text-2xl font-black uppercase italic">Beland en Acción</h3>
-              <p className="text-muted-foreground text-sm">Visualiza el impacto real de tu suscripción.</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <CaasVideoItem src="https://res.cloudinary.com/djp2qzp9f/video/upload/v1774059798/caas_alhb8h.mp4"  />
-              <CaasVideoItem src="https://res.cloudinary.com/djp2qzp9f/video/upload/v1774113834/caas.2_euuw8f.mp4"  />
-              <CaasVideoItem src="https://res.cloudinary.com/djp2qzp9f/video/upload/v1774114482/caas.3_xzljfh.mp4"  />
-              <CaasVideoItem src="https://res.cloudinary.com/djp2qzp9f/video/upload/v1774059774/caas.4_acmnvz.mp4"  />
-            </div>
-          </div>
     </section>
   );
 }

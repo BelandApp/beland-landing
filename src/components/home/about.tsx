@@ -71,7 +71,7 @@ export default function AboutSection() {
   },
   {
     id: 3,
-    title: "Premios Ekos",
+    title: "Reconocimiento Quito Sostenible",
     url: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774143461/premios.ekos2_nsmmbe.mp4",
   },
   {
