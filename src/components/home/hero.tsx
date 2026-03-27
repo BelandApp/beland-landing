@@ -65,7 +65,7 @@ export default function Hero() {
       
       {isFullScreen && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 transition-all duration-300 animate-in fade-in"
+          className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 transition-all duration-300 animate-in fade-in"
           onClick={() => setIsFullScreen(false)}
         >
           <button className="absolute top-6 right-6 text-white hover:scale-110 transition-transform z-[120]">
