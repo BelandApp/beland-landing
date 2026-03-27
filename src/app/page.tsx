@@ -2,8 +2,8 @@
 
 import React, { useRef } from "react"; // Añadido useRef
 import Hero from "../components/home/hero";
-import ImpactStats from "../components/home/impactstats";
-import Features from "../components/home/features";
+//import ImpactStats from "../components/home/impactstats";
+//import Features from "../components/home/features";
 import EcosistemaBeland from "../components/home/ecosistemabeland";
 import VideoCarousel from "../components/home/videocarousel";
 import Link from "next/link";
@@ -121,9 +121,9 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <Hero />
-      <ImpactStats />
+      {/*<ImpactStats />*/}
       <EcosistemaBeland /> 
-      <Features /> 
+      {/*<Features /> */}
       
       <CommunityHorizontal /> 
 
