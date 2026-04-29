@@ -186,8 +186,16 @@ export const VideoCarousel = () => {
       >
         {CAROUSEL_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-  <div className="bg-black overflow-hidden rounded-2xl">
-    <video src={video.src} className="w-full h-auto max-h-[70vh] block" controls playsInline preload="metadata" muted loop />
+  <div className="bg-black overflow-hidden rounded-2xl flex justify-center">
+    <video
+      src={video.src}
+      className="h-auto max-h-[70vh] w-auto max-w-full block"
+      controls
+      playsInline
+      preload="metadata"
+      muted
+      loop
+    />
   </div>
 </SwiperSlide>
         ))}
