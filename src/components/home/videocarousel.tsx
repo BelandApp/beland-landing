@@ -13,7 +13,7 @@ export default function VideoCarousel() {
     { 
       id: "local-01", 
       title: "Bienvenidos a Beland", 
-      url: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774060033/home.1_zoze9u.mp4", 
+      url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774060033/home.1_zoze9u.mp4", 
       isLocal: true 
     },
     { id: "1110360770", title: "La historia de tus residuos con Beland", isLocal: false },
@@ -47,7 +47,7 @@ export default function VideoCarousel() {
         {/* 2. Visor de Video */}
         <div className="relative group max-w-4xl mx-auto mb-12">
           
-          <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden shadow-2xl bg-black border-4 border-white z-10">
+          <div className="relative w-full aspect-[4/5] sm:aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black border-4 border-white z-10">
             
             {videos[index].isLocal ? (
               <video
@@ -56,17 +56,16 @@ export default function VideoCarousel() {
                 src={videos[index].url}
                 controls
                 playsInline
-                
+                preload="metadata"
                 loop
-                
-                className="absolute inset-0 w-full h-full object-contain bg-black brightness-90 transition-all hover:brightness-100" 
+                className="absolute inset-0 w-full h-full object-contain object-center bg-black brightness-90 transition-all hover:brightness-100" 
               />
             ) : (
               <iframe
                 key={videos[index].id}
-                src={`https://player.vimeo.com/video/${videos[index].id}?badge=0&autopause=0&quality=1080p&autoplay=1`}
+                src={`https://player.vimeo.com/video/${videos[index].id}?badge=0&autopause=0&quality=1080p`}
                 className="absolute inset-0 w-full h-full z-10"
-                allow="autoplay; fullscreen; picture-in-picture"
+                allow="fullscreen; picture-in-picture"
                 allowFullScreen
                 style={{ border: 0, width: '100%', height: '100%' }}
               />

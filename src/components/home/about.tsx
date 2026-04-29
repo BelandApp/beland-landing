@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Sparkles, Trophy, Target, ArrowRight, Quote, Play, Users } from "lucide-react";
 import {ChevronLeft , ChevronRight} from "lucide-react";
@@ -48,11 +48,19 @@ export default function AboutSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
   
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.pause();
+    video.load();
+    setIsMuted(true);
+  }, [currentVideo]);
+
   const handlePlayVideo = () => {
     if (videoRef.current) {
       videoRef.current.muted = false;
       setIsMuted(false);
-      videoRef.current.play();
+      videoRef.current.play().catch(() => {});
       if (videoRef.current.requestFullscreen) {
         videoRef.current.requestFullscreen();
       }
@@ -62,22 +70,22 @@ export default function AboutSection() {
     {
     id: 1,
     title: "Nosotros",
-    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774142406/nosotros.05_2_f6hjcg.mp4", 
+    url:"https://res.cloudinary.com/djp2qzp9f/video/upload/v1777491873/2AB50565-2E1F-4D72-B7DD-F79E6CE03BC9_1_1_gwnyyx.mp4",
   },
     {
     id: 2,
     title: "Premios Ekos",
-    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774143013/premio.ekos_1_th4szj.mp4", 
+    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774143013/premio.ekos_1_th4szj.mp4", 
   },
   {
     id: 3,
     title: "Reconocimiento Quito Sostenible",
-    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774143461/premios.ekos2_nsmmbe.mp4",
+    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774143461/premios.ekos2_nsmmbe.mp4",
   },
   {
     id: 4,
     title: "Nuestra Esencia",
-    url: "https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
+    url: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
   },
   
   
@@ -152,8 +160,8 @@ const handlePrev = (e: React.MouseEvent) => {
             <div className="w-full order-1 md:order-2 flex flex-col items-center">
               <div className="w-full relative group">
                 <div 
-                  className="relative w-full rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/5] md:aspect-square lg:aspect-[4/5] bg-black cursor-pointer border-4 border-white z-10"
-                  onClick={() => {
+
+className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer border-4 border-white z-10"                  onClick={() => {
                     if (videoRef.current) {
                       if (videoRef.current.paused) {
                         videoRef.current.play();
@@ -166,14 +174,12 @@ const handlePrev = (e: React.MouseEvent) => {
                   }}
                 >
                   <video 
-                    key={aboutVideos[currentVideo].url} 
                     ref={videoRef}
-                    preload="auto"
-                    autoPlay 
+                    preload="metadata"
                     loop 
                     muted={isMuted}
                     playsInline
-                    className="object-cover w-full h-full brightness-90 transition-all hover:brightness-100"
+                    className="w-full h-auto brightness-90 transition-all hover:brightness-100 block"
                   >
                     <source src={aboutVideos[currentVideo].url} type="video/mp4" />
                   </video>

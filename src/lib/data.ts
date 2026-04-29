@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
     author: "Equipo Beland",
     date: "2025-09-04",
     imageUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_600,h_400,c_fill,q_auto,a_-90/v1757200792/Una_mirada_a_lo_que_fue_nuestra_4ta_edici%C3%B3n_de_conexioncircular_%EF%B8%8F_En_esta_edici%C3%B3n_aprendimo_kzjapm.jpg",
-    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/a_-90/v1757200792/Una_mirada_a_lo_que_fue_nuestra_4ta_edici%C3%B3n_de_conexioncircular_%EF%B8%8F_En_esta_edici%C3%B3n_aprendimo_kzjapm.mp4",
+    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto,a_-90/v1757200792/Una_mirada_a_lo_que_fue_nuestra_4ta_edici%C3%B3n_de_conexioncircular_%EF%B8%8F_En_esta_edici%C3%B3n_aprendimo_kzjapm.mp4",
     videoPosterUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_800,h_600,c_fill,q_auto,a_-90/v1757200792/Una_mirada_a_lo_que_fue_nuestra_4ta_edici%C3%B3n_de_conexioncircular_%EF%B8%8F_En_esta_edici%C3%B3n_aprendimo_kzjapm.jpg",
     content: `
       <p>La cuarta edición de <strong>#ConexiónCircular</strong> fue una montaña rusa de emociones, aprendizajes y, sobre todo, reafirmación de nuestro compromiso. Queremos compartir con ustedes una mirada íntima a lo que vivimos, lo bueno y los desafíos que nos hicieron más fuertes.</p>
@@ -92,7 +92,7 @@ export const blogPosts: BlogPost[] = [
     author: "Equipo Beland",
     date: "2025-08-28",
     imageUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_600,h_400,c_fill,q_auto/v1757200908/En_24porelplaneta_puedes_aprender_a_transformar_residuos_en_productoscirculares_%EF%B8%8FCada_produ_kckqc4.jpg",
-    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200908/En_24porelplaneta_puedes_aprender_a_transformar_residuos_en_productoscirculares_%EF%B8%8FCada_produ_kckqc4.mp4",
+    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757200908/En_24porelplaneta_puedes_aprender_a_transformar_residuos_en_productoscirculares_%EF%B8%8FCada_produ_kckqc4.mp4",
     videoPosterUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_800,h_600,c_fill,q_auto/v1757200908/En_24porelplaneta_puedes_aprender_a_transformar_residuos_en_productoscirculares_%EF%B8%8FCada_produ_kckqc4.jpg",
     content: `
       <p>El evento <strong>#24porelplaneta</strong> es mucho más que una jornada de reciclaje; es un taller de transformación, un mercado con causa y una celebración de la economía circular. Aquí es donde los residuos cobran una nueva vida, convirtiéndose en productos innovadores y llenos de propósito.</p>
@@ -109,7 +109,7 @@ export const blogPosts: BlogPost[] = [
     author: "Equipo Beland",
     date: "2025-08-27",
     imageUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_600,h_400,c_fill,q_auto/v1757201015/Les_presentamos_a_solarsoundsystem_el_primer_disco_m%C3%B3vil_solar_del_Ecuador_representado_por_p_zl3mm4.jpg",
-    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/v1757201015/Les_presentamos_a_solarsoundsystem_el_primer_disco_m%C3%B3vil_solar_del_Ecuador_representado_por_p_zl3mm4.mp4",
+    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757201015/Les_presentamos_a_solarsoundsystem_el_primer_disco_m%C3%B3vil_solar_del_Ecuador_representado_por_p_zl3mm4.mp4",
     videoPosterUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_800,h_600,c_fill,q_auto/v1757201015/Les_presentamos_a_solarsoundsystem_el_primer_disco_m%C3%B3vil_solar_del_Ecuador_representado_por_p_zl3mm4.jpg",
     content: `
       <p>¿Quién dijo que una fiesta no puede ser sostenible? En nuestra 4ta edición de <strong>Conexión Circular</strong>, rompimos paradigmas gracias a la increíble colaboración con <strong>@solarsoundsystem</strong>, el primer disco móvil alimentado por energía solar en Ecuador.</p>
@@ -125,7 +125,7 @@ export const blogPosts: BlogPost[] = [
     author: "Equipo Beland",
     date: "2025-08-22",
     imageUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_600,h_400,c_fill,q_auto,a_-90/v1757201089/Hace_unas_semanas_nos_invitaron_a_participar_de_la_semana_de_activismo_organizada_por_la_Comisi_njglcx.jpg",
-    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/a_-90/v1757201089/Hace_unas_semanas_nos_invitaron_a_participar_de_la_semana_de_activismo_organizada_por_la_Comisi_njglcx.mp4",
+    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto,a_-90/v1757201089/Hace_unas_semanas_nos_invitaron_a_participar_de_la_semana_de_activismo_organizada_por_la_Comisi_njglcx.mp4",
     videoPosterUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_800,h_600,c_fill,q_auto,a_-90/v1757201089/Hace_unas_semanas_nos_invitaron_a_participar_de_la_semana_de_activismo_organizada_por_la_Comisi_njglcx.jpg",
     content: `
       <p>Hay experiencias que nos marcan para siempre. Nuestra participación en la semana de activismo, organizada por la Comisión Europea y la fundación <strong>@cieloazulecuador</strong>, fue una de ellas. Los momentos que compartimos con los niños de dos comunidades en Otavalo son un tesoro que guardaremos siempre en nuestros corazones.</p>
@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
     author: "Equipo Beland",
     date: "2025-07-23",
     imageUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_600,h_400,c_fill,q_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.jpg",
-    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
+    videoUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
     videoPosterUrl: "https://res.cloudinary.com/dbfboc8cm/video/upload/w_800,h_600,c_fill,q_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.jpg",
     content: `
       <p>En Beland, creemos firmemente que las transformaciones más significativas comienzan con gestos sencillos. Esta convicción es el motor de nuestra alianza con <strong>Conexión Circular</strong>, una iniciativa que está redefiniendo lo que significa reciclar en nuestras comunidades.</p>

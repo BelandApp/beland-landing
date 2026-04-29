@@ -125,6 +125,51 @@ export default function Home() {
       <EcosistemaBeland /> 
       {/*<Features /> */}
       
+<section className="py-24 bg-white">
+  <div className="container px-6 mx-auto">
+    <div className="flex flex-col md:flex-row gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
+      
+      {/* IMAGEN */}
+      <div className="w-full md:w-1/2 flex justify-center">
+        <img
+          src="/screenshots/maquina-beland.png"
+          alt="Estación autónoma de reciclaje Beland"
+          className="w-full max-w-sm h-auto drop-shadow-2xl"
+        />
+      </div>
+
+      {/* TEXTO */}
+      <div className="w-full md:w-1/2 space-y-8">
+        <div>
+          <span className="text-xs font-black uppercase tracking-widest text-[#769C48]">Tecnología Circular</span>
+          <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mt-2">
+            Estación <span className="text-orange-500">Autónoma</span> <br />
+            <span className="text-[#769C48]">de Reciclaje</span>
+          </h2>
+        </div>
+
+        <p className="text-lg text-slate-600 leading-relaxed">
+          Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. Convierte el reciclaje en una experiencia visible, social y viral.
+        </p>
+
+        <ul className="space-y-3">
+          {[
+            "♻️ Acepta vidrio, aluminio, plástico y tetrapack",
+            "📸 Captura tu reacción y genera un QR único",
+            "💰 Gana monedas digitales por cada reciclaje",
+            "📊 Monitoreo remoto y panel administrativo",
+          ].map((item, i) => (
+            <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</section>
       <CommunityHorizontal /> 
 
       <VideoCarousel />

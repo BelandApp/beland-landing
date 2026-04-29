@@ -39,7 +39,11 @@ export function ThemeProvider({
       return defaultTheme;
     }
     try {
-      return (localStorage.getItem(storageKey) as Theme) || defaultTheme
+      const storedTheme = localStorage.getItem(storageKey) as Theme | null
+      if (storedTheme === "system" && !enableSystem) {
+        return "light"
+      }
+      return storedTheme || defaultTheme
     } catch (e) {
       return defaultTheme
     }
@@ -51,6 +55,11 @@ export function ThemeProvider({
     root.classList.remove("light", "dark")
 
     if (theme === "system") {
+      if (!enableSystem) {
+        root.classList.add("light")
+        return
+      }
+
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
         .matches
         ? "dark"
@@ -61,11 +70,14 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme)
-  }, [theme])
+  }, [theme, enableSystem])
 
   const value = {
     theme,
     setTheme: (theme: Theme) => {
+      if (!enableSystem && theme === "system") {
+        theme = "light"
+      }
       if (typeof window !== 'undefined') {
         localStorage.setItem(storageKey, theme)
       }

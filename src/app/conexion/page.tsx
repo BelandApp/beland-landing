@@ -134,12 +134,42 @@ const impactMetrics = [
 
 const CAROUSEL_VIDEOS = [
 
-   { id: "circular-3", src:"https://res.cloudinary.com/djp2qzp9f/video/upload/v1774059825/circular.3_iopmxg.mp4", label: "Conexion 3 " },
-  { id: "conexion-1", src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774112788/conexion.1_u8dpnh.mp4", label: "Conexión 1" },
-  { id: "deborah", src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774060031/deborah_ykxfs4.mp4", label: "Deborah" },
-  { id: "cristoph", src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774060020/cristoph_f6sbcz.mp4", label: "Cristoph" },
-  { id: "circular-2", src:"https://res.cloudinary.com/djp2qzp9f/video/upload/a_-90,q_auto,f_auto,w_1280/v1774545714/IMG_0127_1_1_y2sjbu.mp4", label: "Conexion 2 " },
- 
+  
+  { 
+    id: "circular-03", 
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774059825/circular.3_iopmxg.mp4", 
+    label: "Conexion 3" 
+  },
+  { 
+    id: "24-porelplaneta", 
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1777482837/IMG_0132_1_jrospu.mp4", 
+    label: "24-porelplaneta" 
+  },
+  { 
+    id: "conexion-1", 
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774112788/conexion.1_u8dpnh.mp4", 
+    label: "Conexión 1" 
+  },
+  { 
+    id: "deborah", 
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774060031/deborah_ykxfs4.mp4", 
+    label: "Deborah" 
+  },
+  { 
+    id: "cristoph", 
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774060020/cristoph_f6sbcz.mp4", 
+    label: "Cristoph" 
+  },
+  { 
+    id: "circular-2", 
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/a_-90,q_auto:best,f_auto,vs_40,br_5m/v1774545714/IMG_0127_1_1_y2sjbu.mp4", 
+    label: "Conexion 2" 
+  },
+  {
+    id: "circular-3",
+    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1777493595/IMG_0126_2_3_oqtowz.mp4",
+    label: "Conexion 3.1"
+  },
 ];
 export const VideoCarousel = () => {
   const swiperRef = useRef<any>(null);
@@ -156,10 +186,10 @@ export const VideoCarousel = () => {
       >
         {CAROUSEL_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-            <div className="aspect-video bg-black flex items-center justify-center">
-              <video src={video.src} className="w-full h-full object-contain" controls playsInline muted loop />
-            </div>
-          </SwiperSlide>
+  <div className="bg-black overflow-hidden rounded-2xl">
+    <video src={video.src} className="w-full h-auto max-h-[70vh] block" controls playsInline preload="metadata" muted loop />
+  </div>
+</SwiperSlide>
         ))}
       </Swiper>
 

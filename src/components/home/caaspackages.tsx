@@ -64,10 +64,10 @@ const packages = [
 ];
 
 const CAAS_VIDEOS = [
-  { id: 1, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774059798/caas_alhb8h.mp4", label: "Gestión Pro" },
-  { id: 2, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774538319/C7A74127-E32C-474F-BBDA-0553562537B2_1_n0oomr.mp4", label: "Impacto Circular" },
-  { id: 3, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774114482/caas.3_xzljfh.mp4", label: "Operativa Beland" },
-  { id: 4, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774540176/IMG_0126_1_1_vqnwza.mp4", label: "Comunidad" },
+  { id: 1, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774059798/caas_alhb8h.mp4", label: "Gestión Pro" },
+  
+  { id: 3, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774114482/caas.3_xzljfh.mp4", label: "Operativa Beland" },
+  { id: 4, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774538319/C7A74127-E32C-474F-BBDA-0553562537B2_1_n0oomr.mp4", label: "Comunidad" },
 ];
 
 const CaasCarousel = () => {
@@ -89,16 +89,17 @@ const CaasCarousel = () => {
       >
         {CAAS_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-            <div className="aspect-video bg-black relative">
-              <video
-                src={video.src}
-                className="w-full h-full object-contain"
-                controls
-                playsInline
-                loop
-              />
-            </div>
-          </SwiperSlide>
+  <div className="aspect-[9/16] sm:aspect-video bg-black relative overflow-hidden rounded-2xl flex items-center justify-center">
+    <video
+      src={video.src}
+      className="w-full h-full object-contain"
+      controls
+      playsInline
+      preload="metadata"
+      loop
+    />
+  </div>
+</SwiperSlide>
         ))}
       </Swiper>
 

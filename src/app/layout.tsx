@@ -37,7 +37,7 @@ export default function RootLayout({
 
         <body className="font-body antialiased">
       {/* <AuthProvider> */}
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <div className="flex min-h-screen flex-col">
               <Header />
               <main className="flex-1">{children}</main>

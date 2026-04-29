@@ -81,8 +81,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         
         {/* If it's a post with a video, render the video player */}
         {post.videoUrl && (
-          <div className="mb-8 md:mb-12">
-            <video controls style={{width: '100%', borderRadius: '15px'}} poster={post.videoPosterUrl}>
+          <div className="mb-8 md:mb-12 aspect-[4/5] sm:aspect-video overflow-hidden rounded-2xl">
+            <video controls preload="auto" className="w-full h-full object-cover object-top" style={{width: '100%', borderRadius: '15px'}} poster={post.videoPosterUrl}>
               <source src={post.videoUrl} type='video/mp4' />
               Tu navegador no soporta el tag de video.
             </video>
