@@ -163,12 +163,14 @@ const CAROUSEL_VIDEOS = [
   { 
     id: "circular-2", 
     src: "https://res.cloudinary.com/djp2qzp9f/video/upload/a_-90,q_auto:best,f_auto,vs_40,br_5m/v1774545714/IMG_0127_1_1_y2sjbu.mp4", 
-    label: "Conexion 2" 
+    label: "Conexion 2",
+    aspectClass: "aspect-[9/16]"
   },
   {
     id: "circular-3",
     src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1777493595/IMG_0126_2_3_oqtowz.mp4",
-    label: "Conexion 3.1"
+    label: "Conexion 3.1",
+    aspectClass: "aspect-[9/16]"
   },
 ];
 export const VideoCarousel = () => {
@@ -186,18 +188,18 @@ export const VideoCarousel = () => {
       >
         {CAROUSEL_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-  <div className="bg-black overflow-hidden rounded-2xl flex justify-center">
-    <video
-      src={video.src}
-      className="h-auto max-h-[70vh] w-auto max-w-full block"
-      controls
-      playsInline
-      preload="metadata"
-      muted
-      loop
-    />
-  </div>
-</SwiperSlide>
+            <div className={`bg-black overflow-hidden rounded-2xl flex justify-center ${video.aspectClass ?? ""}`}>
+              <video
+                src={video.src}
+                className="w-full h-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                muted
+                loop
+              />
+            </div>
+          </SwiperSlide>
         ))}
       </Swiper>
 

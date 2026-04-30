@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useRef } from "react"; // Añadido useRef
+import React, { useRef, useState} from "react"; 
 import Hero from "../components/home/hero";
 //import ImpactStats from "../components/home/impactstats";
 //import Features from "../components/home/features";
 import EcosistemaBeland from "../components/home/ecosistemabeland";
 import VideoCarousel from "../components/home/videocarousel";
 import Link from "next/link";
-import { ArrowRight, Quote, Users, ChevronLeft, ChevronRight } from "lucide-react"; // Añadidas flechas
+import { ArrowRight, Quote, Users, ChevronLeft, ChevronRight,X } from "lucide-react"; // Añadidas flechas
 
 const testimonials = [
   {
@@ -118,6 +118,11 @@ export const CommunityHorizontal = () => {
 };
 
 export default function Home() {
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const mensaje = encodeURIComponent("¡Hola Beland!, quiero obtener más información sobre las máquinas Beland ");
+  const whatsappDiego = `https://wa.me/593995269974?text=${mensaje}`;
+  const videoUrl = "https://res.cloudinary.com/djp2qzp9f/video/upload/v1777570188/WhatsApp_Video_2026-04-29_at_20.35.22_jbz4vu.mp4";
   return (
     <main className="flex flex-col">
       <Hero />
@@ -125,46 +130,91 @@ export default function Home() {
       <EcosistemaBeland /> 
       {/*<Features /> */}
       
-<section className="py-24 bg-white">
-  <div className="container px-6 mx-auto max-w-6xl">
-    
-    {/* TÍTULO */}
-    <div className="mb-10">
-      <span className="text-xs font-black uppercase tracking-widest text-[#769C48]">Tecnología Circular</span>
-      <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mt-2">
-        Estación <span className="text-orange-500">Autónoma</span> <br />
-        <span className="text-[#769C48]">de Reciclaje</span>
-      </h2>
-    </div>
+      <section className="py-24 bg-white">
+        <div className="container px-6 mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-center gap-10">
+            <div className="md:w-1/2">
+              {/* TÍTULO */}
+              <div className="mb-10">
+                <span className="text-xs font-black uppercase tracking-widest text-[#769C48]">Tecnología Circular</span>
+                <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mt-2">
+                  Estación <span className="text-orange-500">Autónoma</span> <br />
+                  <span className="text-[#769C48]">de Reciclaje</span>
+                </h2>
+              </div>
 
-    {/* DESCRIPCIÓN */}
-    <p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl">
-      Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. Convierte el reciclaje en una experiencia visible, social y viral.
-    </p>
+              {/* DESCRIPCIÓN */}
+              <p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl">
+                Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. Convierte el reciclaje en una experiencia visible, social y viral.
+              </p>
 
-    {/* IMAGEN */}
-    <div className="flex justify-center mb-10">
-      <img
-        src="/screenshots/maquina-beland.png"
-        alt="Estación autónoma de reciclaje Beland"
-        className="w-full max-w-sm h-auto drop-shadow-2xl"
-      />
-    </div>
+              {/* FEATURES + BOTÓN */}
+              <ul className="space-y-3 mb-8">
+                {[
+                  "♻️ Acepta vidrio, aluminio, plástico y tetrapack",
+                  "📸 Captura tu reacción y genera un QR único",
+                  "💰 Gana monedas digitales por cada reciclaje",
+                  "📊 Monitoreo remoto y panel administrativo",
+                ].map((item, i) => (
+                  <li key={i} className="text-slate-700 font-medium">{item}</li>
+                ))}
+              </ul>
 
-    {/* FEATURES + BOTÓN */}
-    <ul className="space-y-3 mb-8">
-      {[
-        "♻️ Acepta vidrio, aluminio, plástico y tetrapack",
-        "📸 Captura tu reacción y genera un QR único",
-        "🪙 Gana monedas digitales por cada reciclaje",
-        "📊 Monitoreo remoto y panel administrativo",
-      ].map((item, i) => (
-        <li key={i} className="text-slate-700 font-medium">{item}</li>
-      ))}
-    </ul>
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-[#769C48] to-[#5a7a36] hover:scale-105 text-white font-black uppercase italic tracking-wider rounded-2xl shadow-xl shadow-green-100 transition-all active:scale-95"
+              >
+                Cotiza la tuya
+              </button>
+            </div>
 
-  </div>
-</section>
+            <div className="w-full md:w-1/2 flex justify-center items-center mb-10 overflow-hidden">
+              <img
+                src="/screenshots/maquina-beland.png"
+                alt="Estación autónoma de reciclaje Beland"
+                className="block mx-auto w-full max-w-[320px] md:max-w-sm h-auto drop-shadow-2xl"
+              />
+            </div>
+          </div>
+
+          {isModalOpen && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/95 backdrop-blur-sm">
+              <div className="relative bg-white rounded-[2.5rem] max-w-4xl w-full overflow-hidden shadow-2xl">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute top-4 right-4 bg-black/10 hover:bg-black/20 p-2 rounded-full text-slate-800 transition-colors z-20"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+
+                <div className="aspect-video w-full bg-black">
+                  <video
+                    src={videoUrl}
+                    controls
+                    autoPlay
+                    className="w-full h-full object-contain"
+                  >
+                    Tu navegador no soporta videos.
+                  </video>
+                </div>
+
+                <div className="p-8 flex flex-col items-center text-center">
+                  <h3 className="text-2xl font-black uppercase italic text-slate-900 mb-2"> Estaciones autónomas de reciclaje Beland </h3>
+                  <p className="text-slate-500 mb-6 font-medium">Obten más información técnica y comercial.</p>
+                  <a
+                    href={whatsappDiego}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold py-4 px-10 rounded-2xl transition-all shadow-lg hover:shadow-green-200"
+                  >
+                    Contactanos
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
       <CommunityHorizontal /> 
 
       <VideoCarousel />
