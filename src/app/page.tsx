@@ -120,7 +120,7 @@ export const CommunityHorizontal = () => {
 export default function Home() {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const mensaje = encodeURIComponent("¡Hola Beland!, quiero obtener más información sobre las máquinas Beland ");
+  const mensaje = encodeURIComponent("¡Hola Beland!, quiero obtener más información sobre las máquinas Beland ♻️🍬🤯");
   const whatsappDiego = `https://wa.me/593995269974?text=${mensaje}`;
   const videoUrl = "https://res.cloudinary.com/djp2qzp9f/video/upload/v1777570188/WhatsApp_Video_2026-04-29_at_20.35.22_jbz4vu.mp4";
   return (
