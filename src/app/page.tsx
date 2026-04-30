@@ -132,50 +132,64 @@ export default function Home() {
       
       <section className="py-24 bg-white">
         <div className="container px-6 mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row md:items-center gap-10">
-            <div className="md:w-1/2">
-              {/* TÍTULO */}
-              <div className="mb-10">
-                <span className="text-xs font-black uppercase tracking-widest text-[#769C48]">Tecnología Circular</span>
-                <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mt-2">
-                  Estación <span className="text-orange-500">Autónoma</span> <br />
-                  <span className="text-[#769C48]">de Reciclaje</span>
-                </h2>
-              </div>
+          <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+  
+  {/* COLUMNA IZQUIERDA  */}
+  <div className="w-full md:w-1/2">
+    
+    {/* 1. Títulos y Descripción */}
+    <div className="mb-8">
+      <span className="text-xs font-black uppercase tracking-widest text-[#769C48]">Tecnología Circular</span>
+      <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mt-2">
+        Estación <span className="text-orange-500">Autónoma</span> <br />
+        <span className="text-[#769C48]">de Reciclaje</span>
+      </h2>
+    </div>
 
-              {/* DESCRIPCIÓN */}
-              <p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl">
-                Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. Convierte el reciclaje en una experiencia visible, social y viral.
-              </p>
+    <p className="text-lg text-slate-600 leading-relaxed mb-10">
+      Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. 
+      Convierte el reciclaje en una experiencia visible, social y viral.
+    </p>
 
-              {/* FEATURES + BOTÓN */}
-              <ul className="space-y-3 mb-8">
-                {[
-                  "♻️ Acepta vidrio, aluminio, plástico y tetrapack",
-                  "📸 Captura tu reacción y genera un QR único",
-                  "💰 Gana monedas digitales por cada reciclaje",
-                  "📊 Monitoreo remoto y panel administrativo",
-                ].map((item, i) => (
-                  <li key={i} className="text-slate-700 font-medium">{item}</li>
-                ))}
-              </ul>
+    {/* IMAGEN */}
+    <div className="md:hidden w-full flex justify-center mb-10">
+      <img
+        src="/screenshots/maquina-beland.png"
+        alt="Estación autónoma de reciclaje Beland"
+        className="w-full max-w-[280px] h-auto drop-shadow-2xl"
+      />
+    </div>
 
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-[#769C48] to-[#5a7a36] hover:scale-105 text-white font-black uppercase italic tracking-wider rounded-2xl shadow-xl shadow-green-100 transition-all active:scale-95"
-              >
-                Cotiza la tuya
-              </button>
-            </div>
+    {/* 3. Beneficios y Botón */}
+    <ul className="space-y-4 mb-10">
+      {[
+        "♻️ Acepta vidrio, aluminio, plástico y tetrapack",
+        "📸 Captura tu reacción y genera un QR único",
+        "💰 Gana monedas digitales por cada reciclaje",
+        "📊 Monitoreo remoto y panel administrativo",
+      ].map((item, i) => (
+        <li key={i} className="text-slate-700 font-bold flex items-center gap-3">{item}</li>
+      ))}
+    </ul>
 
-            <div className="w-full md:w-1/2 flex justify-center items-center mb-10 overflow-hidden">
-              <img
-                src="/screenshots/maquina-beland.png"
-                alt="Estación autónoma de reciclaje Beland"
-                className="block mx-auto w-full max-w-[320px] md:max-w-sm h-auto drop-shadow-2xl"
-              />
-            </div>
-          </div>
+    <button
+      onClick={() => setIsModalOpen(true)}
+      className="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-[#769C48] to-[#5a7a36] hover:scale-105 text-white font-black uppercase italic tracking-wider rounded-2xl shadow-xl transition-all active:scale-95"
+    >
+      Cotiza la tuya
+    </button>
+  </div>
+
+  {/* COLUMNA DERECHA  */}
+  <div className="hidden md:flex md:w-1/2 justify-center">
+    <img
+      src="/screenshots/maquina-beland.png"
+      alt="Estación autónoma de reciclaje Beland"
+      className="w-full max-w-md h-auto drop-shadow-2xl transform md:rotate-2"
+    />
+  </div>
+
+</div>
 
           {isModalOpen && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/95 backdrop-blur-sm">
