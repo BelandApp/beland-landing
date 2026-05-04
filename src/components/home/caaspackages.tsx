@@ -177,9 +177,9 @@ const EspacioCircular = () => {
               </div>
 
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Registrate como <strong>Espacio Circular</strong> y convertí tu
-                local en un punto clave de una comunidad activa: vendés más,
-                fidelizás clientes y participás en una red que convierte el
+                Regístrate como <strong>Espacio Circular</strong> y convierte tu
+                local en un punto clave de una comunidad activa: vendes más,
+                fidelizas clientes y participas en una red que convierte el
                 reciclaje en consumo.
               </p>
 
@@ -189,7 +189,7 @@ const EspacioCircular = () => {
                 className="w-full rounded-2xl shadow-lg mb-10"
               />
               <p className="text-sm font-black uppercase italic tracking-widest text-center mb-10" style={{ color: "#769C48" }}>
-  Lo que pasa cuando te sumás — en menos de 7 días:
+  Lo que pasa cuando te sumas — en menos de 7 días:
 </p>
               <ul className="space-y-4 mb-10">
                 {beneficios.map((item, i) => (
@@ -214,7 +214,7 @@ const EspacioCircular = () => {
                     <span className="text-white font-black text-sm w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: GREEN }}>01</span>
                     <div>
                       <p className="font-black uppercase italic text-slate-900 tracking-tight">Separación</p>
-                      <p className="text-sm text-slate-500 mt-1 leading-relaxed">El vecino separa en su casa y lleva sus residuos al punto circular más cercano — tu local.</p>
+                      <p className="text-sm text-slate-500 mt-1 leading-relaxed">El vecino separa en su casa y lleva sus residuos al punto circular más cercano.</p>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
@@ -235,14 +235,14 @@ const EspacioCircular = () => {
                     <span className="bg-orange-500 text-white font-black text-sm w-10 h-10 rounded-xl flex items-center justify-center shrink-0">04</span>
                     <div>
                       <p className="font-black uppercase italic text-slate-900 tracking-tight">Recolección</p>
-                      <p className="text-sm text-slate-500 mt-1 leading-relaxed">Beland gestiona la ruta de recolección. Vos no gestionás basura ni logística.</p>
+                      <p className="text-sm text-slate-500 mt-1 leading-relaxed">Beland gestiona una ruta de recolección y gestion de residuos,los recicladores locales se llevan los residuos inorganicos y EMASEO se lleva el resto del residuo.</p>
                     </div>
                   </li>
                 </ol>
 
                 <div className="mt-8 pt-6 border-t border-slate-100 text-center">
                   <p className="text-xs font-black uppercase tracking-widest text-slate-400">Sin costo de entrada · Sin inversión inicial</p>
-                  <p className="text-xs font-bold mt-1" style={{ color: GREEN }}>Beland gana cuando vos vendés</p>
+                  <p className="text-xs font-bold mt-1" style={{ color: GREEN }}>Beland gana cuando tú vendes</p>
                 </div>
               </div>
             </div>
@@ -255,7 +255,7 @@ const EspacioCircular = () => {
               onClick={() => setIsModalOpen(true)}
               className="w-full md:w-auto px-12 py-5 bg-gradient-to-r from-orange-500 to-orange-600 hover:scale-105 text-white font-black uppercase italic tracking-wider rounded-2xl shadow-xl transition-all active:scale-95 flex items-center gap-3 justify-center"
             >
-              Registrate como Espacio Circular
+              Regístrate como Espacio Circular
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
@@ -283,7 +283,7 @@ const EspacioCircular = () => {
 
             <div className="p-8 flex flex-col items-center text-center">
               <p className="text-slate-600 mb-6 font-medium leading-relaxed">
-                Convertí tu local en un punto de consumo, comunidad y crecimiento.
+                Convierte tu local en un punto de consumo, comunidad y crecimiento.
                 Sin costo de entrada, sin inversión inicial.
               </p>
 
