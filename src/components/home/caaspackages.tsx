@@ -169,7 +169,7 @@ const EspacioCircular = () => {
                   <span className="font-bold uppercase tracking-widest text-sm">Para Comercios</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none mt-2">
-                  ¿Querés ser un{" "}
+                  ¿Quieres ser un{" "}
                   <span className="text-orange-500">agente</span> <br />
                   de cambio en tu{" "}
                   <span style={{ color: GREEN }}>comunidad?</span>
@@ -188,7 +188,9 @@ const EspacioCircular = () => {
                 alt="App Beland — pantallas de la aplicación"
                 className="w-full rounded-2xl shadow-lg mb-10"
               />
-
+              <p className="text-sm font-black uppercase italic tracking-widest text-center mb-10" style={{ color: "#769C48" }}>
+  Lo que pasa cuando te sumás — en menos de 7 días:
+</p>
               <ul className="space-y-4 mb-10">
                 {beneficios.map((item, i) => (
                   <li key={i} className="text-slate-700 font-bold flex items-start gap-3">
