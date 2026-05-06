@@ -195,11 +195,12 @@ export default function Home() {
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/95 backdrop-blur-sm">
               <div className="relative bg-white rounded-[2.5rem] max-w-4xl w-full overflow-hidden shadow-2xl">
                 <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="absolute top-4 right-4 bg-black/10 hover:bg-black/20 p-2 rounded-full text-slate-800 transition-colors z-20"
-                >
-                  <X className="w-6 h-6" />
-                </button>
+  onClick={() => setIsModalOpen(false)}
+  className="absolute top-4 left-4 flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-white font-bold text-sm transition-colors z-20"
+>
+  <ChevronLeft className="w-5 h-5" />
+  Volver
+</button>
 
                 <div className="aspect-video w-full bg-black">
                   <video
