@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, Trophy, Target, ArrowRight, Quote, Play, Users } from "lucide-react";
+import { Sparkles, Trophy, Target, ArrowRight, Quote, Play, Stop, Users } from "lucide-react";
 import {ChevronLeft , ChevronRight} from "lucide-react";
 import Image from "next/image";
 
@@ -47,6 +47,9 @@ export default function AboutSection() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showVideoControl, setShowVideoControl] = useState(true);
+  const [hasVideoStarted, setHasVideoStarted] = useState(false);
   
   useEffect(() => {
     const video = videoRef.current;
@@ -54,36 +57,56 @@ export default function AboutSection() {
     video.pause();
     video.load();
     setIsMuted(true);
+    setIsPlaying(false);
+    setShowVideoControl(true);
+    setHasVideoStarted(false);
   }, [currentVideo]);
 
-  const handlePlayVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = false;
+  const handleToggleVideo = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const current = aboutVideos[currentVideo];
+    if (current.type === "vimeo") return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+      setShowVideoControl(true);
+      setIsMuted(true);
+    } else {
+      video.muted = false;
       setIsMuted(false);
-      videoRef.current.play().catch(() => {});
-      if (videoRef.current.requestFullscreen) {
-        videoRef.current.requestFullscreen();
-      }
+      video.play().catch(() => {});
+      setIsPlaying(true);
+      setShowVideoControl(false);
+      setHasVideoStarted(true);
     }
   };
+
   const aboutVideos = [
     {
     id: 1,
+    type: "vimeo",
     title: "Nosotros",
-    url:"https://res.cloudinary.com/djp2qzp9f/video/upload/v1777491873/2AB50565-2E1F-4D72-B7DD-F79E6CE03BC9_1_1_gwnyyx.mp4",
+    url:"https://player.vimeo.com/video/1194510646?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
   },
     {
     id: 2,
+    type: "mp4",
     title: "Premios Ekos",
     url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774143013/premio.ekos_1_th4szj.mp4", 
   },
   {
     id: 3,
+    type: "mp4",
     title: "Reconocimiento Quito Sostenible",
     url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774143461/premios.ekos2_nsmmbe.mp4",
   },
   {
     id: 4,
+    type: "mp4",
     title: "Nuestra Esencia",
     url: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
   },
@@ -156,42 +179,55 @@ const handlePrev = (e: React.MouseEvent) => {
               </div>
             </div>
 
-           {/* CAROUSEL DE VIDEOS (LADO DERECHO) */}
-            <div className="w-full order-1 md:order-2 flex flex-col items-center">
-              <div className="w-full relative group">
-                <div 
-
-className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer border-4 border-white z-10"                  onClick={() => {
-                    if (videoRef.current) {
-                      if (videoRef.current.paused) {
-                        videoRef.current.play();
-                        setIsMuted(false);
-                      } else {
-                        videoRef.current.pause();
-                        setIsMuted(true);
-                      }
-                    }
-                  }}
-                >
-                  <video 
-                    ref={videoRef}
-                    preload="metadata"
-                    loop 
-                    muted={isMuted}
-                    playsInline
-                    className="w-full h-auto brightness-90 transition-all hover:brightness-100 block"
-                  >
-                    <source src={aboutVideos[currentVideo].url} type="video/mp4" />
-                  </video>
+          {/* CAROUSEL DE VIDEOS (LADO DERECHO) */}
+<div className="w-full order-1 md:order-2 flex flex-col items-center">
+  <div className="w-full relative group">
+    <div 
+      className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer border-2 border-white z-10 aspect-video"
+      onClick={handleToggleVideo}
+    >
+      {/* 2. Condicional para renderizar el iframe de Vimeo o el video normal */}
+      {aboutVideos[currentVideo].type === "vimeo" ? (
+        <iframe
+          title="vimeo-player"
+          src={aboutVideos[currentVideo].url}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ border: 0 }}
+          referrerPolicy="strict-origin-when-cross-origin"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          allowFullScreen
+        />
+      ) : (
+        <video 
+          ref={videoRef}
+          preload="metadata"
+          loop 
+          muted={isMuted}
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover brightness-90 transition-all hover:brightness-100"
+        >
+          <source src={aboutVideos[currentVideo].url} type="video/mp4" />
+        </video>
+      )}
 
                   {/* INDICADOR DE PLAY/PAUSE CENTRAL */}
                   <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                    {isMuted && (
-                      <div className="w-20 h-20 rounded-full border-2 border-white/50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
-                        <Play className="w-10 h-10 text-white fill-white/20 ml-1.5" />
-                      </div>
-                    )}
-                  </div>
+        {showVideoControl && aboutVideos[currentVideo].type !== "vimeo" && (
+          <button
+            type="button"
+            onClick={handleToggleVideo}
+            className="absolute inset-0 flex items-center justify-center pointer-events-auto"
+          >
+            <div className="w-20 h-20 rounded-full border-2 border-white/50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+              {hasVideoStarted ? (
+                <Stop className="w-10 h-10 text-white fill-white/20" />
+              ) : (
+                <Play className="w-10 h-10 text-white fill-white/20 ml-1.5" />
+              )}
+            </div>
+          </button>
+        )}
+      </div>
 
                   {/* Badge Título */}
                   <div className="absolute top-6 left-6 z-20">
