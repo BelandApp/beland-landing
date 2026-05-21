@@ -13,7 +13,7 @@ export default function VideoCarousel() {
     { 
       id: "local-01", 
       title: "Bienvenidos a Beland", 
-      url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774060033/home.1_zoze9u.mp4", 
+      url: "https://vimeo.com/1194547597?fl=tl&fe=ec", 
       isLocal: true 
     },
     { id: "1110360770", title: "La historia de tus residuos con Beland", isLocal: false },
@@ -34,7 +34,7 @@ export default function VideoCarousel() {
     <section className="py-24 bg-background overflow-x-hidden">
       <div className="container px-6 mx-auto max-w-5xl">
         
-        {/* 1. Encabezado Estilo Nosotros */}
+        {/* 1. Encabezado  */}
         <div className="flex flex-col items-center mb-16 text-center">
           <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none">
             <span className="text-orange-500">Beland</span> en <span className="text-[#769C48]">Acción</span>

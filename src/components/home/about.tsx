@@ -2,9 +2,17 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, Trophy, Target, ArrowRight, Quote, Play, Stop, Users } from "lucide-react";
-import {ChevronLeft , ChevronRight} from "lucide-react";
+import { Sparkles, Trophy, Target, ArrowRight, Quote, Play, Square, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause } from "lucide-react";
 import Image from "next/image";
+
+// Definición de interfaz para los videos
+interface AboutVideo {
+  id: number;
+  type: "vimeo" | "mp4";
+  title: string;
+  url: string;
+}
 
 const timelineEvents = [
   { year: "2016", title: "Nace la idea", description: "Reconocidos dentro de los 500 mejores proyectos socio-ambientales de América Latina por Premios Verdes (Puesto 35 en el global / 11 en gestión de residuos)." },
@@ -13,8 +21,6 @@ const timelineEvents = [
   { year: "2023", title: "Validación del modelo", description: "Instalamos nuestras estaciones en 3 de los puntos más concurridos de Buenos Aires. Reconocimiento como la primera plataforma de la Argentina que paga a sus usuarios por reciclar (Forbes). Reconocimiento dentro de los mejores 20 startups del planeta (Founders Live)." },
   { year: "2025", title: "Validación del producto mínimo rentable", description: "Desarrollo y testeo de nuestra app definitiva. Nace Circularity as a Service. Reconocimiento entre los mejores emprendimientos sostenibles del Ecuador (Cumbre de sostenibilidad EKOS). Reconocimiento Quito Sostenible como héroes locales en gestión de residuos (Distrito Metropolitano de Quito)." },
 ];
-
-
 
 const dreamTeam = [
   {
@@ -50,6 +56,33 @@ export default function AboutSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showVideoControl, setShowVideoControl] = useState(true);
   const [hasVideoStarted, setHasVideoStarted] = useState(false);
+
+  const aboutVideos: AboutVideo[] = [
+    {
+      id: 1,
+      type: "vimeo",
+      title: "Nosotros",
+      url: "https://player.vimeo.com/video/1194510646?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" 
+    },
+    {
+      id: 2,
+      type: "vimeo", // Cambiado a vimeo porque usa la URL player.vimeo
+      title: "Premios Ekos",
+      url: "https://player.vimeo.com/video/1194537076?title=0&byline=0&portrait=0&badge=0&autopause=0"
+    },
+    {
+      id: 3,
+      type: "vimeo", // Cambiado a vimeo porque usa la URL player.vimeo
+      title: "Reconocimiento Quito Sostenible",
+      url: "https://player.vimeo.com/video/1194539945?title=0&byline=0&portrait=0&badge=0&autopause=0"
+    },
+    {
+      id: 4,
+      type: "mp4",
+      title: "Nuestra Esencia",
+      url: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
+    },
+  ];
   
   useEffect(() => {
     const video = videoRef.current;
@@ -85,68 +118,33 @@ export default function AboutSection() {
     }
   };
 
-  const aboutVideos = [
-    {
-    id: 1,
-    type: "vimeo",
-    title: "Nosotros",
-    url:"https://player.vimeo.com/video/1194510646?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-  },
-    {
-    id: 2,
-    type: "mp4",
-    title: "Premios Ekos",
-    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774143013/premio.ekos_1_th4szj.mp4", 
-  },
-  {
-    id: 3,
-    type: "mp4",
-    title: "Reconocimiento Quito Sostenible",
-    url: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774143461/premios.ekos2_nsmmbe.mp4",
-  },
-  {
-    id: 4,
-    type: "mp4",
-    title: "Nuestra Esencia",
-    url: "https://res.cloudinary.com/dbfboc8cm/video/upload/q_auto:best,f_auto/v1757200474/Peque%C3%B1as_acciones_que_generan_grandes_cambios_Gracias_a_la_maravillosa_iniciativa_Conexi%C3%B3_oiddlv.mp4",
-  },
-  
-  
-];
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    setCurrentVideo((prev) => (prev === aboutVideos.length - 1 ? 0 : prev + 1));
+  };
 
-const handleNext = (e: React.MouseEvent) => {
-  e.stopPropagation(); 
-  setCurrentVideo((prev) => (prev === aboutVideos.length - 1 ? 0 : prev + 1));
-};
-
-const handlePrev = (e: React.MouseEvent) => {
-  e.stopPropagation();
-  setCurrentVideo((prev) => (prev === 0 ? aboutVideos.length - 1 : prev - 1));
-};
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentVideo((prev) => (prev === 0 ? aboutVideos.length - 1 : prev - 1));
+  };
 
   return (
-    
-  <div className="flex flex-col bg-background overflow-x-hidden">
- <div className="container px-6 mx-auto pt-24 md:pt-32 pb-8 text-center">
-
-  <div className="inline-flex items-center gap-4">
-
-  <h1 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter">
-    <span className="text-orange-500">Noso</span>
-    <span className="text-[#769C48]">tros</span>
-  </h1>
-
-  <Image
-    src="/screenshots/premio.png"
-    alt="Beland logo"
-    width={450}
-    height={150}
-    className="w-24 md:w-40 h-auto"
-  />
-
-</div>
-
-  </div>
+    <div className="flex flex-col bg-background overflow-x-hidden">
+      <div className="container px-6 mx-auto pt-24 md:pt-32 pb-8 text-center">
+        <div className="inline-flex items-center gap-4">
+          <h1 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter">
+            <span className="text-orange-500">Noso</span>
+            <span className="text-[#769C48]">tros</span>
+          </h1>
+          <Image
+            src="/screenshots/premio.png"
+            alt="Beland logo"
+            width={450}
+            height={150}
+            className="w-24 md:w-40 h-auto"
+          />
+        </div>
+      </div>
 
       {/* 2. BLOQUE HISTORIA */}
       <section className="pb-24">
@@ -160,74 +158,73 @@ const handlePrev = (e: React.MouseEvent) => {
               
               <div className="space-y-6 text-lg md:text-xl text-slate-600 leading-relaxed font-light">
                 <p>
-                  Beland nacio con el objetivo de plantear una solucion real a la crisis ambiental,trabajando en nuestro modelo de consumo.
+                  Beland nacio con el objetivo de plantear una solucion real a la crisis ambiental, trabajando en nuestro modelo de consumo.
                   Nuestra propuesta es simple: Los residuos no son basura.
                 </p>
                 <p>
-                  El retail tradicional solo gana en la venta, y una vez que el cliente dispone sus desechos,el esfuerzo comercial que fue necesri
-                  para concretar la venta,el costo logistico y el material de sus residuos se pierden.
+                  El retail tradicional solo gana en la venta, y una vez que el cliente dispone sus desechos, el esfuerzo comercial que fue necesario
+                  para concretar la venta, el costo logistico y el material de sus residuos se pierden.
                 </p>
                 <p>
                   En Beland entendemos a los residuos como la evidencia fisica de una transaccion exitosa, y es esta idea la que nos
-                  permite recuperar el valor de los residuos,muy por sobre el valor  del que estan hechos.
+                  permite recuperar el valor de los residuos, muy por sobre el valor del que estan hechos.
                 </p>
                 <p>
-                  Nada de esto seria posible sin los recicladores de base,quienes recuperan mas del 90% de todo lo que se recicla
-                  en LATAM, lastimosamente viven en estado de vulnerabilidad.Por eso donamos el 100% de todo lo que recuperamos a familias de recicladores,
+                  Nada de esto seria posible sin los recicladores de base, quienes recuperan mas del 90% de todo lo que se recicla
+                  en LATAM, lastimosamente viven en estado de vulnerabilidad. Por eso donamos el 100% de todo lo que recuperamos a familias de recicladores,
                   y trabajamos en equipo para mejorar su calidad de vida.
                 </p>
               </div>
             </div>
 
-          {/* CAROUSEL DE VIDEOS (LADO DERECHO) */}
-<div className="w-full order-1 md:order-2 flex flex-col items-center">
-  <div className="w-full relative group">
-    <div 
-      className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer border-2 border-white z-10 aspect-video"
-      onClick={handleToggleVideo}
-    >
-      {/* 2. Condicional para renderizar el iframe de Vimeo o el video normal */}
-      {aboutVideos[currentVideo].type === "vimeo" ? (
-        <iframe
-          title="vimeo-player"
-          src={aboutVideos[currentVideo].url}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ border: 0 }}
-          referrerPolicy="strict-origin-when-cross-origin"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-          allowFullScreen
-        />
-      ) : (
-        <video 
-          ref={videoRef}
-          preload="metadata"
-          loop 
-          muted={isMuted}
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover brightness-90 transition-all hover:brightness-100"
-        >
-          <source src={aboutVideos[currentVideo].url} type="video/mp4" />
-        </video>
-      )}
+            {/* CAROUSEL DE VIDEOS (LADO DERECHO) */}
+            <div className="w-full order-1 md:order-2 flex flex-col items-center">
+              <div className="w-full relative group">
+                <div 
+                  className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer border-2 border-white z-10 aspect-video flex items-center justify-center"
+                  onClick={handleToggleVideo}
+                >
+                  {aboutVideos[currentVideo].type === "vimeo" ? (
+                    <iframe
+                      title="vimeo-player"
+                      src={aboutVideos[currentVideo].url}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ border: 0 }}
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <video 
+                      ref={videoRef}
+                      preload="metadata"
+                      loop 
+                      muted={isMuted}
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover brightness-90 transition-all hover:brightness-100"
+                    >
+                      <source src={aboutVideos[currentVideo].url} type="video/mp4" />
+                    </video>
+                  )}
 
                   {/* INDICADOR DE PLAY/PAUSE CENTRAL */}
                   <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-        {showVideoControl && aboutVideos[currentVideo].type !== "vimeo" && (
-          <button
-            type="button"
-            onClick={handleToggleVideo}
-            className="absolute inset-0 flex items-center justify-center pointer-events-auto"
-          >
-            <div className="w-20 h-20 rounded-full border-2 border-white/50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
-              {hasVideoStarted ? (
-                <Stop className="w-10 h-10 text-white fill-white/20" />
-              ) : (
-                <Play className="w-10 h-10 text-white fill-white/20 ml-1.5" />
-              )}
-            </div>
-          </button>
-        )}
-      </div>
+                    {showVideoControl && aboutVideos[currentVideo].type !== "vimeo" && (
+                      <button
+                        type="button"
+                        onClick={handleToggleVideo}
+                        className="absolute inset-0 flex items-center justify-center pointer-events-auto"
+                      >
+                        <div className="w-20 h-20 rounded-full border-2 border-white/50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+                          {hasVideoStarted ? (
+                            <Square className="w-10 h-10 text-white fill-white/20" />
+                          ) : (
+                            <Play className="w-10 h-10 text-white fill-white/20 ml-1.5" />
+                          )}
+                        </div>
+                      </button>
+                    )}
+                  </div>
 
                   {/* Badge Título */}
                   <div className="absolute top-6 left-6 z-20">
@@ -239,7 +236,7 @@ const handlePrev = (e: React.MouseEvent) => {
                   {/* Texto decorativo Beland */}
                   <div className="absolute bottom-4 left-0 right-0 text-center pointer-events-none z-0">
                      <h3 className="text-white/20 text-[6rem] md:text-[8rem] font-black italic tracking-tighter leading-none select-none">
-                        beland
+                       beland
                      </h3>
                   </div>
                 </div>
@@ -272,7 +269,6 @@ const handlePrev = (e: React.MouseEvent) => {
         </div> {/* CIERRA CONTAINER */}
       </section> {/* CIERRA SECCIÓN HISTORIA */}
 
-                
       {/* 3. TRAYECTORIA */}
       <section className="py-24 bg-slate-50/50 border-y border-slate-100">
         <div className="container px-6 mx-auto">
@@ -280,7 +276,6 @@ const handlePrev = (e: React.MouseEvent) => {
             Trayectoria
           </h2>
           
-
           <div className="relative max-w-4xl mx-auto">
             {/* LÍNEA CENTRAL AJUSTADA */}
             <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#769C48]/30 md:-translate-x-[1px]" />
@@ -312,9 +307,6 @@ const handlePrev = (e: React.MouseEvent) => {
         </div>
       </section>
 
-      
-      
-
       {/* 6. EL DREAM TEAM */}
       <section className="py-24 bg-white">
         <div className="container px-6 mx-auto">
@@ -340,7 +332,6 @@ const handlePrev = (e: React.MouseEvent) => {
           </div>
         </div>
       </section>
-
     </div> 
   );
 }
