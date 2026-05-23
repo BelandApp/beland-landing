@@ -183,10 +183,10 @@ export default function Home() {
   {/* COLUMNA DERECHA  */}
   <div className="hidden md:flex md:w-1/2 justify-center">
     <img
-      src="/screenshots/maquina-beland.png"
-      alt="Estación autónoma de reciclaje Beland"
-      className="w-full max-w-md h-auto drop-shadow-2xl transform md:rotate-2"
-    />
+  src="/screenshots/maquina-beland.png"
+  alt="Estación autónoma de reciclaje Beland"
+  className="w-full max-w-md h-auto drop-shadow-2xl"
+/>
   </div>
 
 </div>

@@ -11,14 +11,30 @@ export default function VideoCarousel() {
 
   const videos = [
     { 
-      id: "local-01", 
-      title: "Bienvenidos a Beland", 
-      url: "https://vimeo.com/1194547597?fl=tl&fe=ec", 
-      isLocal: true 
+      id: "1194868041",  
+      title: "La historia de tus residuos con Beland",
+      isLocal: false 
     },
-    { id: "1110360770", title: "La historia de tus residuos con Beland", isLocal: false },
-    { id: "1110359756", title: "Gestión de los residuos - Deborah DeLuca", isLocal: false },
-    { id: "1110358536", title: "Cristoph Circular", isLocal: false }
+    { 
+      id: "1194868315", 
+      title: "La historia de tus residuos con Beland",
+      isLocal: false 
+    },
+    { 
+      id: "1194874591",  
+      title: "La historia de tus residuos con Beland",
+      isLocal: false 
+    },
+    { 
+      id: "1110359756", 
+      title: "Gestión de los residuos - Deborah DeLuca",
+      isLocal: false 
+    },
+    { 
+      id: "1194874522", 
+      title: "Cristoph Circular",
+      isLocal: false 
+    }
   ];
 
   useEffect(() => {
@@ -31,80 +47,79 @@ export default function VideoCarousel() {
   const prev = () => setIndex((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
 
   return (
-    <section className="py-24 bg-background overflow-x-hidden">
-      <div className="container px-6 mx-auto max-w-5xl">
+    <section className="py-12 md:py-24 bg-background overflow-x-hidden">
+      <div className="container px-4 md:px-6 mx-auto">
         
         {/* 1. Encabezado  */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none">
+        <div className="flex flex-col items-center mb-8 md:mb-12 text-center max-w-2xl mx-auto">
+          <h2 className="text-xl md:text-5xl font-black uppercase italic tracking-tighter leading-none">
             <span className="text-orange-500">Beland</span> en <span className="text-[#769C48]">Acción</span>
           </h2>
-          <p className="text-slate-500 text-lg italic mt-4 font-medium tracking-tight">
+          <p className="text-slate-500 text-xs md:text-base italic mt-2 md:mt-3 font-medium tracking-tight px-4">
             "{videos[index].title}"
           </p>
         </div>
 
         {/* 2. Visor de Video */}
-        <div className="relative group max-w-4xl mx-auto mb-12">
+        <div className="relative group flex justify-center mx-auto mb-6 md:mb-10">
           
-          <div className="relative w-full aspect-[4/5] sm:aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black border-4 border-white z-10">
+          <div className="relative bg-black z-10 overflow-hidden shadow-2xl" style={{ width: '100%', maxWidth: '400px', height: '500px' }}>
             
             {videos[index].isLocal ? (
               <video
-                key={videos[index].url}
+                key={videos[index].id}
                 ref={videoRef}
-                src={videos[index].url}
                 controls
                 playsInline
                 preload="metadata"
                 loop
-                className="absolute inset-0 w-full h-full object-contain object-center bg-black brightness-90 transition-all hover:brightness-100" 
+                className="w-full h-full object-contain object-center bg-black brightness-90 transition-all hover:brightness-100" 
               />
             ) : (
               <iframe
                 key={videos[index].id}
-                src={`https://player.vimeo.com/video/${videos[index].id}?badge=0&autopause=0&quality=1080p`}
-                className="absolute inset-0 w-full h-full z-10"
-                allow="fullscreen; picture-in-picture"
+                src={`https://player.vimeo.com/video/${videos[index].id}?badge=0&autopause=0&player_id=0&app_id=58479`}
+                className="w-full h-full z-10"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                 allowFullScreen
-                style={{ border: 0, width: '100%', height: '100%' }}
+                style={{ border: 0 }}
               />
             )}
 
             {/* Texto decorativo Beland  */}
-            <div className="absolute bottom-12 left-0 right-0 text-center pointer-events-none z-0">
-              <h3 className="text-white/5 text-[5rem] md:text-[8rem] font-black italic tracking-tighter uppercase leading-none select-none">
+            <div className="absolute bottom-3 md:bottom-6 left-0 right-0 text-center pointer-events-none z-0">
+              <h3 className="text-white/5 text-lg md:text-4xl font-black italic tracking-tighter uppercase leading-none select-none">
                 beland
               </h3>
             </div>
           </div>
 
           {/* 3. Botones de Navegación  */}
-          <div className="absolute -bottom-6 right-8 flex gap-2 z-50">
+          <div className="absolute bottom-0 right-0 translate-y-12 md:translate-y-14 flex gap-1 md:gap-2 z-50">
             <button 
               onClick={prev} 
-              className="w-12 h-12 rounded-2xl bg-white shadow-2xl flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-slate-900 border border-slate-100"
+              className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white shadow-2xl flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all text-slate-900 border border-slate-100"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
             </button>
             <button 
               onClick={next} 
-              className="w-12 h-12 rounded-2xl bg-white shadow-2xl flex items-center justify-center hover:bg-[#769C48] hover:text-white transition-all text-slate-900 border border-slate-100"
+              className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white shadow-2xl flex items-center justify-center hover:bg-[#769C48] hover:text-white transition-all text-slate-900 border border-slate-100"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
             </button>
           </div>
         </div>
 
         {/* 4. Botón Inferior */}
-        <div className="mt-20 flex justify-center w-full">
-          <Link href="/media-gallery" className="group/btn flex items-center gap-4 p-2 pr-6 rounded-full bg-white border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-            <div className="w-10 h-10 rounded-full bg-[#769C48] flex items-center justify-center text-white group-hover/btn:scale-110 transition-transform shadow-md">
-              <ArrowRight className="w-5 h-5" />
+        <div className="mt-16 md:mt-20 flex justify-center w-full">
+          <Link href="/media-gallery" className="group/btn flex items-center gap-2 md:gap-3 p-1.5 md:p-2 pr-3 md:pr-5 rounded-full bg-white border border-slate-100 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+            <div className="w-7 h-7 md:w-9 md:h-9 rounded-full bg-[#769C48] flex items-center justify-center text-white group-hover/btn:scale-110 transition-transform shadow-md">
+              <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-[10px] font-black uppercase tracking-widest text-[#769C48]">Explora Más</span>
-              <span className="text-sm font-bold text-slate-900 leading-none">Galería Multimedia</span>
+              <span className="text-[7px] md:text-[9px] font-black uppercase tracking-widest text-[#769C48]">Explora Más</span>
+              <span className="text-[10px] md:text-xs font-bold text-slate-900 leading-none">Galería Multimedia</span>
             </div>
           </Link>
         </div>
