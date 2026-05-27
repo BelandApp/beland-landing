@@ -43,10 +43,11 @@ export function VideoModal({ children, videoUrl, title, orientation = 'horizonta
           <iframe
             title="vimeo-player"
             src={videoUrl}
-            className="w-full h-full"
+            className="absolute inset-0 w-full h-full"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
             allowFullScreen
+            style={{ backgroundColor: 'transparent' }}
           ></iframe>
           {/* The old DialogTitle is now a p tag to avoid accessibility conflicts */}
           <p className="absolute bottom-4 left-4 text-white bg-black/40 px-3 py-1 rounded-lg text-sm md:text-base pointer-events-none">

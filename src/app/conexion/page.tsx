@@ -136,42 +136,23 @@ const CAROUSEL_VIDEOS = [
 
   
   { 
-    id: "circular-03", 
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774059825/circular.3_iopmxg.mp4", 
-    label: "Conexion 3" 
-  },
-  { 
-    id: "24-porelplaneta", 
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1777482837/IMG_0132_1_jrospu.mp4", 
-    label: "24-porelplaneta" 
-  },
-  { 
-    id: "conexion-1", 
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774112788/conexion.1_u8dpnh.mp4", 
-    label: "Conexión 1" 
-  },
-  { 
-    id: "deborah", 
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774060031/deborah_ykxfs4.mp4", 
-    label: "Deborah" 
-  },
-  { 
-    id: "cristoph", 
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774060020/cristoph_f6sbcz.mp4", 
-    label: "Cristoph" 
+    id: "circular-1", 
+    src: "https://vimeo.com/1196112063?fl=pl&fe=sh", 
+    label: "Conexion 1" 
   },
   { 
     id: "circular-2", 
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/a_-90,q_auto:best,f_auto,vs_40,br_5m/v1774545714/IMG_0127_1_1_y2sjbu.mp4", 
-    label: "Conexion 2",
-    aspectClass: "aspect-[9/16]"
+    src: "https://vimeo.com/1196126801?share=copy&fl=sv&fe=ci", 
+    label: "Conexion 2" 
   },
-  {
-    id: "circular-3",
-    src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1777493595/IMG_0126_2_3_oqtowz.mp4",
-    label: "Conexion 3.1",
-    aspectClass: "aspect-[9/16]"
+  { 
+    id: "circular-3", 
+    src: "https://vimeo.com/1196130549?share=copy&fl=sv&fe=ci", 
+    label: "Conexion 3" 
   },
+  
+
+  
 ];
 export const VideoCarousel = () => {
   const swiperRef = useRef<any>(null);
@@ -183,22 +164,19 @@ export const VideoCarousel = () => {
         modules={[Pagination]}
         spaceBetween={20}
         slidesPerView={1} 
-       
         className="rounded-xl overflow-hidden shadow-lg"
       >
         {CAROUSEL_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-            <div className={`bg-black overflow-hidden rounded-2xl flex justify-center ${video.aspectClass ?? ""}`}>
-              <video
-                src={video.src}
-                className="w-full h-full object-cover"
-                controls
-                playsInline
-                preload="metadata"
-                muted
-                loop
-              />
-            </div>
+       <div className="relative bg-transparent overflow-hidden rounded-2xl flex justify-center items-center w-full aspect-video min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px]">
+  <iframe
+    src={`https://player.vimeo.com/video/${video.src.split('/')[3]}`}
+    className="absolute inset-0 w-full h-full"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowFullScreen
+    style={{ backgroundColor: 'transparent', border: 0 }}
+  />
+</div>
           </SwiperSlide>
         ))}
       </Swiper>

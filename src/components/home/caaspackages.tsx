@@ -70,9 +70,31 @@ const packages = [
 ];
 
 const CAAS_VIDEOS = [
-  { id: 1, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774059798/caas_alhb8h.mp4", label: "Gestión Pro" },
-  { id: 3, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/q_auto:best,f_auto/v1774114482/caas.3_xzljfh.mp4", label: "Operativa Beland" },
-  { id: 4, src: "https://res.cloudinary.com/djp2qzp9f/video/upload/v1774538319/C7A74127-E32C-474F-BBDA-0553562537B2_1_n0oomr.mp4", label: "Comunidad" },
+  { 
+  id: 1, 
+  src: "https://vimeo.com/1196083244",
+  isVimeo: true,
+  label: "Gestión Pro" 
+},
+{ 
+  id: 2, 
+  src: "https://vimeo.com/1196092807",
+  isVimeo: true,
+  label: "Gestión Pro" 
+},
+{ 
+  id: 3, 
+  src: "https://vimeo.com/1196094671",
+  isVimeo: true,
+  label: "Gestión Pro" 
+},
+{ 
+  id: 4, 
+  src: "https://vimeo.com/1196098680",
+  isVimeo: true,
+  label: "Gestión Pro" 
+}
+  
 ];
 
 // ─── CAROUSEL ─────────────────────────────────────────────────
@@ -86,20 +108,27 @@ const CaasCarousel = () => {
         modules={[Navigation]}
         spaceBetween={20}
         slidesPerView={1}
-        breakpoints={{ 768: { slidesPerView: 2 } }}
         className="rounded-[2.5rem] overflow-hidden shadow-2xl"
       >
         {CAAS_VIDEOS.map((video) => (
           <SwiperSlide key={video.id}>
-            <div className="aspect-[9/16] sm:aspect-video bg-black relative overflow-hidden rounded-2xl flex items-center justify-center">
-              <video
-                src={video.src}
-                className="w-full h-full object-contain"
-                controls
-                playsInline
-                preload="metadata"
-                loop
-              />
+            <div className="relative overflow-hidden rounded-2xl flex items-center justify-center w-full aspect-video bg-transparent">
+              {video.isVimeo ? (
+                <iframe
+                  src={`https://player.vimeo.com/video/${video.src.split('/').pop()}`}
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                  allow="autoplay; fullscreen"
+                />
+              ) : (
+                <video
+                  src={video.src}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  loop
+                />
+              )}
             </div>
           </SwiperSlide>
         ))}
@@ -122,7 +151,6 @@ const CaasCarousel = () => {
     </div>
   );
 };
-
 // ─── WHATSAPP ICON ────────────────────────────────────────────
 const WhatsAppIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

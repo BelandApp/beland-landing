@@ -83,6 +83,20 @@
   html {
     scroll-behavior: smooth;
   }
+
+  video,
+  iframe {
+    display: block;
+    background-color: transparent !important;
+  }
+
+  video {
+    object-fit: cover;
+  }
+
+  iframe {
+    object-fit: cover;
+  }
 }
 
 @layer utilities {

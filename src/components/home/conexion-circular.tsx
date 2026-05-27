@@ -158,7 +158,7 @@ export function ConexionCircular({ compact }: Props) {
             <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">Conexión Circular</span>
           </h2>
 
-          {/* PARRAFO ADAPTADO AL DISEÑO ORIGINAL */}
+          
           <div className="max-w-2xl mx-auto space-y-4 text-base md:text-lg text-muted-foreground animate-slide-up animation-delay-100">
             <p className="font-bold text-foreground">
               Somos el primer movimiento cultural del mundo en el que tu basura paga la fiesta, sí, entendiste bien, tu basura paga la fiesta.

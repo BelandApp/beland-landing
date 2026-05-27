@@ -63,7 +63,7 @@ export default function VideoCarousel() {
         {/* 2. Visor de Video */}
         <div className="relative group flex justify-center mx-auto mb-6 md:mb-10">
           
-          <div className="relative bg-black z-10 overflow-hidden shadow-2xl" style={{ width: '100%', maxWidth: '400px', height: '500px' }}>
+          <div className="relative bg-transparent z-10 overflow-hidden shadow-2xl w-full max-w-[400px] h-[500px]">
             
             {videos[index].isLocal ? (
               <video
@@ -73,16 +73,16 @@ export default function VideoCarousel() {
                 playsInline
                 preload="metadata"
                 loop
-                className="w-full h-full object-contain object-center bg-black brightness-90 transition-all hover:brightness-100" 
+                className="w-full h-full object-cover object-center brightness-90 transition-all hover:brightness-100" 
               />
             ) : (
               <iframe
                 key={videos[index].id}
                 src={`https://player.vimeo.com/video/${videos[index].id}?badge=0&autopause=0&player_id=0&app_id=58479`}
-                className="w-full h-full z-10"
+                className="absolute inset-0 w-full h-full z-10"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                 allowFullScreen
-                style={{ border: 0 }}
+                style={{ border: 0, backgroundColor: 'transparent' }}
               />
             )}
 

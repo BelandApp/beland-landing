@@ -27,7 +27,7 @@ export function GaleriaVideos() {
           {videos.map((video, index) => (
             // Usamos index en la key por si acaso para evitar problemas de IDs duplicados
             <div key={`${video.id}-${index}`} className="space-y-4">
-              <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border bg-black shadow-xl">
+              <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-border bg-transparent shadow-xl">
                 <iframe
                   src={`https://player.vimeo.com/video/${video.id}`}
                   className="absolute inset-0 w-full h-full"

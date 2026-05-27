@@ -181,7 +181,7 @@ export default function AboutSection() {
             <div className="w-full order-1 md:order-2 flex flex-col items-center">
               <div className="w-full relative group">
                 <div 
-                  className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black cursor-pointer border-2 border-white z-10 aspect-video flex items-center justify-center"
+                  className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-transparent cursor-pointer border-2 border-white z-10 aspect-video flex items-center justify-center"
                   onClick={handleToggleVideo}
                 >
                   {aboutVideos[currentVideo].type === "vimeo" ? (

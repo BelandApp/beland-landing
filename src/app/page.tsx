@@ -202,12 +202,12 @@ export default function Home() {
   Volver
 </button>
 
-                <div className="aspect-video w-full bg-black">
+                <div className="aspect-video w-full bg-transparent">
                   <video
                     src={videoUrl}
                     controls
                     autoPlay
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   >
                     Tu navegador no soporta videos.
                   </video>
