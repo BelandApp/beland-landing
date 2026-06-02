@@ -1,0 +1,126 @@
+{
+  "Home": {
+    "machine": {
+      "tag": "Tecnología Circular",
+      "title1": "Estación",
+      "title2": "Autónoma",
+      "title3": "de Reciclaje",
+      "description": "Nuestra máquina inteligente recibe tus residuos, los escanea y te recompensa al instante. Convierte el reciclaje en una experiencia visible, social y viral.",
+      "benefit1": "♻️ Acepta vidrio, aluminio, plástico y tetrapack",
+      "benefit2": "📸 Captura tu reacción y genera un QR único",
+      "benefit3": "💰 Gana monedas digitales por cada reciclaje",
+      "benefit4": "📊 Monitoreo remoto y panel administrativo",
+      "cta": "Cotiza la tuya",
+      "modalTitle": "Estaciones autónomas de reciclaje Beland",
+      "modalSubtitle": "Obten más información técnica y comercial.",
+      "modalContact": "Contactanos",
+      "modalBack": "Volver"
+    },
+    "community": {
+      "tag": "Impacto Real",
+      "title1": "Lo que nuestra",
+      "title2": "comunidad",
+      "title3": "dice"
+    },
+    "caas": {
+      "title": "Elige tu modelo de",
+      "titleHighlight": "Impacto circular",
+      "subtitle": "Circularidad como Servicio.",
+      "cta": "Conoce nuestros servicios para empresas"
+    }
+  },
+  "Ecosystem": {
+    "title": "La experiencia",
+    "subtitle": "Sostenibilidad inteligente y beneficios reales para tu comunidad.",
+    "item1": {
+      "title": "Gana monedas por reciclar",
+      "description": "Las puedes usar dentro del ecosistema Beland o enviarlas a tu cuenta de banco 🤑"
+    },
+    "item2": {
+      "title": "Delivery Circular",
+      "description": "Compra desde casa. Llevamos tu pedido y retiramos tus residuos sin costo. ¡Gana hasta 2% cashback! ♻️"
+    },
+    "item3": {
+      "title": "Experiencias y descuentos",
+      "description": "Accede a beneficios exclusivos solo por reciclar desde la comodidad de tu hogar 😉"
+    },
+    "item4": {
+      "title": "Compra en grupo",
+      "description": "Organiza juntadas, divide pagos y te devolvemos el dinero de lo que no se consuma 😍"
+    }
+  },
+  "VideoCarousel": {
+    "exploreTag": "Explora Más",
+    "exploreLabel": "Galería Multimedia"
+  },
+  "About": {
+    "historyTitle": "Nuestra Historia:",
+    "p1": "Beland nació con el objetivo de plantear una solución real a la crisis ambiental, trabajando en nuestro modelo de consumo. Nuestra propuesta es simple: Los residuos no son basura.",
+    "p2": "El retail tradicional solo gana en la venta, y una vez que el cliente dispone sus desechos, el esfuerzo comercial que fue necesario para concretar la venta, el costo logístico y el material de sus residuos se pierden.",
+    "p3": "En Beland entendemos a los residuos como la evidencia física de una transacción exitosa, y es esta idea la que nos permite recuperar el valor de los residuos, muy por sobre el valor del que están hechos.",
+    "p4": "Nada de esto sería posible sin los recicladores de base, quienes recuperan más del 90% de todo lo que se recicla en LATAM, lastimosamente viven en estado de vulnerabilidad. Por eso donamos el 100% de todo lo que recuperamos a familias de recicladores, y trabajamos en equipo para mejorar su calidad de vida.",
+    "blogTag": "Explora",
+    "blogLabel": "Nuestro Blog Circular",
+    "trajectoryTitle": "Trayectoria",
+    "teamTitle1": "El",
+    "teamTitle2": "Equipo",
+    "teamTitle3": "Soñador"
+  },
+  "Testimonials": {
+    "t1": "Juntos hacemos la diferencia. Un gran agradecimiento a Beland y Melodic Movement por hacer este evento circular.",
+    "t1author": "Cristoph",
+    "t1role": "DJ & productor - Inglaterra",
+    "t2": "Si no hubieran recicladores en el mundo, el relleno sanitario colapsaría",
+    "t2author": "Rocio Toaquiza",
+    "t2role": "Recicladora del CEGAM Tumbaco",
+    "t3": "Son fundamentales estas propuestas ciudadanas de poder anclar la cultura con la gestión ambiental",
+    "t3author": "Santiago Sandoval",
+    "t3role": "Secretario de Ambiente del Distrito Metropolitano de Quito",
+    "t4": "Beland es una plataforma que transforma acciones en valor para la comunidad y los usuarios. La iniciativa se distingue por entregar los residuos recolectados a recicladores de base.",
+    "t4author": "Secretaría de Ambiente DMQ",
+    "t4role": "Premios Quito Sostenible 2025",
+    "t5": "Estos regalos (los residuos) son muy valiosos para nosotros, para nuestros ingresos.",
+    "t5author": "Manuel C.",
+    "t5role": "Reciclador del CEGAM Calderón"
+  }
+  ,
+"Footer": {
+  "slogan": "Una persona que recicla hace una gran diferencia en el mundo,",
+  "sloganHighlight": "hacerlo juntos lo cambia todo.",
+  "quickLinks": "Enlaces Rápidos",
+  "about": "Sobre Nosotros",
+  "contact": "Contáctanos",
+  "follow": "Síguenos",
+  "newsletter": "Boletín",
+  "sending": "Enviando...",
+  "subscribe": "Suscribirse",
+  "rights": "Todos los derechos reservados.",
+  "errorEmail": "Por favor, introduce tu dirección de correo electrónico.",
+  "successTitle": "¡Suscripción exitosa!",
+  "successDesc": "Gracias por unirte a nuestro boletín.",
+  "errorDesc": "Hubo un problema. Por favor, inténtalo de nuevo."
+}
+,
+"Hero": {
+  "cta": "Prueba nuestra app Beland",
+  "purposeBadge": "Propósito",
+  "purposeText1": "Es un",
+  "purposeText2": "ecosistema circular",
+  "purposeText3": "que transforma",
+  "purposeText4": "acciones sostenibles en valor",
+  "purposeText5": "para la comunidad.",
+  "integrationText": "integra pagos, delivery y recompensas dentro de un mismo sistema, impulsando una red donde cada",
+  "integrationHighlight": "acción positiva",
+  "integrationEnd": "fortalece a toda la comunidad.",
+  "slides": [
+    { "title": "Home", "text": "Menu principal, donde visualizas tu billetera, cuentas y impacto." },
+    { "title": "Regístrate en la App", "text": "Regístrate, explora, participa y transforma consumo en acción." },
+    { "title": "Ingresa a la App", "text": "Carga saldo, compra tus productos, recibelos en tu hogar y transforma consumo en acción." },
+    { "title": "Recarga saldo y compra", "text": "Recarga saldo, compra tus productos y recibelos en tu hogar. Transacciones que generan valor social y ambiental." },
+    { "title": "Crea tus grupos o únete a uno", "text": "Únete a grupos o crea el tuyo para organizar tu propio evento circular." },
+    { "title": "Delivery con propósito", "text": "Cada entrega impulsa una red de impacto circular: recibí tu pedido y entregá tus reciclables." },
+    { "title": "Tu impacto", "text": "Descubre tu impacto con Beland, cuantos kg reciclaste, cuantos litros de agua conservaste y tus Becoins obtenidos." },
+    { "title": "Mis ordenes", "text": "Aca podras encontrar tus compras en proceso o finalizadas" }
+  ]
+}
+}

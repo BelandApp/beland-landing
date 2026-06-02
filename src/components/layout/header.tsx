@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-
 import { Logo } from "@/components/ui/logo";
 
 const routes = [
@@ -47,11 +46,9 @@ export function Header() {
 
   return (
     <header className="fixed top-0 z-50 w-full border-b-[0.5px] border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-     
-<div className="container flex h-14 md:h-16 items-center justify-between overflow-visible">        
+      <div className="container flex h-14 md:h-16 items-center justify-between overflow-visible">        
         <div className="flex items-center">
           <Logo />
-          
           <nav className="ml-8 hidden md:flex items-center space-x-8 text-sm font-medium">
             {routes.map((route) => {
               const isActive = 
@@ -79,8 +76,13 @@ export function Header() {
         </div>
 
         <div className="flex items-center gap-4">
-          
-          
+          <Link
+  href={pathname.startsWith('/en') ? '/' : '/en'}
+  className="text-xs uppercase tracking-wider bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-1.5 rounded border border-slate-300 transition whitespace-nowrap font-bold"
+>
+  {pathname.startsWith('/en') ? 'ES' : 'EN'}
+</Link>
+
           <div className="md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -98,7 +100,7 @@ export function Header() {
                         href={route.href}
                         onClick={(e) => {
                           handleScroll(e, route.href);
-                          setOpen(false); 
+                          setOpen(false);
                         }}
                         className="text-lg font-semibold"
                       >

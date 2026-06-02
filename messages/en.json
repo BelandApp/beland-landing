@@ -1,0 +1,103 @@
+{
+  "Home": {
+    "machine": {
+      "tag": "Circular Technology",
+      "title1": "Autonomous",
+      "title2": "Recycling",
+      "title3": "Station",
+      "description": "Our smart machine receives your waste, scans it and rewards you instantly. It turns recycling into a visible, social and viral experience.",
+      "benefit1": "♻️ Accepts glass, aluminum, plastic and tetrapack",
+      "benefit2": "📸 Captures your reaction and generates a unique QR",
+      "benefit3": "💰 Earn digital coins for every recycling",
+      "benefit4": "📊 Remote monitoring and admin dashboard",
+      "cta": "Get a quote",
+      "modalTitle": "Beland Autonomous Recycling Stations",
+      "modalSubtitle": "Get technical and commercial information.",
+      "modalContact": "Contact us",
+      "modalBack": "Back"
+    },
+    "community": {
+      "tag": "Real Impact",
+      "title1": "What our",
+      "title2": "community",
+      "title3": "says"
+    },
+    "caas": {
+      "title": "Choose your",
+      "titleHighlight": "Circular Impact model",
+      "subtitle": "Circularity as a Service.",
+      "cta": "Explore our services for businesses"
+    }
+  },
+  "Ecosystem": {
+    "title": "The",
+    "subtitle": "Smart sustainability and real benefits for your community.",
+    "item1": {
+      "title": "Earn coins for recycling",
+      "description": "Use them within the Beland ecosystem or transfer them to your bank account 🤑"
+    },
+    "item2": {
+      "title": "Circular Delivery",
+      "description": "Shop from home. We deliver your order and pick up your waste for free. Earn up to 2% cashback! ♻️"
+    },
+    "item3": {
+      "title": "Experiences & discounts",
+      "description": "Access exclusive benefits just for recycling from the comfort of your home 😉"
+    },
+    "item4": {
+      "title": "Group buying",
+      "description": "Organize group orders, split payments and we refund what's not consumed 😍"
+    }
+  },
+  "VideoCarousel": {
+    "exploreTag": "Explore More",
+    "exploreLabel": "Media Gallery"
+  },
+  "About": {
+    "historyTitle": "Our Story:",
+    "p1": "Beland was born with the goal of proposing a real solution to the environmental crisis, working on our consumption model. Our proposal is simple: Waste is not garbage.",
+    "p2": "Traditional retail only profits from the sale, and once the customer disposes of their waste, the commercial effort needed to close the sale, the logistics cost and the material of their waste are all lost.",
+    "p3": "At Beland we understand waste as the physical evidence of a successful transaction, and it is this idea that allows us to recover the value of waste, far beyond the value of what it is made of.",
+    "p4": "None of this would be possible without base recyclers, who recover more than 90% of everything recycled in LATAM, yet unfortunately live in a state of vulnerability. That is why we donate 100% of everything we recover to recycler families, and work together to improve their quality of life.",
+    "blogTag": "Explore",
+    "blogLabel": "Our Circular Blog",
+    "trajectoryTitle": "Timeline",
+    "teamTitle1": "The",
+    "teamTitle2": "Dream",
+    "teamTitle3": "Team"
+  },
+  "Testimonials": {
+    "t1": "Together we make a difference. A big thanks to Beland and Melodic Movement for making this event circular.",
+    "t1author": "Cristoph",
+    "t1role": "DJ & producer - England",
+    "t2": "If there were no recyclers in the world, the landfill would collapse.",
+    "t2author": "Rocio Toaquiza",
+    "t2role": "Recycler at CEGAM Tumbaco",
+    "t3": "These citizen proposals to connect culture with environmental management are fundamental.",
+    "t3author": "Santiago Sandoval",
+    "t3role": "Secretary of Environment of the Metropolitan District of Quito",
+    "t4": "Beland is a platform that transforms actions into value for the community and users. The initiative stands out for delivering collected waste to base recyclers.",
+    "t4author": "Secretaría de Ambiente DMQ",
+    "t4role": "Quito Sostenible Awards 2025",
+    "t5": "These gifts (the waste) are very valuable to us, for our income.",
+    "t5author": "Manuel C.",
+    "t5role": "Recycler at CEGAM Calderón"
+  }
+  ,
+"Footer": {
+  "slogan": "One person who recycles makes a big difference in the world,",
+  "sloganHighlight": "doing it together changes everything.",
+  "quickLinks": "Quick Links",
+  "about": "About Us",
+  "contact": "Contact Us",
+  "follow": "Follow Us",
+  "newsletter": "Newsletter",
+  "sending": "Sending...",
+  "subscribe": "Subscribe",
+  "rights": "All rights reserved.",
+  "errorEmail": "Please enter your email address.",
+  "successTitle": "Successfully subscribed!",
+  "successDesc": "Thanks for joining our newsletter.",
+  "errorDesc": "There was a problem. Please try again."
+}
+}

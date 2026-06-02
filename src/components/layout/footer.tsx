@@ -7,8 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations('Footer');
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -18,7 +20,7 @@ export function Footer() {
     if (!email) {
       toast({
         title: "Error",
-        description: "Por favor, introduce tu dirección de correo electrónico.",
+        description: t('errorEmail'),
         variant: "destructive",
       });
       return;
@@ -33,12 +35,12 @@ export function Footer() {
 
       if (!response.ok) throw new Error("Error en la suscripción");
 
-      toast({ title: "¡Suscripción exitosa!", description: "Gracias por unirte a nuestro boletín." });
+      toast({ title: t('successTitle'), description: t('successDesc') });
       setEmail("");
     } catch (error) {
       toast({
         title: "Error",
-        description: "Hubo un problema. Por favor, inténtalo de nuevo.",
+        description: t('errorDesc'),
         variant: "destructive",
       });
     } finally {
@@ -51,29 +53,26 @@ export function Footer() {
       <div className="container py-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           
-          {/* Columna 1: Logo y Eslogan */}
           <div className="space-y-4">
             <Logo className="h-12 w-auto" />
             <p className="text-base font-semibold leading-relaxed text-slate-700 dark:text-slate-200">
-              Una persona que recicla hace una gran diferencia en el mundo, <span className="text-emerald-600 dark:text-emerald-400">hacerlo juntos lo cambia todo.</span>
+              {t('slogan')} <span className="text-emerald-600 dark:text-emerald-400">{t('sloganHighlight')}</span>
             </p>
           </div>
 
-          {/* Columna 2: Enlaces */}
           <div className="space-y-4">
-            <h4 className="font-bold text-slate-800 dark:text-white uppercase tracking-wider text-sm">Enlaces Rápidos</h4>
+            <h4 className="font-bold text-slate-800 dark:text-white uppercase tracking-wider text-sm">{t('quickLinks')}</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/about" className="text-muted-foreground hover:text-emerald-600 transition-colors">Sobre Nosotros</Link></li>
+              <li><Link href="/about" className="text-muted-foreground hover:text-emerald-600 transition-colors">{t('about')}</Link></li>
               <li><Link href="/caas-packages" className="text-muted-foreground hover:text-emerald-600 transition-colors">CaaS</Link></li>
               <li><Link href="/conexion" className="text-muted-foreground hover:text-emerald-600 transition-colors">Conexión</Link></li>
               <li><Link href="/blog" className="text-muted-foreground hover:text-emerald-600 transition-colors">Blog</Link></li>
             </ul>
           </div>
 
-          {/* Columna 3: Contacto y Redes */}
           <div className="space-y-8">
             <div>
-              <h4 className="font-bold mb-4 text-slate-800 dark:text-white uppercase tracking-wider text-sm">Contáctanos</h4>
+              <h4 className="font-bold mb-4 text-slate-800 dark:text-white uppercase tracking-wider text-sm">{t('contact')}</h4>
               <a 
                 href="https://wa.me/593995269974?text=Hola%2C%20vi%20su%20landing%20y%20me%20gustar%C3%ADa%20ponerme%20en%20contacto" 
                 target="_blank" 
@@ -85,7 +84,7 @@ export function Footer() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4 text-slate-800 dark:text-white uppercase tracking-wider text-sm">Síguenos</h4>
+              <h4 className="font-bold mb-4 text-slate-800 dark:text-white uppercase tracking-wider text-sm">{t('follow')}</h4>
               <div className="flex items-center space-x-5">
                 <a href="https://instagram.com/beland.ec" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
                   <img src="/screenshots/instagram.png" alt="Instagram" className="h-8 w-8 object-contain"/>
@@ -100,9 +99,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna 4: Newsletter */}
           <div className="space-y-4">
-            <h4 className="font-bold text-slate-800 dark:text-white uppercase tracking-wider text-sm">Boletín</h4>
+            <h4 className="font-bold text-slate-800 dark:text-white uppercase tracking-wider text-sm">{t('newsletter')}</h4>
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
               <Input 
                 type="email" 
@@ -113,7 +111,7 @@ export function Footer() {
               />
               <Button type="submit" disabled={isLoading} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-all">
                 {isLoading ? <Loader2 className="animate-spin mr-2" /> : null}
-                {isLoading ? 'Enviando...' : 'Suscribirse'}
+                {isLoading ? t('sending') : t('subscribe')}
               </Button>
             </form>
           </div>
@@ -121,7 +119,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between border-t pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground font-medium">
-            &copy; {new Date().getFullYear()} Beland. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Beland. {t('rights')}
           </p>
         </div>
       </div>

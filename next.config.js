@@ -1,6 +1,8 @@
-// next.config.js
-/** @type {import('next').NextConfig} */
+import createNextIntlPlugin from 'next-intl/plugin';
 
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
@@ -30,6 +32,19 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Permissions-Policy',
+            value: 'fullscreen=(self "https://player.vimeo.com")',
+          },
+        ],
+      },
+    ];
+  },
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);

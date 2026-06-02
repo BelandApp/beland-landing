@@ -4,24 +4,28 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
+  const t = useTranslations('Hero');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
+  const slides = t.raw('slides') as { title: string; text: string }[];
+
   const screenshots = [
-    { src: "/screenshots/home1.jpeg", alt: "App home", title: "Home", text: "Menu principal, donde visualizas tu billetera, cuentas y impacto." },
-    { src: "/screenshots/registrate.jpeg", alt: "App home", title: "Regístrate en la App ", text: "Regístrate, explora, participa y transforma consumo en acción." },
-    { src: "/screenshots/home.jpeg", alt: "App home", title: "Ingresa a la App", text: "Carga saldo, compra tus productos, recibelos en tu hogar y transforma consumo en acción." },
-    { src: "/screenshots/mismonedas.jpeg", alt: "App billetera", title: "Recarga saldo y compra", text: "Recarga saldo, compra tus productos y recibelos en tu hogar. Transacciones que generan valor social y ambiental." },
-    { src: "/screenshots/grupos.jpeg", alt: "App grupos", title: "Crea tus grupos o únete a uno", text: "Únete a grupos o crea el tuyo para organizar tu propio evento circular." },
-    { src: "/screenshots/carrito2.jpeg", alt: "App carrito", title: "Delivery con propósito", text: "Cada entrega impulsa una red de impacto circular: recibí tu pedido y entregá tus reciclables." },
-    { src: "/screenshots/impacto.jpeg", alt: "App impacto", title: "Tu impacto", text: "Descubre tu impacto con Beland, cuantos kg reciclaste, cuantos litros de agua conservaste y tus Becoins obtenidos." },
-    { src: "/screenshots/ordenes.jpeg", alt: "App ordenes", title: "Mis ordenes", text: "Aca podras encontrar tus compras en proceso o finalizadas" },
+    { src: "/screenshots/home1.jpeg", alt: "App home" },
+    { src: "/screenshots/registrate.jpeg", alt: "App home" },
+    { src: "/screenshots/home.jpeg", alt: "App home" },
+    { src: "/screenshots/mismonedas.jpeg", alt: "App billetera" },
+    { src: "/screenshots/grupos.jpeg", alt: "App grupos" },
+    { src: "/screenshots/carrito2.jpeg", alt: "App carrito" },
+    { src: "/screenshots/impacto.jpeg", alt: "App impacto" },
+    { src: "/screenshots/ordenes.jpeg", alt: "App ordenes" },
   ];
 
   useEffect(() => {
-    if (isFullScreen) return; 
+    if (isFullScreen) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % screenshots.length);
     }, 5000);
@@ -37,7 +41,7 @@ export default function Hero() {
   }, []);
 
   const goToPrevious = (e?: React.MouseEvent) => {
-    e?.stopPropagation(); 
+    e?.stopPropagation();
     setCurrentSlide((prev) => (prev - 1 + screenshots.length) % screenshots.length);
   };
 
@@ -93,7 +97,6 @@ export default function Hero() {
 
       <div className="relative z-10 container mx-auto px-4 mt-8 md:mt-0 max-w-4xl">
 
-        {/* 2. Logo  */}
         <div className="flex flex-col items-center text-center mb-2 px-4">
           <div className="relative flex justify-center w-full max-w-[280px] sm:max-w-[380px] md:max-w-[480px] mix-blend-multiply">
             <Image
@@ -107,7 +110,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 3. Carrusel del Celular  */}
         <div className="flex justify-center items-center mb-10 md:mb-12 mt-0">
           <div 
             className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] cursor-pointer"
@@ -140,57 +142,46 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 4. Textos, Botón y Tarjetas de Impacto */}
         <div className="flex flex-col items-center text-center space-y-10">
           <div key={currentSlide} className="max-w-md px-6 py-4 border-t-2 border-primary/20 transition-all duration-500 bg-primary/5 rounded-b-xl">
-            <h3 className="text-lg md:text-2xl font-bold text-primary leading-tight mb-2">{screenshots[currentSlide].title}</h3>
-            <p className="text-sm md:text-base text-muted-foreground leading-snug">{screenshots[currentSlide].text}</p>
+            <h3 className="text-lg md:text-2xl font-bold text-primary leading-tight mb-2">{slides[currentSlide]?.title}</h3>
+            <p className="text-sm md:text-base text-muted-foreground leading-snug">{slides[currentSlide]?.text}</p>
           </div>
 
           <div className="w-full flex justify-center">
             <a href="https://beland.app" target="_blank" rel="noopener noreferrer" className="w-full max-w-xs">
               <Button size="lg" className="w-full py-7 text-lg gap-3 shadow-xl hover:scale-105 transition-transform rounded-2xl">
-                Prueba nuestra app Beland <ArrowRight className="w-6 h-6" />
+                {t('cta')} <ArrowRight className="w-6 h-6" />
               </Button>
             </a>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10 mt-10 border-t border-[#769C48]/20 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10 mt-10 border-t border-[#769C48]/20 items-stretch">
   
-  {/*  PROPÓSITO  */}
-  <div className="group relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-500 flex flex-col justify-center">
-    {/* Badge de Propósito */}
-    <div className="absolute -top-3 left-8 px-4 py-1 bg-[#769C48] text-white rounded-full shadow-md">
-      <span className="text-[10px] font-black uppercase tracking-[0.2em]">Propósito</span>
-    </div>
-    
-    <p className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed italic">
-      Es un <span className="text-slate-900 font-black">ecosistema circular</span> que transforma <span className="text-[#769C48] font-black underline decoration-2 underline-offset-4">acciones sostenibles en valor</span> para la comunidad.
-    </p>
-  </div>
+            <div className="group relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all duration-500 flex flex-col justify-center">
+              <div className="absolute -top-3 left-8 px-4 py-1 bg-[#769C48] text-white rounded-full shadow-md">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">{t('purposeBadge')}</span>
+              </div>
+              <p className="text-lg md:text-xl text-slate-600 font-medium leading-relaxed italic">
+                {t('purposeText1')} <span className="text-slate-900 font-black">{t('purposeText2')}</span> {t('purposeText3')} <span className="text-[#769C48] font-black underline decoration-2 underline-offset-4">{t('purposeText4')}</span> {t('purposeText5')}
+              </p>
+            </div>
 
-  {/*  INTEGRACIÓN  */}
-  <div className="relative p-8 rounded-[2.5rem] bg-[#769C48]/5 border-l-8 border-[#769C48] flex flex-col justify-center overflow-hidden">
-    
-    <div className="absolute top-6 right-8 opacity-20">
-      <Sparkles className="w-10 h-10 text-orange-500" />
-    </div>
-
-    <p className="text-sm md:text-base text-slate-700 leading-relaxed relative z-10">
-      <strong className="text-[#769C48] font-black italic uppercase tracking-wider block mb-2 text-lg">Beland</strong> 
-      integra pagos, delivery y recompensas dentro de un mismo sistema, impulsando una red donde cada <span className="text-orange-600 font-bold">acción positiva</span> fortalece a toda la comunidad.
-    </p>
-
-    {/*  puntos o línea  */}
-    <div className="flex gap-1.5 mt-4">
-      <div className="h-1.5 w-6 bg-[#769C48] rounded-full" />
-      <div className="h-1.5 w-1.5 bg-orange-400 rounded-full" />
-      <div className="h-1.5 w-1.5 bg-orange-200 rounded-full" />
-    </div>
-  </div>
-
-</div>
-   
+            <div className="relative p-8 rounded-[2.5rem] bg-[#769C48]/5 border-l-8 border-[#769C48] flex flex-col justify-center overflow-hidden">
+              <div className="absolute top-6 right-8 opacity-20">
+                <Sparkles className="w-10 h-10 text-orange-500" />
+              </div>
+              <p className="text-sm md:text-base text-slate-700 leading-relaxed relative z-10">
+                <strong className="text-[#769C48] font-black italic uppercase tracking-wider block mb-2 text-lg">Beland</strong> 
+                {t('integrationText')} <span className="text-orange-600 font-bold">{t('integrationHighlight')}</span> {t('integrationEnd')}
+              </p>
+              <div className="flex gap-1.5 mt-4">
+                <div className="h-1.5 w-6 bg-[#769C48] rounded-full" />
+                <div className="h-1.5 w-1.5 bg-orange-400 rounded-full" />
+                <div className="h-1.5 w-1.5 bg-orange-200 rounded-full" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

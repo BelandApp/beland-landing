@@ -21,16 +21,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const imageUrls = post.imageUrl ? [post.imageUrl] : [];
-  const preloadLinks = [];
-
-  // If there is a video poster, it's the LCP. Preload it.
-  if (post.videoPosterUrl) {
-    preloadLinks.push({
-      rel: 'preload',
-      href: post.videoPosterUrl,
-      as: 'image',
-    });
-  }
 
   return {
     title: `${post.title} | Beland Blog`,
@@ -42,7 +32,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       url: `/blog/${post.slug}`,
       images: imageUrls,
     },
-    links: preloadLinks, // Add the preload link to the head
   };
 }
 
@@ -59,7 +48,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Determine if the main image should be prioritized (only if no video exists)
   const isImagePriority = !post.videoUrl && !!post.imageUrl;
 
   return (
@@ -79,7 +67,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </header>
         
-        {/* If it's a post with a video, render the video player */}
         {post.videoUrl && (
           <div className="mb-8 md:mb-12 aspect-[4/5] sm:aspect-video overflow-hidden rounded-2xl">
             <video controls preload="auto" className="w-full h-full object-cover object-top" style={{width: '100%', borderRadius: '15px'}} poster={post.videoPosterUrl}>
@@ -89,7 +76,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         )}
 
-        {/* If it's a post with only an image, render the Image with priority */}
         {!post.videoUrl && post.imageUrl && (
           <div className="relative w-full h-64 md:h-96 mb-8 md:mb-12 rounded-lg overflow-hidden">
             <Image 
@@ -102,12 +88,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         )}
 
-        {/* Render the rest of the content */}
         <div 
           className="prose prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
-
       </div>
     </article>
   );
