@@ -30,7 +30,7 @@
     }
   },
   "Ecosystem": {
-    "title": "The",
+  "title": "The Beland Experience",
     "subtitle": "Smart sustainability and real benefits for your community.",
     "item1": {
       "title": "Earn coins for recycling",
@@ -50,8 +50,15 @@
     }
   },
   "VideoCarousel": {
+    "title1": "Beland",
+  "title2": "in Action",
     "exploreTag": "Explore More",
-    "exploreLabel": "Media Gallery"
+    "exploreLabel": "Media Gallery",
+      "video1": "The Story of Your Waste with Beland",
+  "video2": "The Story of Your Waste with Beland",
+  "video3": "The Story of Your Waste with Beland",
+  "video4": "Waste Management - Deborah DeLuca",
+  "video5": "Cristoph Circular"
   },
   "About": {
     "historyTitle": "Our Story:",
@@ -99,5 +106,24 @@
   "successTitle": "Successfully subscribed!",
   "successDesc": "Thanks for joining our newsletter.",
   "errorDesc": "There was a problem. Please try again."
+},
+
+"Hero": {
+  "cta": "Try our Beland app",
+  "purposeBadge": "Purpose",
+  "purposeText1": "It's a",
+  "purposeText2": "circular ecosystem",
+  "purposeText3": "that transforms",
+  "purposeText4": "sustainable actions into value",
+  "purposeText5": "for the community.",
+  "integrationText": "integrates payments, delivery and rewards within the same system, driving a network where each",
+  "integrationHighlight": "positive action",
+  "integrationEnd": "strengthens the entire community.",
+  "slides": [
+    {
+      "title": "Home",
+      "text": "Main menu, where you view your wallet, accounts and impact."
+    }
+  ]
 }
 }

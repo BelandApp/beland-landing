@@ -21,8 +21,8 @@ export default function EcosistemaBeland() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16 space-y-4">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900">
-            {t('title')} <span className="text-primary">Beland</span>
-          </h2>
+  {t('title')}
+</h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             {t('subtitle')}
           </p>

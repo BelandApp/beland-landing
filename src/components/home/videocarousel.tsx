@@ -3,39 +3,41 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 export default function VideoCarousel() {
+const t = useTranslations("VideoCarousel");
   const [mounted, setMounted] = useState(false);
   const [index, setIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const videos = [
-    { 
-      id: "1194868041",  
-      title: "La historia de tus residuos con Beland",
-      isLocal: false 
-    },
-    { 
-      id: "1194868315", 
-      title: "La historia de tus residuos con Beland",
-      isLocal: false 
-    },
-    { 
-      id: "1194874591",  
-      title: "La historia de tus residuos con Beland",
-      isLocal: false 
-    },
-    { 
-      id: "1110359756", 
-      title: "Gestión de los residuos - Deborah DeLuca",
-      isLocal: false 
-    },
-    { 
-      id: "1194874522", 
-      title: "Cristoph Circular",
-      isLocal: false 
-    }
-  ];
+  {
+    id: "1194868041",
+    titleKey: "video1",
+    isLocal: false
+  },
+  {
+    id: "1194868315",
+    titleKey: "video2",
+    isLocal: false
+  },
+  {
+    id: "1194874591",
+    titleKey: "video3",
+    isLocal: false
+  },
+  {
+    id: "1110359756",
+    titleKey: "video4",
+    isLocal: false
+  },
+  {
+    id: "1194874522",
+    titleKey: "video5",
+    isLocal: false
+  }
+];
 
   useEffect(() => {
     setMounted(true);
@@ -53,11 +55,12 @@ export default function VideoCarousel() {
         {/* 1. Encabezado  */}
         <div className="flex flex-col items-center mb-8 md:mb-12 text-center max-w-2xl mx-auto">
           <h2 className="text-xl md:text-5xl font-black uppercase italic tracking-tighter leading-none">
-            <span className="text-orange-500">Beland</span> en <span className="text-[#769C48]">Acción</span>
-          </h2>
+  <span className="text-orange-500">{t("title1")}</span>{" "}
+  <span className="text-[#769C48]">{t("title2")}</span>
+</h2>
           <p className="text-slate-500 text-xs md:text-base italic mt-2 md:mt-3 font-medium tracking-tight px-4">
-            "{videos[index].title}"
-          </p>
+  "{t(videos[index].titleKey as any)}"
+</p>
         </div>
 
         {/* 2. Visor de Video */}
@@ -118,8 +121,13 @@ export default function VideoCarousel() {
               <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="text-[7px] md:text-[9px] font-black uppercase tracking-widest text-[#769C48]">Explora Más</span>
-              <span className="text-[10px] md:text-xs font-bold text-slate-900 leading-none">Galería Multimedia</span>
+             <span className="text-[7px] md:text-[9px] font-black uppercase tracking-widest text-[#769C48]">
+  {t("exploreTag")}
+</span>
+
+<span className="text-[10px] md:text-xs font-bold text-slate-900 leading-none">
+  {t("exploreLabel")}
+</span>
             </div>
           </Link>
         </div>

@@ -30,7 +30,7 @@
     }
   },
   "Ecosystem": {
-    "title": "La experiencia",
+    "title": "La experiencia Beland",
     "subtitle": "Sostenibilidad inteligente y beneficios reales para tu comunidad.",
     "item1": {
       "title": "Gana monedas por reciclar",
@@ -50,9 +50,19 @@
     }
   },
   "VideoCarousel": {
+     "title1": "Beland",
+  "title2": "en Acción",
     "exploreTag": "Explora Más",
-    "exploreLabel": "Galería Multimedia"
-  },
+    "exploreLabel": "Galería Multimedia",
+      "video1": "La historia de tus residuos con Beland",
+  "video2": "La historia de tus residuos con Beland",
+  "video3": "La historia de tus residuos con Beland",
+  "video4": "Gestión de los residuos - Deborah DeLuca",
+  "video5": "Cristoph Circular"
+    
+  
+},
+  
   "About": {
     "historyTitle": "Nuestra Historia:",
     "p1": "Beland nació con el objetivo de plantear una solución real a la crisis ambiental, trabajando en nuestro modelo de consumo. Nuestra propuesta es simple: Los residuos no son basura.",
@@ -123,4 +133,5 @@
     { "title": "Mis ordenes", "text": "Aca podras encontrar tus compras en proceso o finalizadas" }
   ]
 }
+
 }
