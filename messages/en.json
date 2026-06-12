@@ -107,6 +107,13 @@
   "successDesc": "Thanks for joining our newsletter.",
   "errorDesc": "There was a problem. Please try again."
 },
+"Nav": {
+  "home": "Home",
+  "caas": "CaaS",
+  "conexion": "Connection",
+  "about": "About Us",
+  "blog": "Blog"
+},
 
 "Hero": {
   "cta": "Try our Beland app",

@@ -94,6 +94,13 @@
     "t5role": "Reciclador del CEGAM Calderón"
   }
   ,
+  "Nav": {
+  "home": "Home",
+  "caas": "CaaS",
+  "conexion": "Conexión",
+  "about": "Nosotros",
+  "blog": "Blog"
+},
 "Footer": {
   "slogan": "Una persona que recicla hace una gran diferencia en el mundo,",
   "sloganHighlight": "hacerlo juntos lo cambia todo.",

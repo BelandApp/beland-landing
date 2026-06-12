@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import React, { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
 
 import { cn } from "@/lib/utils";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
@@ -11,17 +12,19 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Logo } from "@/components/ui/logo";
 
-const routes = [
-  { href: "/", label: "Home" },
-  { href: "/caas-packages", label: "CaaS" }, 
-  { href: "/conexion", label: "Conexión" },
-  { href: "/about", label: "Nosotros" },
-  { href: "/blog", label: "Blog" },
-];
-
 export function Header() {
+  const t = useTranslations("Nav");
+  const locale = useLocale();
   const pathname = usePathname();
-  const [open, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
+
+  const routes = [
+    { href: "/", label: t("home") },
+    { href: "/caas-packages", label: t("caas") },
+    { href: "/conexion", label: t("conexion") },
+    { href: "/about", label: t("about") },
+    { href: "/blog", label: t("blog") },
+  ];
 
   const activeSection = useScrollSpy(
     routes
@@ -37,24 +40,35 @@ export function Header() {
       const sectionId = href.substring(2);
       const section = document.getElementById(sectionId);
       if (section) {
-        const headerHeight = 80; 
+        const headerHeight = 80;
         const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerHeight;
         window.scrollTo({ top: sectionTop, behavior: "smooth" });
       }
     }
   };
 
+  // Construye la URL del idioma alternativo manteniendo la ruta actual
+  const getAlternateLocaleHref = () => {
+    if (locale === "en") {
+      // Remover el prefijo /en del pathname
+      return pathname.replace(/^\/en/, "") || "/";
+    } else {
+      // Agregar el prefijo /en
+      return `/en${pathname}`;
+    }
+  };
+
   return (
     <header className="fixed top-0 z-50 w-full border-b-[0.5px] border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 md:h-16 items-center justify-between overflow-visible">        
+      <div className="container flex h-14 md:h-16 items-center justify-between overflow-visible">
         <div className="flex items-center">
           <Logo />
           <nav className="ml-8 hidden md:flex items-center space-x-8 text-sm font-medium">
             {routes.map((route) => {
-              const isActive = 
-                (route.href === "/" && pathname === "/") || 
+              const isActive =
+                (route.href === "/" && pathname === "/") ||
                 (pathname === "/" && `/#${activeSection}` === route.href) ||
-                (pathname === route.href) || 
+                pathname === route.href ||
                 (route.href !== "/" && !route.href.startsWith("/#") && pathname.startsWith(route.href));
 
               return (
@@ -77,11 +91,11 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <Link
-  href={pathname.startsWith('/en') ? '/' : '/en'}
-  className="text-xs uppercase tracking-wider bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-1.5 rounded border border-slate-300 transition whitespace-nowrap font-bold"
->
-  {pathname.startsWith('/en') ? 'ES' : 'EN'}
-</Link>
+            href={getAlternateLocaleHref()}
+            className="text-xs uppercase tracking-wider bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-1.5 rounded border border-slate-300 transition whitespace-nowrap font-bold"
+          >
+            {locale === "en" ? "ES" : "EN"}
+          </Link>
 
           <div className="md:hidden">
             <Sheet open={open} onOpenChange={setOpen}>
