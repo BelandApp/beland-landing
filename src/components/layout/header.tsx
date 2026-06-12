@@ -47,16 +47,16 @@ export function Header() {
     }
   };
 
-  // Construye la URL del idioma alternativo manteniendo la ruta actual
   const getAlternateLocaleHref = () => {
-    if (locale === "en") {
-      // Remover el prefijo /en del pathname
-      return pathname.replace(/^\/en/, "") || "/";
-    } else {
-      // Agregar el prefijo /en
-      return `/en${pathname}`;
-    }
-  };
+  // Eliminar cualquier prefijo de locale existente del pathname
+  const cleanPath = pathname.replace(/^\/(en|es)/, "") || "/";
+  
+  if (locale === "en") {
+    return cleanPath; // ir a español (sin prefijo)
+  } else {
+    return `/en${cleanPath === "/" ? "" : cleanPath}`; // ir a inglés
+  }
+};
 
   return (
     <header className="fixed top-0 z-50 w-full border-b-[0.5px] border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
